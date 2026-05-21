@@ -53,7 +53,10 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 3. **Every acronym goes in the glossary** with both the full expansion and an explanation. GAAP, IFRS, NCI, CTA, COA, AR, AP, COGS, P&L, JV, REIT, FX, VIE, GL, TB, OCI, APIC, IC, JE, XBRL.
 
-4. **No term used before it's introduced.** Glossary entries can cross-reference each other freely, but the *first time a term appears in a lesson body* it should be marked with `<span class="term" data-term="key">term</span>`. Subsequent appearances in the same lesson don't need re-marking.
+4. **No term used before it's introduced — and link policy differs by layer.** Glossary entries can cross-reference each other freely. Wrapping is done with `<span class="term" data-term="key">term</span>`.
+    - **Layer 1:** wrap **every** appearance of a glossary term in the lesson body — not just the first one. Readers in Layer 1 are new to the vocabulary; a term that's clickable on its third occurrence saves them from scrolling back to find it.
+    - **Layer 2 and beyond:** wrap only the **first** appearance of each term in a given lesson. Subsequent appearances stay as plain text — the reader is by then assumed to know the term, and over-marking adds visual noise without value.
+    - In all layers, do **not** wrap glossary terms inside: headings (`h1`–`h4`), SVG `<text>` elements, the page `<title>`, attribute values, the prev/next `lesson-nav` block, or company chips. Don't double-wrap text already inside a `.term` span.
 
 5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for Layer 3.
 

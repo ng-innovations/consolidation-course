@@ -15,28 +15,28 @@
         <h1>Source data</h1>
       </header>
 
-<p>Before any of the workflow can run, the consolidation engine has to be fed something. The previous lessons described what comes out of consolidation; this one describes what goes in.</p>
+<p>Before any of the workflow can run, the <span class="term" data-term="consolidation">consolidation</span> engine has to be fed something. The previous lessons described what comes out of consolidation; this one describes what goes in.</p>
 
 <p>The short answer: a <span class="term" data-term="trial-balance">trial balance</span> per entity per period, with enough identifying information to support the work that follows. The longer answer &mdash; what "enough identifying information" means, and what you can and can't do with TB data alone &mdash; is what the rest of this lesson is about.</p>
 
 <h2>Why trial balance, not transaction-level</h2>
 
-<p>Every entity's general ledger contains every individual transaction posted during the period &mdash; thousands of payments, invoices, accruals, payroll runs, journal entries. The trial balance is the summary: for each account, what's the ending balance? Consolidation works from the summary, not the underlying transactions.</p>
+<p>Every entity's <span class="term" data-term="gl">general ledger</span> contains every individual transaction posted during the period &mdash; thousands of payments, invoices, accruals, payroll runs, <span class="term" data-term="journal-entry">journal entries</span>. The <span class="term" data-term="trial-balance">trial balance</span> is the summary: for each account, what's the ending balance? <span class="term" data-term="consolidation">Consolidation</span> works from the summary, not the underlying transactions.</p>
 
 <p>There are good reasons for this:</p>
 
 <ul>
-  <li><strong>It's the standard unit of exchange.</strong> Every accounting system can produce a trial balance. Transaction-level exports vary wildly by system.</li>
-  <li><strong>The math doesn't need transactions.</strong> Summing assets across entities, translating currencies, eliminating intercompany balances &mdash; all operate on account-level totals. Transaction detail is rarely necessary for the output.</li>
-  <li><strong>It's far smaller.</strong> A trial balance might have a few hundred lines. The transactions behind it might be millions. Carrying that volume into a consolidation system would slow everything down without changing the result.</li>
-  <li><strong>It crosses organizational boundaries cleanly.</strong> A subsidiary's controller is comfortable handing over a TB; handing over every transaction feels more invasive and raises confidentiality concerns.</li>
+  <li><strong>It's the standard unit of exchange.</strong> Every accounting system can produce a <span class="term" data-term="trial-balance">trial balance</span>. Transaction-level exports vary wildly by system.</li>
+  <li><strong>The math doesn't need transactions.</strong> Summing <span class="term" data-term="assets">assets</span> across entities, translating currencies, eliminating <span class="term" data-term="intercompany">intercompany</span> balances &mdash; all operate on account-level totals. Transaction detail is rarely necessary for the output.</li>
+  <li><strong>It's far smaller.</strong> A <span class="term" data-term="trial-balance">trial balance</span> might have a few hundred lines. The transactions behind it might be millions. Carrying that volume into a <span class="term" data-term="consolidation">consolidation</span> system would slow everything down without changing the result.</li>
+  <li><strong>It crosses organizational boundaries cleanly.</strong> A <span class="term" data-term="subsidiary">subsidiary</span>'s controller is comfortable handing over a TB; handing over every transaction feels more invasive and raises confidentiality concerns.</li>
 </ul>
 
-<p>A trial balance is, in effect, a contract between the entity and the group: "this is what my books look like at period end, and here's what they say." The group consumes that, not the raw activity beneath it.</p>
+<p>A <span class="term" data-term="trial-balance">trial balance</span> is, in effect, a contract between the entity and the <span class="term" data-term="group">group</span>: "this is what my books look like at period end, and here's what they say." The group consumes that, not the raw activity beneath it.</p>
 
 <h2>What needs to be identifiable</h2>
 
-<p>For consolidation to work, every line of every trial balance has to carry enough metadata to answer some basic questions:</p>
+<p>For <span class="term" data-term="consolidation">consolidation</span> to work, every line of every <span class="term" data-term="trial-balance">trial balance</span> has to carry enough metadata to answer some basic questions:</p>
 
 <table>
   <thead>
@@ -45,48 +45,48 @@
   <tbody>
     <tr>
       <td>Which account is this?</td>
-      <td>So the line can be mapped to the group's <span class="term" data-term="coa">chart of accounts</span> and end up in the right place in the consolidated statements.</td>
+      <td>So the line can be mapped to the group's <span class="term" data-term="coa">chart of accounts</span> and end up in the right place in the <span class="term" data-term="consolidated-statements">consolidated statements</span>.</td>
     </tr>
     <tr>
       <td>Which fiscal period?</td>
-      <td>So opening balances tie to last period's close, and the line ends up in the right reporting period.</td>
+      <td>So <span class="term" data-term="opening-balance">opening balances</span> tie to last period's <span class="term" data-term="close">close</span>, and the line ends up in the right reporting period.</td>
     </tr>
     <tr>
       <td>What's the amount, and in what currency?</td>
-      <td>The actual value, plus enough to drive translation to the group's reporting currency.</td>
+      <td>The actual value, plus enough to drive translation to the group's <span class="term" data-term="presentation-currency">reporting currency</span>.</td>
     </tr>
     <tr>
-      <td>Is this an intercompany line? If so, with which entity?</td>
-      <td>So the IC matching and elimination steps know which lines to pair up.</td>
+      <td>Is this an <span class="term" data-term="intercompany">intercompany</span> line? If so, with which entity?</td>
+      <td>So the IC matching and <span class="term" data-term="elimination">elimination</span> steps know which lines to pair up.</td>
     </tr>
   </tbody>
 </table>
 
-<p>The first three of these are usually obvious from the structure of the data: the account is the account code on the line, the period and currency are headers on the whole submission. The last one &mdash; identifying the intercompany counterparty &mdash; is the one that tends to drive design decisions, and it's where source data varies most across entities.</p>
+<p>The first three of these are usually obvious from the structure of the data: the account is the account code on the line, the period and currency are headers on the whole submission. The last one &mdash; identifying the <span class="term" data-term="intercompany">intercompany</span> <span class="term" data-term="counterparty">counterparty</span> &mdash; is the one that tends to drive design decisions, and it's where source data varies most across entities.</p>
 
 <h2>Handling intercompany account balances</h2>
 
-<p>Two common approaches exist for identifying the intercompany counterparty on a line. From the consolidation engine's perspective, either is perfectly workable &mdash; the choice usually comes down to what each sub's source accounting system can produce.</p>
+<p>Two common approaches exist for identifying the <span class="term" data-term="intercompany">intercompany</span> <span class="term" data-term="counterparty">counterparty</span> on a line. From the <span class="term" data-term="consolidation">consolidation</span> engine's perspective, either is perfectly workable &mdash; the choice usually comes down to what each sub's source accounting system can produce.</p>
 
 <h3>Approach A: account-encoded</h3>
 
 <p>Have a separate account for each trading partner. Sub A's books include:</p>
 
 <ul>
-  <li>12100 &mdash; IC AR with Sub B</li>
-  <li>12101 &mdash; IC AR with Sub C</li>
-  <li>12102 &mdash; IC AR with Sub D</li>
-  <li>...and one more for every other group entity it does business with</li>
+  <li>12100 &mdash; IC <span class="term" data-term="ar">AR</span> with Sub B</li>
+  <li>12101 &mdash; IC <span class="term" data-term="ar">AR</span> with Sub C</li>
+  <li>12102 &mdash; IC <span class="term" data-term="ar">AR</span> with Sub D</li>
+  <li>...and one more for every other <span class="term" data-term="group">group</span> entity it does business with</li>
 </ul>
 
-<p>Each line on the trial balance already names the partner because the account itself does. The engine can read the account and know who's on the other side.</p>
+<p>Each line on the <span class="term" data-term="trial-balance">trial balance</span> already names the partner because the account itself does. The engine can read the account and know who's on the other side.</p>
 
 <h3>Approach B: dimensional</h3>
 
-<p>Have one IC AR account and one IC AP account, and attach a "trading partner" tag (a dimension) to each line. Sub A's books include just:</p>
+<p>Have one IC <span class="term" data-term="ar">AR</span> account and one IC <span class="term" data-term="ap">AP</span> account, and attach a "trading partner" tag (a dimension) to each line. Sub A's books include just:</p>
 
 <ul>
-  <li>12100 &mdash; IC AR  &mdash;  with partner tag of "Sub B" / "Sub C" / "Sub D" / etc. on individual lines</li>
+  <li>12100 &mdash; IC <span class="term" data-term="ar">AR</span>  &mdash;  with partner tag of "Sub B" / "Sub C" / "Sub D" / etc. on individual lines</li>
 </ul>
 
 <p>The account stays single; the partner identification moves to a separate field on each line.</p>
@@ -119,20 +119,20 @@
 
 <h2>When trial balance isn't enough</h2>
 
-<p>TB data covers most of what consolidation needs to do, but a few operations need more than summary balances. Two common examples:</p>
+<p>TB data covers most of what <span class="term" data-term="consolidation">consolidation</span> needs to do, but a few operations need more than summary balances. Two common examples:</p>
 
 <ul>
-  <li><strong>Intercompany matching disputes.</strong> When two subs disagree on what they owe each other, resolving the difference needs transaction-level detail (which invoice, which period) &mdash; not just the TB totals.</li>
-  <li><strong>Unrealized profit on intercompany inventory.</strong> Removing the markup on inventory still sitting between subs requires knowing what came from inside the group and at what price &mdash; usually supplied as a separate IC inventory schedule alongside the TB.</li>
+  <li><strong><span class="term" data-term="intercompany">Intercompany</span> matching disputes.</strong> When two subs disagree on what they owe each other, resolving the difference needs transaction-level detail (which invoice, which period) &mdash; not just the TB totals.</li>
+  <li><strong><span class="term" data-term="unrealized-profit">Unrealized profit</span> on <span class="term" data-term="intercompany">intercompany</span> <span class="term" data-term="inventory">inventory</span>.</strong> Removing the markup on inventory still sitting between subs requires knowing what came from inside the <span class="term" data-term="group">group</span> and at what price &mdash; usually supplied as a separate IC inventory schedule alongside the TB.</li>
 </ul>
 
 <p>Layer 2 covers both in depth.</p>
 
 <h2>Granularity versus effort</h2>
 
-<p>The principle behind all of the above: more granularity in the source data means more flexibility in the consolidation engine, but it also means more work to collect, validate, and store. A small group with simple intercompany activity can get away with very plain TBs &mdash; a few account codes, no dimensions, no supporting schedules. A large group with many subs trading with each other, multiple segments, multi-currency loans, and inventory transfers needs much richer source data.</p>
+<p>The principle behind all of the above: more granularity in the source data means more flexibility in the <span class="term" data-term="consolidation">consolidation</span> engine, but it also means more work to collect, validate, and store. A small <span class="term" data-term="group">group</span> with simple <span class="term" data-term="intercompany">intercompany</span> activity can get away with very plain TBs &mdash; a few account codes, no dimensions, no supporting schedules. A large group with many subs trading with each other, multiple <span class="term" data-term="segment">segments</span>, multi-currency loans, and <span class="term" data-term="inventory">inventory</span> transfers needs much richer source data.</p>
 
-<p>The right level of detail isn't fixed. It depends on what the group needs to report, what its subs' source systems can produce, and what the consolidation tool can accept. Layer 2 will show, for each step of the workflow, what data it actually needs and what it can do without.</p>
+<p>The right level of detail isn't fixed. It depends on what the <span class="term" data-term="group">group</span> needs to report, what its subs' source systems can produce, and what the <span class="term" data-term="consolidation">consolidation</span> tool can accept. Layer 2 will show, for each step of the workflow, what data it actually needs and what it can do without.</p>
 
 <h2>Why this matters for the software</h2>
 
@@ -140,9 +140,9 @@
   <div class="callout-title">For developers</div>
   <p>Things the data model needs to acknowledge at this stage:</p>
   <ul style="margin-top: 8px;">
-    <li>Source data is more than a flat trial balance &mdash; TB lines plus the dimensions and supporting schedules a sub may submit alongside it.</li>
-    <li>Intercompany counterparty can come from the account code itself, a separate dimension field, or both. The schema should accept either encoding.</li>
-    <li>Some operations (IC inventory unrealized profit, IC dispute resolution) rely on data that isn't on the TB. There needs to be a place for supporting schedules &mdash; with their own period, version, and source attribution.</li>
+    <li>Source data is more than a flat <span class="term" data-term="trial-balance">trial balance</span> &mdash; TB lines plus the dimensions and supporting schedules a sub may submit alongside it.</li>
+    <li><span class="term" data-term="intercompany">Intercompany</span> <span class="term" data-term="counterparty">counterparty</span> can come from the account code itself, a separate dimension field, or both. The schema should accept either encoding.</li>
+    <li>Some operations (IC <span class="term" data-term="inventory">inventory</span> <span class="term" data-term="unrealized-profit">unrealized profit</span>, IC dispute resolution) rely on data that isn't on the TB. There needs to be a place for supporting schedules &mdash; with their own period, version, and source attribution.</li>
     <li>Transaction-level detail usually stays in the source system. Storing source-system IDs (invoice, document) on TB lines is enough to link back later without mirroring the underlying transactions.</li>
   </ul>
 </div>
