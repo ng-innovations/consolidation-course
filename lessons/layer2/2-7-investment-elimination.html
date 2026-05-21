@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Investment elimination & goodwill — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-7-investment-elimination.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 7 · Pipeline: C.8 (goodwill calc), C.10</div>
+        <h1>Investment elimination & goodwill</h1>
+      </header>
+      
+<p>When a parent acquires a subsidiary, it pays cash (or stock, or assumes debt) in exchange for the subsidiary's equity. On the parent's books, this purchase shows up as an asset called <em>Investment in Subsidiary</em>. On the subsidiary's books, the same transaction shows up as the equity the parent now owns. In consolidation, these two amounts represent the same thing — the parent's stake in the sub — and they cancel out. The difference, if any, becomes <span class="term" data-term="goodwill">goodwill</span>.</p>
+
+<p><strong>Pipeline reference:</strong> Goodwill is calculated at acquisition (and carried forward) in <em>Standardize</em> (step C.8). The actual elimination of investment against equity happens in <em>Consolidation of Investments</em> (step C.10).</p>
+
+<h2>The mechanics — a simple case</h2>
+
+<p>Parent P acquires 100% of Sub S for $1,000 cash. At the acquisition date, S's balance sheet looks like this:</p>
+
+<table>
+  <thead><tr><th>S's balance sheet at acquisition</th><th>Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Net assets (assets minus liabilities)</td><td style="text-align: right;">$800</td></tr>
+    <tr><td><strong>Total equity</strong></td><td style="text-align: right;"><strong>$800</strong></td></tr>
+    <tr><td style="padding-left: 24px;">Common stock</td><td style="text-align: right;">$100</td></tr>
+    <tr><td style="padding-left: 24px;">Retained earnings</td><td style="text-align: right;">$700</td></tr>
+  </tbody>
+</table>
+
+<p>P paid $1,000 for net assets worth $800. The $200 difference is goodwill — it's what P paid above book value, presumably for things not on S's balance sheet: brand, customer relationships, expected synergies, the team, etc.</p>
+
+<p>After acquisition, P's books show:</p>
+
+<ul>
+  <li>Investment in S: $1,000 (an asset)</li>
+</ul>
+
+<p>S's books still show the same equity ($800). If we just added P and S together, we'd double-count: we'd have S's net assets of $800 <em>plus</em> P's investment of $1,000, totaling $1,800 of assets representing what's really only $800 of net assets plus $200 of goodwill = $1,000.</p>
+
+<p>The investment elimination journal entry corrects this. At the consolidation layer:</p>
+
+<table>
+  <thead><tr><th>Account</th><th>Debit</th><th>Credit</th></tr></thead>
+  <tbody>
+    <tr><td>Common stock (S's equity)</td><td style="text-align: right;">$100</td><td></td></tr>
+    <tr><td>Retained earnings (S's equity)</td><td style="text-align: right;">$700</td><td></td></tr>
+    <tr><td>Goodwill (new asset)</td><td style="text-align: right;">$200</td><td></td></tr>
+    <tr><td>Investment in S</td><td></td><td style="text-align: right;">$1,000</td></tr>
+  </tbody>
+</table>
+
+<p>After this entry, the consolidated balance sheet shows S's net assets ($800) plus goodwill ($200), totaling $1,000 — which matches what P actually paid. The duplicate investment line and the sub's equity lines both go to zero in the consolidation.</p>
+
+<h2>Visualizing the elimination</h2>
+
+<svg class="diagram" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+  <text x="360" y="22" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Before elimination (just summing P + S)</text>
+
+  <rect x="40" y="40" width="200" height="80" fill="#fee2e2" stroke="#dc2626" rx="4"/>
+  <text x="140" y="60" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">P's books</text>
+  <text x="55" y="82" font-size="11" fill="#1e293b">Investment in S: $1,000</text>
+  <text x="55" y="100" font-size="11" fill="#1e293b">Other assets: $5,000</text>
+
+  <rect x="280" y="40" width="200" height="80" fill="#fee2e2" stroke="#dc2626" rx="4"/>
+  <text x="380" y="60" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">S's books</text>
+  <text x="295" y="82" font-size="11" fill="#1e293b">Net assets: $800</text>
+  <text x="295" y="100" font-size="11" fill="#1e293b">Equity: $800</text>
+
+  <rect x="520" y="40" width="180" height="80" fill="#fef3c7" stroke="#f59e0b" rx="4"/>
+  <text x="610" y="60" font-size="12" font-weight="700" fill="#92400e" text-anchor="middle">Naive sum</text>
+  <text x="535" y="82" font-size="11" fill="#1e293b">Assets: $6,800</text>
+  <text x="535" y="100" font-size="11" fill="#dc2626">(double-counted!)</text>
+
+  <text x="360" y="160" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">Elimination entry</text>
+
+  <rect x="180" y="180" width="360" height="80" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="200" y="202" font-size="11" fill="#1e293b">DR Common stock         $100</text>
+  <text x="200" y="218" font-size="11" fill="#1e293b">DR Retained earnings    $700</text>
+  <text x="200" y="234" font-size="11" fill="#1e293b">DR Goodwill             $200</text>
+  <text x="200" y="250" font-size="11" fill="#1e293b">    CR Investment in S        $1,000</text>
+
+  <text x="360" y="290" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">After elimination — consolidated view</text>
+
+  <rect x="200" y="305" width="320" height="42" fill="#d1fae5" stroke="#059669" rx="4"/>
+  <text x="215" y="322" font-size="11" fill="#1e293b">Net assets: $5,800 (P's $5,000 + S's $800)</text>
+  <text x="215" y="338" font-size="11" fill="#1e293b">Goodwill: $200  ·  Total: $6,000</text>
+</svg>
+
+<h2>What if the price was below book value?</h2>
+
+<p>Occasionally a parent pays <em>less</em> than the book value of net assets. This is called a <em>bargain purchase</em>. The difference doesn't become "negative goodwill" on the balance sheet — under both GAAP and IFRS, it's recognized as a gain in the income statement at acquisition. This is rare and usually indicates either (a) a distressed seller or (b) measurement errors that should be re-examined first.</p>
+
+<h2>The 80% case — introducing NCI briefly</h2>
+
+<p>Suppose P only acquires 80% of S, paying $800 for that 80%. S still has net assets of $800 in total. P's share of those net assets is 80% × $800 = $640. The remaining 20%, worth $160, belongs to outside shareholders — this is the <span class="term" data-term="nci">non-controlling interest</span>.</p>
+
+<p>Goodwill in this case depends on which method the group uses. Under the <strong>partial goodwill method</strong> (allowed under IFRS), goodwill is just what P paid above its share: $800 − $640 = $160. Under the <strong>full goodwill method</strong> (required under US GAAP, also allowed under IFRS), goodwill includes the NCI's implied share too. This gets covered in detail in <a href="2-8-nci.html">Lesson 2.8</a> — for now, just know that less-than-100% ownership splits the math between the parent and the NCI.</p>
+
+<h2>Goodwill after acquisition — impairment</h2>
+
+<p>Once goodwill is recorded, it sits on the balance sheet as a long-term asset. Unlike most assets, it isn't amortized (under current GAAP and IFRS). Instead, it's tested annually for <em>impairment</em> — if the subsidiary it relates to is no longer worth what was paid, the goodwill is written down (with the loss going through the income statement).</p>
+
+<p>Impairment testing is its own complex area. For consolidation purposes, the relevant point is: goodwill carryforward is not automatic. Each period, the goodwill balance is the prior balance minus any impairment. Your pipeline needs to handle impairment adjustments — typically posted as topside entries.</p>
+
+<h2>Indirect ownership and tiered structures</h2>
+
+<p>When a parent owns a subsidiary that owns another subsidiary, investment elimination has to happen at multiple levels. Consider a chain: P owns 80% of S1, and S1 owns 75% of S2.</p>
+
+<p>Two investments must be eliminated:</p>
+
+<ol>
+  <li>S1's investment in S2 against S2's equity (creating goodwill from S1's acquisition of S2).</li>
+  <li>P's investment in S1 against S1's equity (creating goodwill from P's acquisition of S1).</li>
+</ol>
+
+<p>S1's equity at the time of elimination already includes its share of S2's results, so the order matters. Most consolidation systems eliminate from the bottom up — eliminate S1→S2 first, get the consolidated S1 sub-group, then eliminate P→(S1 sub-group). This is sometimes called the "step consolidation" approach and matches how the data flows through the pipeline naturally.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Investment elimination is where the most acquisition-history complexity lives. Key things the product has to handle:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Acquisition date balances must be stored permanently.</strong> S's equity at the moment P acquired it is what gets eliminated — not S's current equity. This is the "pre-acquisition equity" baseline.</li>
+    <li><strong>Goodwill is computed once at acquisition, then carried forward.</strong> It only changes due to impairment or post-acquisition adjustments (e.g., contingent consideration true-ups).</li>
+    <li><strong>The elimination journal entry is recurring.</strong> Every period closes the investment and equity against goodwill. The carrying values (and FX translation effects on them) change over time.</li>
+    <li><strong>Step acquisitions and partial disposals get complicated.</strong> When ownership changes mid-life, the acquisition baseline is re-set or partially crystallized. Worth flagging as a separate sub-feature.</li>
+    <li><strong>Tiered consolidation order needs to be deterministic.</strong> Bottom-up traversal of the ownership tree is the natural way; it should produce consistent results regardless of how subsidiaries are stored.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>When a parent acquires a sub, the investment shown on the parent's books represents the same economic value as the sub's equity. In consolidation, the two are eliminated against each other.</li>
+  <li>Any excess paid over the book value of net assets becomes goodwill — an asset on the consolidated balance sheet.</li>
+  <li>Goodwill is calculated once at acquisition and carried forward; it's tested annually for impairment but isn't amortized.</li>
+  <li>Less-than-100% ownership leaves a non-controlling interest, covered in the next lesson.</li>
+  <li>Multi-tier structures require bottom-up elimination — each parent-sub pair is eliminated in turn.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-6-intercompany.html">← 2.6 Intercompany eliminations</a>
+        <div class="spacer"></div>
+        <a href="2-8-nci.html">2.8 Non-controlling interest →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

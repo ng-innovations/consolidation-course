@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Currency translation & CTA — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-4-currency-translation.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 4 · Pipeline: C.7</div>
+        <h1>Currency translation & CTA</h1>
+      </header>
+      
+<p>A US group has a French subsidiary that keeps its books in euros. Before that subsidiary's data can be combined with the group, it has to be translated to dollars. Different parts of the books use different exchange rates — and the mismatch between those rates produces a balancing item called <span class="term" data-term="cta">CTA</span>.</p>
+
+<p><strong>Pipeline reference:</strong> This is step C.7, <em>Currency Translation</em>. After it runs, data moves from <span class="term" data-term="data-state-local">Local</span> state to <span class="term" data-term="data-state-translated">Translated</span> state.</p>
+
+<h2>Why currency translation needs rules</h2>
+
+<p>You might think: just take every euro balance, multiply by the EUR/USD rate, done. But which EUR/USD rate? The one on the last day of the period? The average for the period? The rate on the day each transaction happened?</p>
+
+<p>The answer is: different account types use different rates, and the accounting rules specify which rate type goes with which account type.</p>
+
+<svg class="diagram" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="640" height="36" fill="#1e3a8a" rx="3"/>
+  <text x="340" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="white">FX rate application rules</text>
+
+  <rect x="20" y="66" width="200" height="140" fill="#dbeafe" stroke="#1e3a8a" rx="3"/>
+  <text x="120" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Balance Sheet items</text>
+  <text x="120" y="104" text-anchor="middle" font-size="11" fill="#1e40af">(Assets &amp; Liabilities)</text>
+  <line x1="35" y1="115" x2="205" y2="115" stroke="#1e3a8a"/>
+  <text x="120" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Closing Rate</text>
+  <text x="120" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#1e3a8a">spot rate on last day</text>
+  <text x="120" y="174" text-anchor="middle" font-size="11" font-style="italic" fill="#1e3a8a">of the period</text>
+  <text x="120" y="195" text-anchor="middle" font-size="10" fill="#475569">e.g. cash, AR, inventory,</text>
+
+  <rect x="240" y="66" width="200" height="140" fill="#dcfce7" stroke="#15803d" rx="3"/>
+  <text x="340" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Income Statement items</text>
+  <text x="340" y="104" text-anchor="middle" font-size="11" fill="#15803d">(Revenue &amp; Expenses)</text>
+  <line x1="255" y1="115" x2="425" y2="115" stroke="#15803d"/>
+  <text x="340" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">Average Rate</text>
+  <text x="340" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#14532d">average over the period</text>
+  <text x="340" y="180" text-anchor="middle" font-size="10" fill="#475569">e.g. revenue, COGS,</text>
+  <text x="340" y="195" text-anchor="middle" font-size="10" fill="#475569">salaries, expenses</text>
+
+  <rect x="460" y="66" width="200" height="140" fill="#fef3c7" stroke="#78350f" rx="3"/>
+  <text x="560" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Equity items</text>
+  <text x="560" y="104" text-anchor="middle" font-size="11" fill="#78350f">(Share capital,</text>
+  <text x="560" y="118" text-anchor="middle" font-size="11" fill="#78350f">contributions)</text>
+  <text x="560" y="142" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">Historical Rate</text>
+  <text x="560" y="162" text-anchor="middle" font-size="11" font-style="italic" fill="#78350f">rate at the date the</text>
+  <text x="560" y="178" text-anchor="middle" font-size="11" font-style="italic" fill="#78350f">transaction occurred</text>
+  <text x="560" y="200" text-anchor="middle" font-size="10" fill="#475569">e.g. original share issuance</text>
+
+  <text x="340" y="230" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">CTA captures the differences these rate mismatches create.</text>
+</svg>
+
+<h3>Why the rules are different per type</h3>
+
+<ul>
+  <li><strong>Balance sheet items</strong> represent values at a point in time (the period end). The right rate is the one in effect at that point — the <span class="term" data-term="closing-rate">closing rate</span>.</li>
+  <li><strong>Income statement items</strong> accumulate over the period. Revenue earned in January, February, and March happened at different rates. The <span class="term" data-term="average-rate">average rate</span> is a reasonable approximation that treats the activity as if it happened evenly.</li>
+  <li><strong>Equity contributions</strong> happened at a specific historical date. The right rate is the one on that date — the <span class="term" data-term="historical-rate">historical rate</span>. This way, a $100 investment doesn't change value just because exchange rates moved.</li>
+</ul>
+
+<h3>What about retained earnings?</h3>
+
+<p>Retained earnings is a special case: it's accumulated net income from many past periods. The mechanical answer is to carry forward last period's translated RE balance and add this period's translated net income to it. The cumulative effect is that RE ends up reflecting many historical and average rates layered on top of each other.</p>
+
+<h2>A worked example</h2>
+
+<p>Let's translate a French subsidiary's books. The functional currency is EUR; presentation currency is USD.</p>
+
+<p>Rates for the period:</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Rate type</th><th>EUR/USD</th></tr>
+  <tr><td>Closing rate (Dec 31)</td><td>1.10</td></tr>
+  <tr><td>Average rate for the year</td><td>1.08</td></tr>
+  <tr><td>Historical rate (when shares issued, 5 years ago)</td><td>1.20</td></tr>
+</table>
+
+<p>The subsidiary's trial balance (in euros, debits positive, credits negative):</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Account</th><th>Type</th><th class="num">EUR amount</th></tr>
+  <tr><td>Cash</td><td>Asset</td><td class="num">100,000</td></tr>
+  <tr><td>PP&amp;E</td><td>Asset</td><td class="num">500,000</td></tr>
+  <tr><td>Accounts Payable</td><td>Liability</td><td class="num">(50,000)</td></tr>
+  <tr><td>Long-term debt</td><td>Liability</td><td class="num">(200,000)</td></tr>
+  <tr><td>Share capital</td><td>Equity</td><td class="num">(150,000)</td></tr>
+  <tr><td>Retained earnings (opening)</td><td>Equity</td><td class="num">(160,000)</td></tr>
+  <tr><td>Revenue</td><td>Income</td><td class="num">(800,000)</td></tr>
+  <tr><td>Operating expenses</td><td>Expense</td><td class="num">760,000</td></tr>
+  <tr><th>Total (should be zero)</th><th></th><th class="num">0</th></tr>
+</table>
+
+<p>Applying the rates:</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Account</th><th class="num">EUR</th><th>Rate type</th><th class="num">Rate</th><th class="num">USD</th></tr>
+  <tr><td>Cash</td><td class="num">100,000</td><td>Closing</td><td class="num">1.10</td><td class="num">110,000</td></tr>
+  <tr><td>PP&amp;E</td><td class="num">500,000</td><td>Closing</td><td class="num">1.10</td><td class="num">550,000</td></tr>
+  <tr><td>Accounts Payable</td><td class="num">(50,000)</td><td>Closing</td><td class="num">1.10</td><td class="num">(55,000)</td></tr>
+  <tr><td>Long-term debt</td><td class="num">(200,000)</td><td>Closing</td><td class="num">1.10</td><td class="num">(220,000)</td></tr>
+  <tr><td>Share capital</td><td class="num">(150,000)</td><td>Historical</td><td class="num">1.20</td><td class="num">(180,000)</td></tr>
+  <tr><td>RE (opening)</td><td class="num">(160,000)</td><td>Prior period</td><td class="num">—</td><td class="num">(178,000)</td></tr>
+  <tr><td>Revenue</td><td class="num">(800,000)</td><td>Average</td><td class="num">1.08</td><td class="num">(864,000)</td></tr>
+  <tr><td>Operating expenses</td><td class="num">760,000</td><td>Average</td><td class="num">1.08</td><td class="num">820,800</td></tr>
+  <tr><th>Total</th><th class="num">0</th><th></th><th></th><th class="num" style="color: #dc2626">(16,200)</th></tr>
+</table>
+
+<p><em>(Opening RE is shown as $178,000 from a prior-period calculation; we'll assume that for this example.)</em></p>
+
+<h2>The plug: CTA</h2>
+
+<p>Notice the total didn't come out to zero. In euros, the TB was balanced. In dollars, it has a $16,200 discrepancy.</p>
+
+<p>This isn't a math error. It's the inevitable result of applying different rates to different account types. The discrepancy needs to go somewhere — and that somewhere is the <span class="term" data-term="cta">Cumulative Translation Adjustment</span> account, which sits in equity (within <span class="term" data-term="oci">OCI</span>).</p>
+
+<div class="example-box">
+<strong>The CTA entry:</strong>
+<table style="font-size: 13px; margin-top: 8px;">
+  <tr><th>Account</th><th class="num">DR</th><th class="num">CR</th></tr>
+  <tr><td>CTA (within equity)</td><td></td><td class="num">16,200</td></tr>
+  <tr><td>Translation suspense</td><td class="num">16,200</td><td></td></tr>
+</table>
+<p style="margin-top: 8px;"><em>To balance the translated trial balance. CTA absorbs the rate-mismatch difference.</em></p>
+</div>
+
+<p>After this entry, the translated TB balances. The dollar amounts roll up into the consolidated statements correctly.</p>
+
+<h2>CTA is real but not realized</h2>
+
+<p>Why does CTA exist economically? Because exchange rates moved. The euro value of the subsidiary is unchanged, but the dollar value at year-end is different from what it would have been at year-start. That's a real change in dollar terms.</p>
+
+<p>But it's not realized — no actual transaction crystallized that change. The euros are still euros; nobody converted anything; nothing was sold. So it would be misleading to put this fluctuation through the income statement and call it profit or loss. Instead, it sits in equity as CTA, where it accumulates over time.</p>
+
+<p>If the subsidiary is ever sold or shut down, the accumulated CTA gets recycled — pulled out of equity and recognized in net income at that point.</p>
+
+<h2>Hyperinflation: a wrinkle</h2>
+
+<p>The translation rules above assume the foreign subsidiary operates in a stable currency. When the functional currency is in a hyperinflationary economy (defined as roughly 100% cumulative inflation over three years), different rules apply — the local financial statements have to be restated for inflation before translation, and the closing rate is used for all line items.</p>
+
+<p>This is a rare case in most groups but worth knowing exists. Argentina, Venezuela, Turkey, and a few others have triggered hyperinflation treatment at various times.</p>
+
+<h2>Two translation methods</h2>
+
+<p>The rules above describe the <strong>current rate method</strong> — used when the foreign subsidiary's functional currency is its own local currency. This is the most common case.</p>
+
+<p>When the foreign subsidiary's functional currency is actually the parent's currency (because the sub operates primarily as an extension of the parent), a different method applies — the <strong>temporal method</strong>. In that method, monetary items (cash, AR, AP, debt) use closing rate, but non-monetary items (inventory, PP&amp;E) use historical rate, and the resulting differences go through the income statement, not equity.</p>
+
+<p>For most consolidation work, the current rate method is the default. The temporal method shows up for specific entity setups (e.g., a US subsidiary in a low-tax jurisdiction whose books happen to be in local currency but whose economic substance is US).</p>
+
+<h2>State transition</h2>
+
+<p>This operation transitions data from <span class="term" data-term="data-state-local">Local</span> state to <span class="term" data-term="data-state-translated">Translated</span> state. After translation:</p>
+
+<ul>
+  <li>Every entity's data is now in the group's presentation currency.</li>
+  <li>CTA has been calculated and posted for each foreign entity.</li>
+  <li>The data is still organized per-entity (combination happens later in the pipeline).</li>
+</ul>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Currency translation is mostly mechanical but has several traps:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Each group account carries its own FX rate type</strong> (closing, average, or historical). This metadata drives translation. Wrong rate type = wrong translation.</li>
+    <li><strong>Rate tables need to support effective dates.</strong> Many rates per currency pair per period. The system needs to apply the right rate to the right period.</li>
+    <li><strong>CTA is a plug that should be computed, not entered.</strong> Treating CTA as a normal account that humans post entries to is a recipe for errors. Calculate it programmatically from the rate-induced imbalance.</li>
+    <li><strong>Opening balances in the translated state come from the prior period's translated state.</strong> They aren't re-translated each period — that would double-count rate changes. This is why the carryforward step matters even at the translated layer.</li>
+    <li><strong>Make rate type assignments visible and editable.</strong> Customers will want to adjust which rate type applies to specific accounts (sometimes legitimately, sometimes not). Surface it; don't bury it.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Foreign subsidiaries must be translated from their functional currency to the group's presentation currency.</li>
+  <li>Different account types use different rates: balance sheet → closing, income statement → average, equity → historical.</li>
+  <li>The rate mismatch produces a balancing item, the Cumulative Translation Adjustment (CTA), which sits in equity within OCI.</li>
+  <li>CTA reflects real economic effects (exchange rates moved) but is unrealized (no transaction crystallized it).</li>
+  <li>Translation runs at the entity level and produces Translated-state data, ready for further pipeline steps.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-3-carryforward.html">← 2.3 Carryforward & opening balances</a>
+        <div class="spacer"></div>
+        <a href="2-5-ownership.html">2.5 Ownership & consolidation methods →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

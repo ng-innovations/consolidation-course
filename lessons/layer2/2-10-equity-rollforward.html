@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Equity rollforward & retained earnings — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-10-equity-rollforward.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 10 · Pipeline: C.11</div>
+        <h1>Equity rollforward & retained earnings</h1>
+      </header>
+      
+<p>After translation, eliminations, and ownership math, the consolidated balance sheet has equity in it — and that equity has to tie together logically. Every component of equity should reconcile from beginning to end of the period: opening balance, plus what happened during the period, equals closing balance. This is the <em>equity rollforward</em>. It's the auditor's first stop and the most concrete proof that consolidation is internally consistent.</p>
+
+<p><strong>Pipeline reference:</strong> The rollforward is assembled in <em>Group Adjustments</em> (step C.11) and reported on the statement of changes in equity (step D.12).</p>
+
+<h2>The components of consolidated equity</h2>
+
+<p>Consolidated equity typically has several lines. The exact names vary by reporting framework and company convention, but the common ones are:</p>
+
+<table>
+  <thead><tr><th>Component</th><th>What it represents</th></tr></thead>
+  <tbody>
+    <tr><td>Share capital (common stock)</td><td>Par value of shares the parent has issued.</td></tr>
+    <tr><td>Additional paid-in capital</td><td>Amounts paid for shares above par value.</td></tr>
+    <tr><td>Retained earnings</td><td>Cumulative net income, minus dividends paid to parent shareholders.</td></tr>
+    <tr><td>Other comprehensive income (OCI)</td><td>Cumulative gains/losses bypassing net income (e.g., CTA, certain pension changes).</td></tr>
+    <tr><td>Treasury shares</td><td>Negative balance — shares the company has bought back.</td></tr>
+    <tr><td>Non-controlling interest</td><td>The slice of subsidiary equity owned by outside parties.</td></tr>
+  </tbody>
+</table>
+
+<p>Each of these moves through the period due to a defined set of activities. The rollforward lays out every activity and proves the numbers tie.</p>
+
+<h2>The rollforward structure</h2>
+
+<p>A statement of changes in equity is just a big table — rows are activities, columns are equity components. Reading down a column shows how that component changed during the period.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th><th>Share<br>capital</th><th>APIC</th><th>Retained<br>earnings</th><th>OCI</th><th>Parent<br>equity</th><th>NCI</th><th>Total<br>equity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Opening balance (Jan 1)</strong></td>
+      <td style="text-align: right;">100</td><td style="text-align: right;">500</td><td style="text-align: right;">1,500</td><td style="text-align: right;">(50)</td><td style="text-align: right;">2,050</td><td style="text-align: right;">200</td><td style="text-align: right;">2,250</td>
+    </tr>
+    <tr>
+      <td>Net income for the year</td>
+      <td></td><td></td><td style="text-align: right;">400</td><td></td><td style="text-align: right;">400</td><td style="text-align: right;">50</td><td style="text-align: right;">450</td>
+    </tr>
+    <tr>
+      <td>OCI (translation, etc.)</td>
+      <td></td><td></td><td></td><td style="text-align: right;">(20)</td><td style="text-align: right;">(20)</td><td style="text-align: right;">(5)</td><td style="text-align: right;">(25)</td>
+    </tr>
+    <tr>
+      <td>Dividends to parent shareholders</td>
+      <td></td><td></td><td style="text-align: right;">(80)</td><td></td><td style="text-align: right;">(80)</td><td></td><td style="text-align: right;">(80)</td>
+    </tr>
+    <tr>
+      <td>Dividends to NCI</td>
+      <td></td><td></td><td></td><td></td><td></td><td style="text-align: right;">(10)</td><td style="text-align: right;">(10)</td>
+    </tr>
+    <tr>
+      <td>Share issuance</td>
+      <td style="text-align: right;">20</td><td style="text-align: right;">80</td><td></td><td></td><td style="text-align: right;">100</td><td></td><td style="text-align: right;">100</td>
+    </tr>
+    <tr>
+      <td><strong>Closing balance (Dec 31)</strong></td>
+      <td style="text-align: right;"><strong>120</strong></td><td style="text-align: right;"><strong>580</strong></td><td style="text-align: right;"><strong>1,820</strong></td><td style="text-align: right;"><strong>(70)</strong></td><td style="text-align: right;"><strong>2,450</strong></td><td style="text-align: right;"><strong>235</strong></td><td style="text-align: right;"><strong>2,685</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Reading the retained earnings column: opened at 1,500, plus 400 of net income, minus 80 of dividends, closes at 1,820. Every column should similarly tie out.</p>
+
+<h2>The opening balance comes from carryforward</h2>
+
+<p>The opening row above isn't entered fresh each period — it has to match exactly what was reported as the closing balance of the previous period (after any restatement). This is the <span class="term" data-term="carryforward">carryforward</span> tie covered in <a href="2-3-carryforward.html">Lesson 2.3</a>: closing balance of period N becomes opening balance of period N+1, no exceptions.</p>
+
+<p>If the opening rollforward doesn't tie to the prior period's close, something has been changed retroactively — and that change either needs to flow through OCI or retained earnings as a restatement, with proper disclosure.</p>
+
+<h2>Net income — the link to the income statement</h2>
+
+<p>The net income row on the rollforward must equal the bottom line of the consolidated income statement. This sounds obvious but is actually a fundamental control: the income statement and the equity statement are two views of the same underlying activity, and they have to agree.</p>
+
+<p>With NCI in the picture, the linkage is to <em>both</em> attributable-to-parent income (which lands in parent equity's retained earnings column) and attributable-to-NCI income (which lands in the NCI column). The income statement bottom shows both pieces; the rollforward picks them up.</p>
+
+<h2>OCI — the link to the comprehensive income statement</h2>
+
+<p>OCI items (currency translation adjustment, certain pension remeasurements, certain hedge gains, certain financial instrument gains) bypass net income but still affect equity. They flow into the OCI column of the rollforward.</p>
+
+<p>Like net income, the total OCI in the rollforward has to match the OCI section of the income statement (or separate statement of comprehensive income, depending on presentation choice).</p>
+
+<h2>Why does this matter — isn't it just bookkeeping?</h2>
+
+<p>The rollforward is the central reconciliation that proves the consolidation didn't lose anything. If retained earnings opened at 1,500 and closed at 1,820, and net income was 400, and dividends were 80, the math has to work: 1,500 + 400 − 80 = 1,820. If it doesn't, something is wrong — and "something wrong" in consolidated equity usually means a posting error or a forgotten elimination.</p>
+
+<p>Auditors look at this first because:</p>
+
+<ol>
+  <li>It surfaces missing or duplicated entries.</li>
+  <li>It surfaces inconsistencies between income statement and balance sheet.</li>
+  <li>It surfaces restatements or retroactive changes.</li>
+  <li>It's the easiest place to spot data that doesn't tie.</li>
+</ol>
+
+<p>A consolidation system that can't produce a clean rollforward isn't trustworthy.</p>
+
+<h2>NCI rollforward — same idea, separate column</h2>
+
+<p>The NCI section of equity has its own rollforward dynamics:</p>
+
+<ul>
+  <li>Opening NCI balance (from prior period close)</li>
+  <li>+ NCI's share of current period net income</li>
+  <li>+ NCI's share of current period OCI</li>
+  <li>− Dividends paid by subs to outside (NCI) shareholders</li>
+  <li>± Effect of any ownership changes that don't transfer control</li>
+  <li>= Closing NCI balance</li>
+</ul>
+
+<p>This appears as a separate column on the statement of changes in equity, parallel to the parent-attributable columns.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The rollforward isn't really a calculation — it's a presentation of activity that's already happened. But producing it correctly requires the underlying data model to support it:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Every equity-affecting transaction needs a movement type.</strong> Net income vs. dividend vs. share issuance vs. OCI vs. ownership change — the engine needs to know which row of the rollforward each posting belongs to.</li>
+    <li><strong>Both parent-attributable and NCI-attributable splits need to be stored.</strong> A single equity transaction creates two postings (parent share + NCI share); track them with a common transaction ID.</li>
+    <li><strong>Opening balances must match carryforward.</strong> The rollforward is the proof point — surface mismatches loudly.</li>
+    <li><strong>The rollforward should be queryable, not just printable.</strong> Users will want to ask "what made up the $400 of net income in retained earnings?" and drill into the underlying transactions.</li>
+    <li><strong>Restatements need first-class support.</strong> When prior periods are restated, the rollforward needs to show the originally-reported opening, the restatement adjustment, and the restated opening — all as separate rows.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>The equity rollforward is the statement of changes in equity — opening balance plus period activity equals closing balance, by component.</li>
+  <li>Standard components: share capital, APIC, retained earnings, OCI, treasury, NCI.</li>
+  <li>Standard activities: net income, OCI, dividends, share issuances/buybacks, ownership changes.</li>
+  <li>It ties the income statement (net income, OCI) to the balance sheet (equity).</li>
+  <li>It's the auditor's primary consistency check — if it doesn't tie, something is wrong.</li>
+  <li>NCI gets its own column with parallel activities.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-9-unrealized-profit.html">← 2.9 Unrealized profit elimination</a>
+        <div class="spacer"></div>
+        <a href="2-11-topside-entries.html">2.11 Adjustments & topside entries →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

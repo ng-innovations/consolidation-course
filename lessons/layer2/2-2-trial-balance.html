@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trial balance collection & validation — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-2-trial-balance.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 2 · Pipeline: B.4, B.5</div>
+        <h1>Trial balance collection & validation</h1>
+      </header>
+      
+<p>Every consolidation cycle starts with the same task: collect a <span class="term" data-term="trial-balance">trial balance</span> from every subsidiary, and verify that what arrived is usable. This is the Ingest phase of the pipeline — steps B.4 (Data Collection) and B.5 (Validation &amp; Normalization).</p>
+
+<h2>What a trial balance is</h2>
+
+<p>A trial balance is a list of every account in a company's <span class="term" data-term="gl">general ledger</span> with its current balance, organized so that total debits equal total credits.</p>
+
+<table>
+  <tr><th>Account</th><th>Description</th><th class="num">Debit</th><th class="num">Credit</th></tr>
+  <tr><td>1010</td><td>Cash</td><td class="num">125,000</td><td class="num"></td></tr>
+  <tr><td>1200</td><td>Accounts Receivable</td><td class="num">85,000</td><td class="num"></td></tr>
+  <tr><td>1500</td><td>Inventory</td><td class="num">60,000</td><td class="num"></td></tr>
+  <tr><td>2010</td><td>Accounts Payable</td><td class="num"></td><td class="num">40,000</td></tr>
+  <tr><td>3000</td><td>Share Capital</td><td class="num"></td><td class="num">100,000</td></tr>
+  <tr><td>3100</td><td>Retained Earnings (opening)</td><td class="num"></td><td class="num">90,000</td></tr>
+  <tr><td>4000</td><td>Revenue</td><td class="num"></td><td class="num">200,000</td></tr>
+  <tr><td>5000</td><td>Cost of Goods Sold</td><td class="num">120,000</td><td class="num"></td></tr>
+  <tr><td>6000</td><td>Operating Expenses</td><td class="num">40,000</td><td class="num"></td></tr>
+  <tr><th colspan="2">Total</th><th class="num">430,000</th><th class="num">430,000</th></tr>
+</table>
+
+<p>If the trial balance doesn't balance — debits ≠ credits — something is wrong with the local books and the data shouldn't be accepted for consolidation.</p>
+
+<h2>How TBs arrive</h2>
+
+<p>Subsidiaries submit their TBs in different ways depending on the customer's setup:</p>
+
+<ul>
+  <li><strong>Direct integration.</strong> The system pulls TBs from the subsidiary's accounting software automatically — NetSuite, SAP, Dynamics, QuickBooks, etc. This is the cleanest setup.</li>
+  <li><strong>File upload.</strong> The subsidiary's controller exports a TB from their system to CSV or Excel and uploads it to the consolidation app. The format usually has to match a defined template.</li>
+  <li><strong>Web entry.</strong> For very small subsidiaries or non-financial entities, sometimes the data is keyed in directly.</li>
+</ul>
+
+<p>In all cases, what arrives needs to be normalized into a common internal format before validation can run.</p>
+
+<h2>What validation checks</h2>
+
+<p>Once a TB is in the system, validation has to verify it's usable. Common checks:</p>
+
+<h3>Structural validation</h3>
+
+<ul>
+  <li>Every row has a valid account code (exists in the local <span class="term" data-term="coa">COA</span>).</li>
+  <li>Every account code has a <span class="term" data-term="mapping">mapping</span> to a group account, or routes to Suspense.</li>
+  <li>Required fields are present (amount, currency, period).</li>
+  <li>Amounts are numeric and within sane bounds (no clearly-wrong values like 999999999999).</li>
+  <li>The currency code matches the entity's expected <span class="term" data-term="functional-currency">functional currency</span>.</li>
+</ul>
+
+<h3>Mathematical validation</h3>
+
+<ul>
+  <li><strong>The TB balances.</strong> Total debits equal total credits. If it doesn't, the data shouldn't be accepted.</li>
+  <li><strong>Opening balances tie to last period's closing balances.</strong> Each balance sheet account's opening balance should equal what the same account had at the prior period close. See <a href="2-3-carryforward.html">Lesson 2.3</a>.</li>
+  <li><strong>Sign conventions.</strong> Asset and expense accounts should have debit balances; liability, equity, and revenue accounts should have credit balances. Unusual signs (negative inventory? positive accumulated depreciation?) should at least raise a warning.</li>
+</ul>
+
+<h3>Business validation</h3>
+
+<ul>
+  <li>Every expected subsidiary has submitted for the period.</li>
+  <li>Materially unusual variances from prior period flagged for review.</li>
+  <li>Subsidiary-level intercompany totals should agree to its counterparty's books within a tolerance.</li>
+  <li>Local-policy adjustments have been made (e.g., year-end accruals).</li>
+</ul>
+
+<h2>What happens on validation failure</h2>
+
+<p>The system has to decide what to do when a TB fails a check. There are three reasonable options, depending on severity:</p>
+
+<table>
+  <tr><th>Severity</th><th>Behavior</th></tr>
+  <tr><td>Critical (TB doesn't balance, no mapping at all)</td><td>Reject the submission. Block this entity from progressing.</td></tr>
+  <tr><td>Error (unmapped account, missing required field)</td><td>Accept but route problematic items to Suspense and surface them for resolution. Block period close until resolved.</td></tr>
+  <tr><td>Warning (unusual sign, large variance)</td><td>Accept and flag for review. Don't block close, but record acknowledgment.</td></tr>
+</table>
+
+<p>The principle: never let bad data flow silently through the pipeline. Every issue either gets resolved or gets explicitly acknowledged.</p>
+
+<h2>Standardizing TB format</h2>
+
+<p>Different subsidiaries submit TBs in different formats. Validation includes normalizing them all to the system's common shape. A typical internal representation:</p>
+
+<svg class="diagram" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="640" height="160" fill="#f9fafb" stroke="#cbd5e1" rx="6"/>
+  <text x="40" y="42" font-size="12" font-weight="700" fill="#1e3a8a">Internal TB line item:</text>
+
+  <line x1="40" y1="55" x2="640" y2="55" stroke="#cbd5e1"/>
+
+  <text x="40" y="78" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">entity_id</tspan>          // group entity code</text>
+  <text x="40" y="96" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">period</tspan>             // e.g. 2024-Q1</text>
+  <text x="40" y="114" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">group_account</tspan>      // mapped from local account</text>
+  <text x="40" y="132" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">amount</tspan>             // signed (negative = credit)</text>
+  <text x="40" y="150" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">currency</tspan>           // functional currency code</text>
+  <text x="40" y="168" font-size="11" font-family="monospace" fill="#1f2937"><tspan font-weight="700">counterparty_entity_id</tspan>  // optional — only for intercompany lines</text>
+</svg>
+
+<h3>Signed amounts vs. debit/credit columns</h3>
+
+<p>Conceptually, every transaction has a debit side and a credit side. In storage, it's common to use a single signed amount column where credits are negative. This avoids the awkwardness of having two columns where only one is ever populated per row.</p>
+
+<p>The sign convention is usually: <strong>debit positive, credit negative</strong>. Then for any account:</p>
+
+<ul>
+  <li>Asset balance positive → normal (debit balance)</li>
+  <li>Liability balance negative → normal (credit balance)</li>
+  <li>Revenue balance negative → normal (credit balance)</li>
+  <li>Expense balance positive → normal (debit balance)</li>
+</ul>
+
+<p>A trial balance balances when the sum of all signed amounts equals zero.</p>
+
+<h2>The role of dimensions</h2>
+
+<p>A trial balance doesn't have to be one row per account. Modern systems usually capture additional <span class="term" data-term="segment">segments</span> on each row:</p>
+
+<table>
+  <tr><th>Entity</th><th>Account</th><th>Department</th><th>Counterparty</th><th class="num">Amount</th></tr>
+  <tr><td>Sub A</td><td>4000 Revenue</td><td>Sales — North</td><td>(external)</td><td class="num">(300,000)</td></tr>
+  <tr><td>Sub A</td><td>4000 Revenue</td><td>Sales — South</td><td>(external)</td><td class="num">(100,000)</td></tr>
+  <tr><td>Sub A</td><td>4100 Rev — IC</td><td>Sales — North</td><td>Sub B</td><td class="num">(80,000)</td></tr>
+</table>
+
+<p>The dimensions become available for slicing and dicing in reports later. They also enable intercompany matching: the counterparty_entity_id on Sub A's row tells the system "this $80,000 of revenue should match against Sub B's books."</p>
+
+<h2>Workflow gates</h2>
+
+<p>TB collection isn't just data movement — it's a workflow. The system tracks the state of each subsidiary's submission for the period:</p>
+
+<svg class="diagram" viewBox="0 0 680 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="30" width="100" height="40" fill="#e5e7eb" stroke="#6b7280" rx="4"/>
+  <text x="70" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">Expected</text>
+
+  <polygon points="125,50 140,45 140,55" fill="#6b7280"/>
+
+  <rect x="145" y="30" width="100" height="40" fill="#fef3c7" stroke="#d97706" rx="4"/>
+  <text x="195" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#78350f">Submitted</text>
+
+  <polygon points="250,50 265,45 265,55" fill="#6b7280"/>
+
+  <rect x="270" y="30" width="100" height="40" fill="#dbeafe" stroke="#1d4ed8" rx="4"/>
+  <text x="320" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#1e3a8a">Validated</text>
+
+  <polygon points="375,50 390,45 390,55" fill="#6b7280"/>
+
+  <rect x="395" y="30" width="100" height="40" fill="#dcfce7" stroke="#15803d" rx="4"/>
+  <text x="445" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#14532d">Approved</text>
+
+  <polygon points="500,50 515,45 515,55" fill="#6b7280"/>
+
+  <rect x="520" y="30" width="120" height="40" fill="#1e3a8a" stroke="#1e3a8a" rx="4"/>
+  <text x="580" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="white">Ready for consolidation</text>
+</svg>
+
+<p>The consolidation can't proceed until all expected submissions reach the final state. The status board for the close is one of the most-watched screens during a typical period close.</p>
+
+<h2>State transition</h2>
+
+<p>This lesson covers the transition from "external systems" to <span class="term" data-term="data-state-local">Local</span> state. After validation passes, the data is officially Local-state and ready for currency translation.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The Ingest phase is the boundary between "the world's mess" and "our clean pipeline." Everything downstream assumes the data is well-formed. So this layer carries a lot of weight.</p>
+  <p>Three design principles that work well:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Fail loudly, fail early.</strong> A validation error caught at ingest is cheap; the same error caught at reporting is expensive (you have to back out every downstream step).</li>
+    <li><strong>Capture rejections, don't drop them.</strong> Bad rows should be visible and resolvable, not silently discarded.</li>
+    <li><strong>Make resubmission cheap.</strong> Subsidiaries will resubmit TBs many times during a typical close. Each resubmission needs to re-run validation cleanly and update the workflow state.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Each period, every subsidiary submits a trial balance — debits and credits, by account, in functional currency.</li>
+  <li>TBs arrive via integration, file upload, or web entry, in various formats.</li>
+  <li>Validation checks structure (fields, types), math (TB balances, opening ties to prior closing), and business sensibility (signs, variances, intercompany agreement).</li>
+  <li>Failures are categorized — critical (reject), error (Suspense + block), warning (flag).</li>
+  <li>Validated data lands in Local state, ready for currency translation.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-1-coa-mapping.html">← 2.1 Chart of accounts & mapping</a>
+        <div class="spacer"></div>
+        <a href="2-3-carryforward.html">2.3 Carryforward & opening balances →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

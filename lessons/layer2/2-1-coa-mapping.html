@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chart of accounts & mapping — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-1-coa-mapping.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 1 · Pipeline: A.3, B.5</div>
+        <h1>Chart of accounts & mapping</h1>
+      </header>
+      
+<p>Before any data can flow through the consolidation pipeline, everyone has to agree on what the accounts <em>are</em>. Each subsidiary has its own <span class="term" data-term="coa">chart of accounts</span> reflecting how it runs its local books. The group needs one master chart that everything maps to. This lesson covers how that mapping works.</p>
+
+<p><strong>Pipeline reference:</strong> This lesson covers <em>Account &amp; Metadata Setup</em> (step A.3) and the mapping piece of <em>Validation &amp; Normalization</em> (step B.5).</p>
+
+<h2>Why charts of accounts vary</h2>
+
+<p>If every subsidiary was set up at the same time, by the same team, using the same software, they could all share one chart of accounts. In the real world, that rarely happens. Subsidiaries acquire their charts for many reasons:</p>
+
+<ul>
+  <li><strong>Local regulatory requirements.</strong> Many countries mandate specific chart-of-accounts structures (France, Spain, Germany, China all have prescribed national charts).</li>
+  <li><strong>Different accounting software.</strong> Each system has its own default chart, and customizing it costs time.</li>
+  <li><strong>History of acquisitions.</strong> A subsidiary that joined the group from a prior owner brings its existing chart with it.</li>
+  <li><strong>Operational granularity.</strong> A retail sub might track inventory by product line; a services sub might track it by client. Their charts reflect what they actually need to manage.</li>
+</ul>
+
+<p>This is fine for local operations. But for the group view, you need one consistent set of accounts to combine across.</p>
+
+<h2>The structure of a group chart of accounts</h2>
+
+<p>A group COA is usually organized hierarchically. The top level is the type of account; below that are progressively more specific categories.</p>
+
+<svg class="diagram" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="640" height="36" fill="#1e3a8a" rx="3"/>
+  <text x="35" y="42" font-size="13" font-weight="700" fill="white">1000 — Assets</text>
+
+  <line x1="50" y1="56" x2="50" y2="76" stroke="#64748b"/>
+  <rect x="60" y="68" width="280" height="30" fill="#3b82f6" rx="3"/>
+  <text x="75" y="88" font-size="12" font-weight="600" fill="white">1100 — Current Assets</text>
+
+  <line x1="90" y1="98" x2="90" y2="118" stroke="#64748b"/>
+  <rect x="100" y="112" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="115" y="130" font-size="11" font-weight="600" fill="#1e3a8a">1110 — Cash &amp; equivalents</text>
+
+  <line x1="90" y1="138" x2="90" y2="156" stroke="#64748b"/>
+  <rect x="100" y="150" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="115" y="168" font-size="11" font-weight="600" fill="#1e3a8a">1120 — Accounts Receivable</text>
+
+  <line x1="90" y1="176" x2="90" y2="194" stroke="#64748b"/>
+  <rect x="100" y="188" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="115" y="206" font-size="11" font-weight="600" fill="#1e3a8a">1121 — AR — Intercompany</text>
+
+  <line x1="90" y1="214" x2="90" y2="232" stroke="#64748b"/>
+  <rect x="100" y="226" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="115" y="244" font-size="11" font-weight="600" fill="#1e3a8a">1130 — Inventory</text>
+
+  <line x1="50" y1="76" x2="50" y2="270" stroke="#64748b" stroke-dasharray="2,2" opacity="0.4"/>
+  <rect x="380" y="68" width="280" height="30" fill="#3b82f6" rx="3"/>
+  <text x="395" y="88" font-size="12" font-weight="600" fill="white">1200 — Non-current Assets</text>
+
+  <rect x="420" y="112" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="435" y="130" font-size="11" font-weight="600" fill="#1e3a8a">1210 — Property, Plant &amp; Equip.</text>
+
+  <rect x="420" y="150" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="435" y="168" font-size="11" font-weight="600" fill="#1e3a8a">1220 — Intangible Assets</text>
+
+  <rect x="420" y="188" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="435" y="206" font-size="11" font-weight="600" fill="#1e3a8a">1230 — Goodwill</text>
+
+  <rect x="420" y="226" width="240" height="26" fill="#93c5fd" rx="3"/>
+  <text x="435" y="244" font-size="11" font-weight="600" fill="#1e3a8a">1240 — Investment in Subs</text>
+</svg>
+
+<p>Each account has properties beyond just its name and number:</p>
+
+<ul>
+  <li><strong>Account type</strong> — asset, liability, equity, revenue, expense. Drives sign conventions and which financial statement it appears on.</li>
+  <li><strong>FX rate type</strong> — for foreign subsidiaries, which exchange rate applies to this account (closing, average, historical).</li>
+  <li><strong>Intercompany flag</strong> — does this account participate in intercompany matching?</li>
+  <li><strong>Elimination behavior</strong> — does this account get eliminated? Against what?</li>
+  <li><strong>Cash flow classification</strong> — operating, investing, or financing (for cash flow statement preparation).</li>
+</ul>
+
+<h2>The mapping</h2>
+
+<p>A <span class="term" data-term="mapping">mapping</span> is the rule that says "this local account corresponds to this group account." Mappings are configured per subsidiary, since each one has its own local chart.</p>
+
+<table>
+  <tr><th>Subsidiary</th><th>Local account</th><th>→</th><th>Group account</th></tr>
+  <tr><td>Sub A (US)</td><td>1010 — Operating Cash</td><td>→</td><td>1110 — Cash &amp; equivalents</td></tr>
+  <tr><td>Sub A (US)</td><td>1015 — Petty Cash</td><td>→</td><td>1110 — Cash &amp; equivalents</td></tr>
+  <tr><td>Sub B (DE)</td><td>10100 — Kasse</td><td>→</td><td>1110 — Cash &amp; equivalents</td></tr>
+  <tr><td>Sub B (DE)</td><td>10200 — Bankkonto</td><td>→</td><td>1110 — Cash &amp; equivalents</td></tr>
+  <tr><td>Sub C (UK)</td><td>BANK-01</td><td>→</td><td>1110 — Cash &amp; equivalents</td></tr>
+</table>
+
+<p>The mapping above is <strong>many-to-one</strong>: many local accounts roll up to one group account. This is the most common case and the one consolidation systems handle well.</p>
+
+<h3>One-to-many mappings</h3>
+
+<p>Sometimes one local account needs to be split into multiple group accounts. For example, a local "Receivables" account might include both regular AR and intercompany AR, but the group wants those separated.</p>
+
+<p>One-to-many mappings require additional information — usually a tag, a sub-account, or a manual split rule — to determine how much goes where. They're trickier and prone to errors.</p>
+
+<h3>The intercompany problem</h3>
+
+<p>The intercompany flag is one of the most important properties on a group account. Consolidation can't eliminate intercompany balances if it can't identify them.</p>
+
+<p>Best practice: each subsidiary maintains <strong>separate accounts</strong> for intercompany versus external activity, and those map to <strong>separate group accounts</strong> with the intercompany flag set.</p>
+
+<table>
+  <tr><th>Local</th><th>Group</th><th>IC flag</th></tr>
+  <tr><td>1200 — AR external</td><td>1120 — Accounts Receivable</td><td>No</td></tr>
+  <tr><td>1210 — AR intercompany</td><td>1121 — AR — Intercompany</td><td>Yes</td></tr>
+</table>
+
+<p>When subsidiaries don't maintain separate intercompany accounts, the group has to detect intercompany activity another way — usually by the counterparty entity coded on the transaction. This is less reliable.</p>
+
+<h2>Other dimensions that need mapping</h2>
+
+<p>The chart of accounts is the main thing to map, but it's not the only one. Every <span class="term" data-term="segment">segment</span> on a transaction may need its own mapping:</p>
+
+<ul>
+  <li><strong>Entity codes.</strong> Sub A's accounting system uses different entity codes than the group. The "counterparty" field on an intercompany transaction needs to be translated from local entity ID to group entity ID.</li>
+  <li><strong>Department / cost center.</strong> If the group reports by function (Sales, R&amp;D, G&amp;A), each subsidiary's departments need to roll up.</li>
+  <li><strong>Location.</strong> Local sites map to group regions.</li>
+  <li><strong>Product line.</strong> If the group reports segment revenue by product, each subsidiary's product codes need to map.</li>
+</ul>
+
+<h2>Mapping maintenance</h2>
+
+<p>Mappings aren't set-and-forget. Every time a subsidiary adds a new local account, somebody has to decide where it maps. If nobody decides, that account's data will either fail to load (validation error) or load with no group account assigned (which usually means "ends up in Suspense").</p>
+
+<h3>Common operational patterns</h3>
+
+<ul>
+  <li><strong>Default mapping.</strong> New local accounts of a known pattern automatically map to a default group account.</li>
+  <li><strong>Suspense / Unmapped.</strong> Accounts without a mapping route to a special "Unmapped" group account so they don't get lost — and so the validation phase can flag them for cleanup before the close completes.</li>
+  <li><strong>Effective dates.</strong> Mappings change over time. The system needs to apply the mapping that was in effect for the period being consolidated, not the current mapping. (Otherwise prior-period reports could change retroactively.)</li>
+</ul>
+
+<h2>A simple worked example</h2>
+
+<p>Sub A submits the following trial balance for period 2024-Q1 (in USD):</p>
+
+<table>
+  <tr><th>Local account</th><th>Description</th><th class="num">Amount</th></tr>
+  <tr><td>1010</td><td>Operating Cash</td><td class="num">50,000</td></tr>
+  <tr><td>1015</td><td>Petty Cash</td><td class="num">500</td></tr>
+  <tr><td>1200</td><td>AR — external</td><td class="num">120,000</td></tr>
+  <tr><td>1210</td><td>AR — intercompany</td><td class="num">30,000</td></tr>
+  <tr><td>5000</td><td>Revenue — external</td><td class="num">(400,000)</td></tr>
+  <tr><td>5010</td><td>Revenue — intercompany</td><td class="num">(80,000)</td></tr>
+</table>
+
+<p>After applying Sub A's mapping, this becomes the following at the group level:</p>
+
+<table>
+  <tr><th>Group account</th><th>Description</th><th class="num">Amount</th></tr>
+  <tr><td>1110</td><td>Cash &amp; equivalents</td><td class="num">50,500</td></tr>
+  <tr><td>1120</td><td>Accounts Receivable</td><td class="num">120,000</td></tr>
+  <tr><td>1121</td><td>AR — Intercompany</td><td class="num">30,000</td></tr>
+  <tr><td>4000</td><td>Revenue</td><td class="num">(400,000)</td></tr>
+  <tr><td>4100</td><td>Revenue — Intercompany</td><td class="num">(80,000)</td></tr>
+</table>
+
+<p>The two cash accounts collapsed into one group account. The external and intercompany activity is preserved as separate group accounts because the IC version needs to be eliminated later.</p>
+
+<h2>State transition</h2>
+
+<p>Mapping happens during <span class="term" data-term="data-state-local">Local</span> state preparation. The data going in is the subsidiary's raw trial balance; the data coming out is still in Local state but now using group account codes instead of local ones. Currency translation hasn't happened yet.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Three architectural points worth internalizing:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Mappings are versioned and effective-dated.</strong> Querying a mapping always requires "which period?"</li>
+    <li><strong>Unmapped accounts shouldn't silently drop.</strong> Route them to a clearly-named Suspense bucket and surface them in validation reports.</li>
+    <li><strong>The group COA includes more than account codes.</strong> Each account carries metadata (FX rate type, IC flag, cash flow classification) that drives downstream pipeline steps. Treat that metadata as a first-class part of the COA model.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Subsidiaries have different local charts of accounts; the group needs one master chart.</li>
+  <li>Mappings translate from local accounts to group accounts (usually many-to-one).</li>
+  <li>Other dimensions — entities, departments, locations, products — also need mapping.</li>
+  <li>Intercompany activity needs to be cleanly identifiable, ideally through dedicated accounts.</li>
+  <li>Mappings are versioned: each period applies the mapping that was effective then.</li>
+  <li>Unmapped accounts route to Suspense for cleanup before period close.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="../layer1/1-7-data-states.html">← 1.7 Data states through the pipeline</a>
+        <div class="spacer"></div>
+        <a href="2-2-trial-balance.html">2.2 Trial balance collection & validation →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

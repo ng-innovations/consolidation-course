@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The consolidation workflow — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="1-4-workflow.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 1 — Lesson 4</div>
+        <h1>The consolidation workflow</h1>
+      </header>
+      
+<p>Consolidation is a pipeline. Data comes in from many sources, passes through a fixed sequence of steps, and emerges as a single set of group financial statements. Every step has a purpose; nothing is optional; the order matters.</p>
+
+<p>This lesson gives you the bird's-eye view. Each step gets its own dedicated lesson in Layer 2. For now, the goal is to understand the shape of the whole process and why the steps appear in the order they do.</p>
+
+<h2>The four phases</h2>
+
+<p>At the highest level, consolidation has four phases. Inside each phase are several specific steps.</p>
+
+<svg class="diagram" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Setup phase -->
+  <rect x="20" y="20" width="140" height="280" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" rx="6"/>
+  <text x="90" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">A. Setup</text>
+  <text x="90" y="58" text-anchor="middle" font-size="10" fill="#78350f" font-style="italic">(once / occasional)</text>
+
+  <rect x="32" y="75" width="116" height="50" fill="white" stroke="#d97706" rx="3"/>
+  <text x="90" y="93" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">Standards &amp;</text>
+  <text x="90" y="105" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">policy</text>
+  <text x="90" y="118" text-anchor="middle" font-size="9" fill="#92400e">currency, FX rules</text>
+
+  <rect x="32" y="135" width="116" height="50" fill="white" stroke="#d97706" rx="3"/>
+  <text x="90" y="153" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">Entity setup</text>
+  <text x="90" y="167" text-anchor="middle" font-size="9" fill="#92400e">hierarchy,</text>
+  <text x="90" y="179" text-anchor="middle" font-size="9" fill="#92400e">ownership %</text>
+
+  <rect x="32" y="195" width="116" height="50" fill="white" stroke="#d97706" rx="3"/>
+  <text x="90" y="213" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">Account setup</text>
+  <text x="90" y="227" text-anchor="middle" font-size="9" fill="#92400e">COA, mapping,</text>
+  <text x="90" y="239" text-anchor="middle" font-size="9" fill="#92400e">IC accounts</text>
+
+  <!-- Ingest phase -->
+  <rect x="180" y="20" width="140" height="280" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5" rx="6"/>
+  <text x="250" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">B. Ingest</text>
+  <text x="250" y="58" text-anchor="middle" font-size="10" fill="#1e3a8a" font-style="italic">(each period)</text>
+
+  <rect x="192" y="105" width="116" height="50" fill="white" stroke="#1d4ed8" rx="3"/>
+  <text x="250" y="123" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">Collect data</text>
+  <text x="250" y="137" text-anchor="middle" font-size="9" fill="#1e40af">pull trial balances</text>
+  <text x="250" y="149" text-anchor="middle" font-size="9" fill="#1e40af">from each sub</text>
+
+  <rect x="192" y="165" width="116" height="50" fill="white" stroke="#1d4ed8" rx="3"/>
+  <text x="250" y="183" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">Validate &amp;</text>
+  <text x="250" y="195" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">normalize</text>
+  <text x="250" y="209" text-anchor="middle" font-size="9" fill="#1e40af">map, check balance</text>
+
+  <!-- Consolidate phase -->
+  <rect x="340" y="20" width="140" height="280" fill="#dcfce7" stroke="#15803d" stroke-width="1.5" rx="6"/>
+  <text x="410" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">C. Consolidate</text>
+  <text x="410" y="58" text-anchor="middle" font-size="10" fill="#14532d" font-style="italic">(each period)</text>
+
+  <rect x="352" y="68" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Carryforward</text>
+  <text x="410" y="93" text-anchor="middle" font-size="9" fill="#15803d">opening balances</text>
+
+  <rect x="352" y="106" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Currency translate</text>
+  <text x="410" y="131" text-anchor="middle" font-size="9" fill="#15803d">FX + CTA</text>
+
+  <rect x="352" y="144" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="156" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Standardize</text>
+  <text x="410" y="169" text-anchor="middle" font-size="9" fill="#15803d">topside, goodwill</text>
+
+  <rect x="352" y="182" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="194" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Eliminate IC</text>
+  <text x="410" y="207" text-anchor="middle" font-size="9" fill="#15803d">match &amp; remove</text>
+
+  <rect x="352" y="220" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Investment elim</text>
+  <text x="410" y="245" text-anchor="middle" font-size="9" fill="#15803d">+ NCI</text>
+
+  <rect x="352" y="258" width="116" height="32" fill="white" stroke="#15803d" rx="3"/>
+  <text x="410" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d">Group adjustments</text>
+  <text x="410" y="283" text-anchor="middle" font-size="9" fill="#15803d">final topside</text>
+
+  <!-- Close phase -->
+  <rect x="500" y="20" width="140" height="280" fill="#fce7f3" stroke="#be185d" stroke-width="1.5" rx="6"/>
+  <text x="570" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#831843">D. Close</text>
+  <text x="570" y="58" text-anchor="middle" font-size="10" fill="#831843" font-style="italic">(each period)</text>
+
+  <rect x="512" y="95" width="116" height="50" fill="white" stroke="#be185d" rx="3"/>
+  <text x="570" y="113" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">Reporting</text>
+  <text x="570" y="127" text-anchor="middle" font-size="9" fill="#9d174d">consolidated</text>
+  <text x="570" y="139" text-anchor="middle" font-size="9" fill="#9d174d">statements</text>
+
+  <rect x="512" y="155" width="116" height="50" fill="white" stroke="#be185d" rx="3"/>
+  <text x="570" y="173" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">Lock &amp; snapshot</text>
+  <text x="570" y="187" text-anchor="middle" font-size="9" fill="#9d174d">freeze the period</text>
+
+  <rect x="512" y="215" width="116" height="50" fill="white" stroke="#be185d" rx="3"/>
+  <text x="570" y="233" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">Carryforward</text>
+  <text x="570" y="247" text-anchor="middle" font-size="9" fill="#9d174d">prepare for next</text>
+  <text x="570" y="259" text-anchor="middle" font-size="9" fill="#9d174d">period</text>
+
+  <!-- Arrows between phases -->
+  <polygon points="160,160 175,153 175,167" fill="#475569"/>
+  <polygon points="320,160 335,153 335,167" fill="#475569"/>
+  <polygon points="480,160 495,153 495,167" fill="#475569"/>
+</svg>
+
+<h2>Phase A: Setup</h2>
+
+<p>Setup is the work that doesn't change every period. It's the configuration of the consolidation engine — the rules, the structure, the policies. You do most of it once when first standing up consolidation for a group, and then update it as the group changes (new subsidiary, new account, new policy).</p>
+
+<p>Three families of setup:</p>
+
+<ul>
+  <li><strong>Standards &amp; policy.</strong> What's the reporting currency? When does the fiscal year end? Which FX rates apply to which account types? What's the materiality threshold for intercompany mismatches? These are global rules.</li>
+  <li><strong>Entity setup.</strong> The group hierarchy and the ownership percentages between entities. Which entities use which consolidation method (full, equity, etc.).</li>
+  <li><strong>Account setup.</strong> The group <span class="term" data-term="coa">chart of accounts</span>, the <span class="term" data-term="mapping">mapping</span> from each subsidiary's local accounts to group accounts, which accounts are flagged as intercompany, which FX rate type applies to which account.</li>
+</ul>
+
+<h2>Phase B: Ingest</h2>
+
+<p>Each period (typically each month), every subsidiary has to submit its <span class="term" data-term="trial-balance">trial balance</span> to the corporate consolidation team. The Ingest phase is about getting that data into the system and verifying it's usable.</p>
+
+<ul>
+  <li><strong>Collect.</strong> Pull or receive each subsidiary's trial balance — sometimes from an integration with their accounting system, sometimes as a manual file upload.</li>
+  <li><strong>Validate &amp; normalize.</strong> Check that the data is well-formed (numeric, valid currency codes, required fields present). Apply the <span class="term" data-term="mapping">mappings</span> so local accounts become group accounts, local entities become group entity codes, etc. Verify that each subsidiary's trial balance actually balances (total debits equal total credits). Confirm every expected subsidiary has submitted.</li>
+</ul>
+
+<p>By the end of Ingest, the system has clean, validated, mapped <span class="term" data-term="data-state-local">Local</span> data from every subsidiary — still in each one's <span class="term" data-term="functional-currency">functional currency</span>, but ready to be processed.</p>
+
+<h2>Phase C: Consolidate</h2>
+
+<p>This is the heart of the process — the transformations that turn standalone subsidiary data into group data. The order matters because each step depends on the previous one.</p>
+
+<ul>
+  <li><strong>Carryforward validation.</strong> For balance sheet accounts, this period's opening balance must equal last period's closing balance. The system verifies and rolls these forward.</li>
+  <li><strong>Currency translation.</strong> Each foreign subsidiary's numbers are translated from its functional currency to the group's <span class="term" data-term="presentation-currency">presentation currency</span>. The balancing item is <span class="term" data-term="cta">CTA</span>.</li>
+  <li><strong>Standardize.</strong> Apply group accounting policies. Calculate <span class="term" data-term="goodwill">goodwill</span> for any acquisitions. Post any pre-elimination <span class="term" data-term="topside">topside</span> entries.</li>
+  <li><strong>Intercompany elimination.</strong> Match intercompany balances between group entities and remove them. AR with AP. Intercompany revenue with intercompany expense.</li>
+  <li><strong>Investment elimination &amp; NCI.</strong> Eliminate the parent's investment account against the subsidiary's equity. Calculate the <span class="term" data-term="nci">non-controlling interest</span> share. Allocate net income between parent and NCI.</li>
+  <li><strong>Group adjustments.</strong> Final post-ownership topside entries — reclassifications, presentation adjustments, anything that needs to happen at the group level after all the math is done.</li>
+</ul>
+
+<h2>Phase D: Close</h2>
+
+<p>The consolidated numbers exist. Now produce the output, lock it down, and prepare for next period.</p>
+
+<ul>
+  <li><strong>Reporting.</strong> Generate the consolidated <span class="term" data-term="balance-sheet">balance sheet</span>, <span class="term" data-term="income-statement">income statement</span>, <span class="term" data-term="cash-flow-statement">cash flow statement</span>, equity rollforward, and any supplementary reports (intercompany matrix, flux analysis, etc.).</li>
+  <li><strong>Lock &amp; snapshot.</strong> Once final reports are approved, lock the period to prevent further changes and take a <span class="term" data-term="snapshot">snapshot</span> for audit purposes.</li>
+  <li><strong>Carryforward to next period.</strong> Roll closing balances into next period's opening balances so the cycle can begin again.</li>
+</ul>
+
+<h2>What flows through the pipeline</h2>
+
+<p>At each step, the data is in a particular state. The data transformations from raw subsidiary submissions to final consolidated reports happen through a series of well-defined intermediate states. We'll cover these in detail in <a href="1-7-data-states.html">Lesson 1.7</a>, but here's the preview:</p>
+
+<p><span class="term" data-term="data-state-local">Local</span> → <span class="term" data-term="data-state-translated">Translated</span> → <span class="term" data-term="data-state-standardized">Standardized</span> → <span class="term" data-term="data-state-eliminated">Eliminated</span> → <span class="term" data-term="data-state-ownership">Ownership-Adjusted</span> → <span class="term" data-term="data-state-top">Top</span></p>
+
+<p>Each transition is a phase of the pipeline. Each state has a clear definition. Devs working on the system will see and operate on data in each of these states.</p>
+
+<h2>Why the order matters</h2>
+
+<p>You might wonder: can't some of these steps run in parallel, or in a different order?</p>
+
+<p>Mostly no. Each step builds on the previous one:</p>
+
+<ul>
+  <li>You can't translate currency before you've validated the underlying balance — translating bad data just produces bad data faster.</li>
+  <li>You can't eliminate intercompany balances before currency translation — because they're in different currencies until then.</li>
+  <li>You can't calculate NCI before eliminations — because the subsidiary's equity (which NCI is a share of) isn't right until elimination cleanup is done.</li>
+  <li>You can't report numbers that haven't been adjusted, eliminated, and allocated.</li>
+</ul>
+
+<p>That's why consolidation is a <em>pipeline</em>, not a bag of independent calculations.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The application enforces this pipeline. Steps run in order. Each step's output becomes the next step's input. Devs working on a particular step need to know exactly what state the data is in when their code starts, and what state it needs to leave the data in when it finishes.</p>
+  <p>This is also why the system has to support re-running the pipeline. If someone discovers a mapping error after running through to step 9, the fix has to flow forward through every subsequent step. Idempotent, deterministic, replayable steps make this possible.</p>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Consolidation has four phases: Setup, Ingest, Consolidate, Close.</li>
+  <li>Setup is mostly one-time configuration; the other three run every period.</li>
+  <li>Inside Consolidate, the steps are: carryforward, FX translation, standardize, IC elimination, investment elimination &amp; NCI, group adjustments.</li>
+  <li>The order matters — each step depends on the previous one.</li>
+  <li>Data passes through well-defined intermediate states between steps.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="1-3-cast-of-characters.html">← 1.3 The cast of characters</a>
+        <div class="spacer"></div>
+        <a href="1-5-key-outputs.html">1.5 Key outputs →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ownership & consolidation methods — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-5-ownership.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 5 · Pipeline: A.2 (drives C.10, C.11)</div>
+        <h1>Ownership & consolidation methods</h1>
+      </header>
+      
+<p>The ownership relationships between entities in a group drive how each subsidiary is consolidated. This lesson covers how ownership is structured, how the appropriate consolidation method gets selected for each entity, and how indirect ownership chains are resolved.</p>
+
+<p><strong>Pipeline reference:</strong> The ownership structure is configured in step A.2 (<em>Entity Setups</em>) and then used by steps C.10 (<em>Investment Elimination</em>) and C.11 (<em>NCI Allocation</em>).</p>
+
+<h2>What "ownership" means here</h2>
+
+<p>For consolidation purposes, "ownership" is the percentage of voting equity the parent (or an intermediate group entity) holds in the subsidiary. It determines:</p>
+
+<ul>
+  <li>Whether the entity is consolidated at all</li>
+  <li>Which consolidation method applies (full, equity, or fair value)</li>
+  <li>For fully consolidated subsidiaries, the split between parent equity and NCI</li>
+</ul>
+
+<p>Ownership percentages can change over time — through acquisitions, divestitures, additional share issuances, buybacks, or step acquisitions. The system needs to track ownership history, not just the current percentage.</p>
+
+<h2>Picking the consolidation method</h2>
+
+<p>From <a href="../layer1/1-3-cast-of-characters.html">Lesson 1.3</a>, recall the three main methods:</p>
+
+<table>
+  <tr><th>Method</th><th>Used when</th><th>Effect on consolidated statements</th></tr>
+  <tr><td><span class="term" data-term="full-consolidation">Full consolidation</span></td><td>Parent has <span class="term" data-term="control">control</span> (usually &gt; 50%)</td><td>100% of subsidiary's lines added; NCI tracks the unowned portion</td></tr>
+  <tr><td><span class="term" data-term="equity-method">Equity method</span></td><td>Significant influence (usually 20–50%) or joint control</td><td>Single line on the balance sheet ("Investment in associate"); single line on income statement (share of profit)</td></tr>
+  <tr><td><span class="term" data-term="cost-method">Cost / fair value</span></td><td>No significant influence (usually &lt; 20%)</td><td>Investment at cost or market value; dividends as income only</td></tr>
+</table>
+
+<p>The thresholds (20%, 50%) are guidelines. The actual test is whether the parent has <em>control</em>, <em>significant influence</em>, or <em>neither</em>. A 45% ownership might confer control if it comes with board appointment rights; a 60% ownership might not confer control if shareholder agreements require unanimity for major decisions.</p>
+
+<p>So in practice, each entity has its consolidation method explicitly assigned in setup, not derived purely from ownership percentage.</p>
+
+<h2>Direct vs. indirect ownership</h2>
+
+<p>Few real-world groups are flat. Most have intermediate holding companies between the ultimate parent and the operating subsidiaries.</p>
+
+<svg class="diagram" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="290" y="20" width="100" height="40" fill="#1e3a8a" rx="4"/>
+  <text x="340" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="white">Ultimate Parent</text>
+
+  <line x1="340" y1="60" x2="180" y2="110" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="340" y1="60" x2="500" y2="110" stroke="#64748b" stroke-width="1.5"/>
+  <text x="240" y="85" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
+  <text x="440" y="85" font-size="11" fill="#1e3a8a" font-weight="600">75%</text>
+
+  <rect x="130" y="110" width="100" height="40" fill="#3b82f6" rx="4"/>
+  <text x="180" y="135" text-anchor="middle" font-size="12" font-weight="600" fill="white">Holdco A</text>
+
+  <rect x="450" y="110" width="100" height="40" fill="#3b82f6" rx="4"/>
+  <text x="500" y="135" text-anchor="middle" font-size="12" font-weight="600" fill="white">Holdco B</text>
+
+  <line x1="180" y1="150" x2="100" y2="200" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="180" y1="150" x2="260" y2="200" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="500" y1="150" x2="500" y2="200" stroke="#64748b" stroke-width="1.5"/>
+  <text x="120" y="180" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
+  <text x="240" y="180" font-size="11" fill="#1e3a8a" font-weight="600">80%</text>
+  <text x="510" y="180" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
+
+  <rect x="50" y="200" width="100" height="40" fill="#60a5fa" rx="4"/>
+  <text x="100" y="225" text-anchor="middle" font-size="12" font-weight="600" fill="white">OpCo X</text>
+
+  <rect x="210" y="200" width="100" height="40" fill="#60a5fa" rx="4"/>
+  <text x="260" y="225" text-anchor="middle" font-size="12" font-weight="600" fill="white">OpCo Y</text>
+
+  <rect x="450" y="200" width="100" height="40" fill="#60a5fa" rx="4"/>
+  <text x="500" y="225" text-anchor="middle" font-size="12" font-weight="600" fill="white">OpCo Z</text>
+
+  <line x1="20" y1="265" x2="660" y2="265" stroke="#cbd5e1"/>
+  <text x="340" y="285" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">
+    Effective ownership: X = 100%, Y = 100% × 80% = 80%, Z = 75% × 100% = 75%
+  </text>
+</svg>
+
+<h3>Computing effective ownership</h3>
+
+<p>For a subsidiary that's owned indirectly through one or more holding companies, the effective ownership is the product of the ownership percentages along the chain.</p>
+
+<div class="example-box">
+<strong>OpCo Y:</strong> Owned 80% by Holdco A. Holdco A is 100% owned by the parent. So:<br>
+Effective ownership = 100% × 80% = 80%<br><br>
+<strong>OpCo Z:</strong> Owned 100% by Holdco B. Holdco B is 75% owned by the parent. So:<br>
+Effective ownership = 75% × 100% = 75%
+</div>
+
+<p>NCI for OpCo Y is then 20% (the share that doesn't roll up to the ultimate parent). NCI for OpCo Z is 25%.</p>
+
+<h3>Why this works mathematically</h3>
+
+<p>Suppose OpCo Z's net income is $100. Holdco B owns 100% of it, so all $100 belongs to Holdco B. But the ultimate parent only owns 75% of Holdco B — so only 75% of Holdco B's piece of OpCo Z (which is the same as 75% × $100 = $75) belongs to the ultimate parent. The remaining $25 belongs to Holdco B's non-controlling shareholders.</p>
+
+<p>The product-of-percentages formula gives the right answer because at each step, the unowned portion stays with the previous level.</p>
+
+<h2>Multiple paths to the same entity</h2>
+
+<p>Sometimes a group has more than one ownership path to a single entity — for example, when the parent owns shares directly <em>and</em> additional shares through a holding company. Effective ownership is then the sum of the effective ownerships along each path.</p>
+
+<svg class="diagram" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="290" y="20" width="100" height="40" fill="#1e3a8a" rx="4"/>
+  <text x="340" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="white">Parent</text>
+
+  <line x1="320" y1="60" x2="180" y2="110" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="360" y1="60" x2="360" y2="190" stroke="#64748b" stroke-width="1.5"/>
+  <text x="220" y="85" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
+  <text x="370" y="130" font-size="11" fill="#1e3a8a" font-weight="600">30% direct</text>
+
+  <rect x="130" y="110" width="100" height="40" fill="#3b82f6" rx="4"/>
+  <text x="180" y="135" text-anchor="middle" font-size="12" font-weight="600" fill="white">Holdco H</text>
+
+  <line x1="220" y1="150" x2="340" y2="190" stroke="#64748b" stroke-width="1.5"/>
+  <text x="265" y="170" font-size="11" fill="#1e3a8a" font-weight="600">40%</text>
+
+  <rect x="310" y="190" width="100" height="40" fill="#60a5fa" rx="4"/>
+  <text x="360" y="215" text-anchor="middle" font-size="12" font-weight="600" fill="white">OpCo</text>
+
+  <text x="540" y="135" font-size="11" fill="#1e40af" font-weight="600">Effective = 30% + (100% × 40%)</text>
+  <text x="540" y="153" font-size="11" fill="#1e40af" font-weight="600">         = 30% + 40% = 70%</text>
+</svg>
+
+<h2>Ownership change during a period</h2>
+
+<p>If ownership changed mid-period — for instance, the parent acquired an additional 10% in March of a December year-end — consolidation has to handle this carefully.</p>
+
+<p>The most common rule: the income statement is split based on when ownership applied. The first three months use the pre-acquisition ownership; the remaining nine months use the post-acquisition ownership. The balance sheet at period end uses the final ownership.</p>
+
+<p>For new acquisitions, the acquired entity's results are only consolidated from the acquisition date forward — not retroactively for the full period.</p>
+
+<h2>Step acquisitions</h2>
+
+<p>A particularly complex case is the "step acquisition" — when an existing equity-method investment becomes a controlled subsidiary via additional purchase.</p>
+
+<p>Example: Parent owns 30% of Target (accounted for under equity method). Parent buys an additional 25%, taking ownership to 55%. Target is now a subsidiary. The accounting requires:</p>
+
+<ol>
+  <li>Re-measure the original 30% investment to fair value.</li>
+  <li>Recognize any gain or loss on the remeasurement in net income.</li>
+  <li>Apply purchase accounting to the whole 55%, calculating goodwill as if the entire stake had been acquired at fair value.</li>
+  <li>Begin full consolidation from the acquisition date forward.</li>
+</ol>
+
+<p>Step acquisitions are infrequent but require careful handling. Most consolidation systems treat them as a separate workflow.</p>
+
+<h2>Divestitures and de-consolidation</h2>
+
+<p>When the parent sells enough of a subsidiary to lose control, that entity stops being fully consolidated. The retained interest (if any) becomes an equity-method or fair-value investment.</p>
+
+<p>The transition is essentially the reverse of a step acquisition — calculate the gain or loss on the sale, recognize it in income, and switch the accounting method going forward.</p>
+
+<h2>Joint ventures and associates</h2>
+
+<p>Entities accounted for under the <span class="term" data-term="equity-method">equity method</span> aren't combined line-by-line. Instead, the group recognizes:</p>
+
+<ul>
+  <li><strong>On the balance sheet:</strong> a single asset, "Investment in associate" (or "Investment in joint venture"), starting at cost and adjusted each period for the group's share of the associate's net income, less dividends received.</li>
+  <li><strong>On the income statement:</strong> a single line, "Share of profit of associate," equal to the ownership % times the associate's net income for the period.</li>
+</ul>
+
+<p>The associate's revenue, expenses, assets, and liabilities are <em>not</em> blended into the group's totals.</p>
+
+<h2>State transition</h2>
+
+<p>Ownership configuration itself is part of setup (state-independent). The actual application happens in the investment elimination step (C.10) and NCI allocation step (C.11), which transition data from <span class="term" data-term="data-state-eliminated">Eliminated</span> state to <span class="term" data-term="data-state-ownership">Ownership-Adjusted</span> state.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The entity model is the foundation everything ownership-related rests on. Some key requirements:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Ownership relationships are edges in a directed graph.</strong> Effective ownership is computed by walking from the ultimate parent down to each entity through all paths.</li>
+    <li><strong>Each ownership edge is effective-dated.</strong> The graph "as of" a given date may differ from "today's" graph.</li>
+    <li><strong>Each entity has a consolidation method per period.</strong> An entity can be equity-method this year and full-consolidation next year (after an acquisition that pushed ownership over the control threshold).</li>
+    <li><strong>Compute effective ownership programmatically, not by hand.</strong> For deep or wide ownership graphs, even careful humans get the math wrong.</li>
+    <li><strong>Acquisition and divestiture events should be modeled as first-class transactions,</strong> not just edits to the ownership table. They carry accounting consequences (gains, losses, goodwill changes) that need their own audit trail.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Ownership percentages determine consolidation method: full (control), equity (significant influence), or cost/fair value (no influence).</li>
+  <li>Effective ownership in a multi-level group is the product of percentages along the chain.</li>
+  <li>Multiple ownership paths to the same entity are summed.</li>
+  <li>Ownership changes within a period are pro-rated; acquired entities are consolidated only from the acquisition date.</li>
+  <li>Step acquisitions and divestitures are separate workflows that involve remeasurement at the transition point.</li>
+  <li>Associates and joint ventures are not combined line-by-line; only a single equity-method line appears in consolidated statements.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-4-currency-translation.html">← 2.4 Currency translation & CTA</a>
+        <div class="spacer"></div>
+        <a href="2-6-intercompany.html">2.6 Intercompany eliminations →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

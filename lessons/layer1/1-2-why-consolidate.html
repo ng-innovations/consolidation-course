@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why companies consolidate — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="1-2-why-consolidate.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 1 — Lesson 2</div>
+        <h1>Why companies consolidate</h1>
+      </header>
+      
+<p>If consolidation is so much work, why do companies do it? The short answer: they have to, and they want to. Three forces drive it.</p>
+
+<h2>1. They are legally required to</h2>
+
+<p>Any public company in the United States must file consolidated financial statements with the <span class="term" data-term="sec">SEC</span>. The annual filing (Form 10-K) and quarterly filings (Form 10-Q) are based on consolidated numbers, not the parent's standalone books.</p>
+
+<p>The same applies in nearly every developed country. Public companies in Europe, Japan, the UK, Canada, Australia — they all have equivalent regulatory requirements. The specific rules come from <span class="term" data-term="gaap">GAAP</span> (in the US) or <span class="term" data-term="ifrs">IFRS</span> (most of the rest of the world), but both frameworks demand consolidated statements when a parent controls one or more subsidiaries.</p>
+
+<p>Even many private companies are required to consolidate — by lenders, by investors, by joint venture partners, or by tax authorities in certain jurisdictions.</p>
+
+<h3>The principle behind the requirement: "true and fair view"</h3>
+
+<p>The legal requirement isn't arbitrary. It comes from an accounting principle called the <span class="term" data-term="true-and-fair">true and fair view</span>: financial statements should accurately reflect the economic reality of the business.</p>
+
+<p>The parent's standalone books don't do that. If you only looked at the parent's books, you'd see a single asset called "Investment in Subsidiaries" and miss everything happening underneath — the real assets, the real revenue, the real risks. That's not a true and fair view of the parent's actual economic situation. Consolidation is the answer.</p>
+
+<h2>2. Management needs the information to run the business</h2>
+
+<p>Even without the legal requirement, leadership of any multi-entity group needs consolidated information to make decisions:</p>
+
+<ul>
+  <li><strong>Performance.</strong> Is the group profitable overall? Which subsidiaries are pulling the weight and which are dragging?</li>
+  <li><strong>Capital allocation.</strong> Where should we put the next dollar of investment? Where should we pull back?</li>
+  <li><strong>Risk.</strong> What's the group's total exposure to a particular market, currency, or counterparty?</li>
+  <li><strong>Operational planning.</strong> How much does the group spend on shared services? On marketing? On infrastructure?</li>
+</ul>
+
+<p>None of these questions can be answered by looking at one subsidiary at a time. They need the consolidated view.</p>
+
+<p>Most groups also produce internal consolidated reports more frequently than the external regulatory filings require — monthly is typical, sometimes weekly for parts of the business. The faster they can <span class="term" data-term="close">close the books</span>, the faster they have actionable information.</p>
+
+<h2>3. Outsiders demand it</h2>
+
+<p>A long list of people outside the company want to see consolidated statements:</p>
+
+<ul>
+  <li><strong>Investors</strong> deciding whether to buy or hold the company's shares</li>
+  <li><strong>Lenders</strong> deciding whether to extend credit and at what rate</li>
+  <li><strong>Rating agencies</strong> assigning credit ratings</li>
+  <li><strong>Analysts</strong> covering the company professionally</li>
+  <li><strong>Acquirers</strong> evaluating the business in M&A negotiations</li>
+  <li><strong>Tax authorities</strong> in certain regimes (e.g., some countries tax on a group basis)</li>
+  <li><strong>Joint venture partners</strong> who want to see consolidated performance</li>
+</ul>
+
+<p>All of these audiences treat the consolidated statements as the canonical source of truth about the company's performance.</p>
+
+<h2>Why this is hard, not just tedious</h2>
+
+<p>Producing consolidated statements isn't bookkeeping. It's a structured process with real judgment, real risk, and real consequences for getting it wrong.</p>
+
+<h3>The numbers carry weight</h3>
+
+<p>A misstated consolidated number can move a stock price, trigger a debt covenant default, mislead investors, or expose executives to legal liability. The Sarbanes-Oxley Act in the US makes CEOs and CFOs personally certify the accuracy of consolidated statements. Auditors examine them in detail. Mistakes are public and expensive.</p>
+
+<h3>The process is constrained by time</h3>
+
+<p>Public companies have to file their quarterly statements within 40–45 days of the quarter end, and annual statements within 60–90 days of fiscal year end. That sounds like plenty of time. It isn't — not when you have 50 subsidiaries in 20 countries, half of them on different accounting software, with intercompany activity that has to be reconciled, currency translation, equity rollforwards, and an auditor breathing down your neck.</p>
+
+<h3>The process has to be reproducible and auditable</h3>
+
+<p>Every number in the consolidated statements needs to be traceable back to its source. If a number changes, someone has to be able to explain why. If a prior period needs to be restated, the process has to support that without losing the original numbers. <span class="term" data-term="audit-trail">Audit trails</span>, version control, and <span class="term" data-term="lock-period">period locking</span> are not nice-to-haves — they are how regulators and auditors verify the work.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The product exists because consolidation is high-stakes, time-pressured, and complex enough that doing it manually in Excel breaks down. Every architectural decision should be made with three things in mind:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Correctness.</strong> The numbers must be right. There's no "mostly right."</li>
+    <li><strong>Speed.</strong> Closes are calendar-driven. Slow software costs the customer real money.</li>
+    <li><strong>Auditability.</strong> Every adjustment, calculation, and override must be reviewable after the fact.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Consolidation is legally required for almost all groups of meaningful size.</li>
+  <li>The underlying principle is the "true and fair view" of group financials.</li>
+  <li>Management needs it to make business decisions, not just to file reports.</li>
+  <li>External stakeholders rely on it for their own decisions.</li>
+  <li>The combination of stakes, time pressure, and audit requirements makes it a serious software problem.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="1-1-what-is-consolidation.html">← 1.1 What is financial consolidation?</a>
+        <div class="spacer"></div>
+        <a href="1-3-cast-of-characters.html">1.3 The cast of characters →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

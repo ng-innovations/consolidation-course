@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Intercompany eliminations — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-6-intercompany.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 6 · Pipeline: C.9</div>
+        <h1>Intercompany eliminations</h1>
+      </header>
+      
+<p>When companies within a group transact with each other, those transactions appear on both companies' books as if they were external. From the group's perspective, they're internal — the group is moving money between its own pockets. <span class="term" data-term="intercompany">Intercompany</span> elimination is the process of removing these internal transactions from the consolidated statements.</p>
+
+<p><strong>Pipeline reference:</strong> Step C.9, <em>IC Elimination</em>. After this step, data moves from <span class="term" data-term="data-state-standardized">Standardized</span> state to <span class="term" data-term="data-state-eliminated">Eliminated</span> state.</p>
+
+<h2>Why eliminate?</h2>
+
+<p>Consider a simple example. Sub A sells $100 of services to Sub B.</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Sub A's books</th><th class="num">DR</th><th class="num">CR</th></tr>
+  <tr><td>AR — intercompany (Sub B)</td><td class="num">100</td></tr>
+  <tr><td>Revenue — intercompany</td><td></td><td class="num">100</td></tr>
+</table>
+
+<table style="font-size: 13px; margin-top: 8px;">
+  <tr><th>Sub B's books</th><th class="num">DR</th><th class="num">CR</th></tr>
+  <tr><td>Operating expense — intercompany</td><td class="num">100</td></tr>
+  <tr><td>AP — intercompany (Sub A)</td><td></td><td class="num">100</td></tr>
+</table>
+
+<p>If we just added these together for the group view, we'd see:</p>
+
+<ul>
+  <li>$100 of revenue (from Sub A)</li>
+  <li>$100 of expense (from Sub B)</li>
+  <li>$100 of AR (Sub A's receivable)</li>
+  <li>$100 of AP (Sub B's payable)</li>
+</ul>
+
+<p>None of this is real from the group's perspective. The group didn't earn $100 — it just moved money between two of its own divisions. No external counterparty was involved. The receivable and payable cancel because the group can't owe money to itself.</p>
+
+<p>So we eliminate all four lines:</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Elimination entry</th><th class="num">DR</th><th class="num">CR</th></tr>
+  <tr><td>Revenue — intercompany</td><td class="num">100</td></tr>
+  <tr><td>Operating expense — intercompany</td><td></td><td class="num">100</td></tr>
+  <tr><td>AP — intercompany</td><td class="num">100</td></tr>
+  <tr><td>AR — intercompany</td><td></td><td class="num">100</td></tr>
+</table>
+
+<p>Now the consolidated view correctly shows the group's external activity only.</p>
+
+<h2>The four common elimination categories</h2>
+
+<h3>1. AR vs. AP</h3>
+
+<p>If Sub A is owed money by Sub B, Sub A has intercompany AR and Sub B has intercompany AP. The two cancel exactly (when correctly recorded) and both get eliminated.</p>
+
+<h3>2. Intercompany revenue vs. intercompany expense</h3>
+
+<p>When one sub sells to another, one has intercompany revenue and the other has intercompany expense. These offset and both get eliminated.</p>
+
+<h3>3. Intercompany loans</h3>
+
+<p>One sub lends money to another. One has a loan receivable; the other has a loan payable. Plus any associated interest income/expense and accrued interest.</p>
+
+<h3>4. Intercompany dividends</h3>
+
+<p>A sub pays a dividend to the parent. The parent records dividend income; the sub reduces equity. From the group's perspective, the parent didn't receive income — the group just transferred cash internally. The dividend income is eliminated; the sub's equity reduction stays (because dividends represent a real distribution to shareholders, but for the group, only the dividends to <em>external</em> shareholders count — see lesson 2.8 on NCI).</p>
+
+<h2>Matching</h2>
+
+<p>The mechanics of elimination rest on <em>matching</em>: identifying pairs of intercompany balances and confirming they agree.</p>
+
+<svg class="diagram" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+  <text x="340" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Intercompany match — Sub A and Sub B</text>
+
+  <rect x="20" y="40" width="300" height="140" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5" rx="4"/>
+  <text x="170" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Sub A's books</text>
+  <line x1="35" y1="68" x2="305" y2="68" stroke="#1e3a8a"/>
+  <text x="35" y="90" font-size="11" font-family="monospace" fill="#1f2937">Account: AR — IC</text>
+  <text x="35" y="108" font-size="11" font-family="monospace" fill="#1f2937">Counterparty: Sub B</text>
+  <text x="35" y="126" font-size="11" font-family="monospace" fill="#1f2937">Amount: $100,000</text>
+  <text x="35" y="156" font-size="11" font-family="monospace" fill="#1f2937">Period: 2024-Q1</text>
+
+  <rect x="360" y="40" width="300" height="140" fill="#dcfce7" stroke="#15803d" stroke-width="1.5" rx="4"/>
+  <text x="510" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Sub B's books</text>
+  <line x1="375" y1="68" x2="645" y2="68" stroke="#15803d"/>
+  <text x="375" y="90" font-size="11" font-family="monospace" fill="#1f2937">Account: AP — IC</text>
+  <text x="375" y="108" font-size="11" font-family="monospace" fill="#1f2937">Counterparty: Sub A</text>
+  <text x="375" y="126" font-size="11" font-family="monospace" fill="#1f2937">Amount: $100,000</text>
+  <text x="375" y="156" font-size="11" font-family="monospace" fill="#1f2937">Period: 2024-Q1</text>
+
+  <text x="340" y="205" text-anchor="middle" font-size="11" font-style="italic" fill="#16a34a">✓ Match. Eliminate $100,000 from both sides.</text>
+</svg>
+
+<p>A match requires several things to align:</p>
+
+<ul>
+  <li>The two entities reference each other as counterparties.</li>
+  <li>The amounts agree (after currency translation, if applicable).</li>
+  <li>The accounts are paired (e.g., AR on one side matches AP on the other; revenue matches expense).</li>
+  <li>The period is the same.</li>
+</ul>
+
+<h3>Mismatches</h3>
+
+<p>Intercompany mismatches are very common, and one of the biggest time-eaters in a typical close. Causes:</p>
+
+<ul>
+  <li><strong>Timing.</strong> Sub A booked the sale on March 31; Sub B didn't receive the invoice until April 2. Sub A shows revenue and AR in Q1; Sub B shows nothing yet.</li>
+  <li><strong>Recording errors.</strong> One side coded the transaction to the wrong counterparty entity, or omitted the IC flag.</li>
+  <li><strong>Disputes.</strong> Sub A says Sub B owes $100; Sub B says only $90 because of a quantity dispute or service issue.</li>
+  <li><strong>FX rate differences.</strong> Each side may have used different rates to translate the transaction into their local books before the consolidation translation step.</li>
+  <li><strong>Cut-off.</strong> A shipment in transit at period end — the seller may have already recognized revenue and the receivable; the buyer may not have recorded the purchase yet.</li>
+</ul>
+
+<h3>Tolerances</h3>
+
+<p>Small mismatches are usually accepted as immaterial and absorbed into an "intercompany variance" account. The system typically allows a configurable tolerance per type of mismatch:</p>
+
+<table style="font-size: 13px;">
+  <tr><th>Mismatch size</th><th>Action</th></tr>
+  <tr><td>&lt; $100 (or &lt; 0.1%)</td><td>Auto-absorb into variance account</td></tr>
+  <tr><td>$100 – $10,000</td><td>Flag for review; eliminate at smaller side; absorb difference</td></tr>
+  <tr><td>&gt; $10,000</td><td>Block elimination; require resolution before close</td></tr>
+</table>
+
+<p>The exact thresholds depend on the group's materiality policy.</p>
+
+<h2>Mechanical elimination (no counterparty data)</h2>
+
+<p>When subsidiaries don't tag transactions with counterparty entity IDs, the system can't match pairwise. Some groups fall back to a different approach: just eliminate everything in dedicated intercompany accounts, regardless of which counterparty.</p>
+
+<p>This works only if every sub's intercompany account totals sum to roughly zero across the group (because what's a receivable for one is a payable for another). It's coarser, less auditable, and harder to investigate when something's off — but it's sometimes the only practical option.</p>
+
+<h2>Currency aspects</h2>
+
+<p>Intercompany matching gets tricky when the two sides are in different currencies. The transaction enters Sub A's books in EUR and Sub B's books in USD. After currency translation, both are in the group currency — but the exact translated values may differ based on which rate type applies to each account on each entity.</p>
+
+<p>Common policy: match in the group currency after translation, applying tolerances generous enough to absorb minor FX rounding differences.</p>
+
+<h2>The mechanics of elimination as journal entries</h2>
+
+<p>Elimination is implemented as journal entries posted at the consolidation level — these don't go back to the subsidiaries' books. They sit at a separate consolidation-only layer.</p>
+
+<p>From a pipeline standpoint, after elimination entries are posted:</p>
+
+<ul>
+  <li>The original IC revenue and IC expense still exist on each entity's books — but the elimination entry offsets them so they don't appear in the consolidated income statement.</li>
+  <li>Same for IC AR and IC AP.</li>
+  <li>The system can still report on the original IC activity (e.g., for the intercompany matrix) — it just doesn't end up in external statements.</li>
+</ul>
+
+<h2>The intercompany matrix</h2>
+
+<p>One of the most useful reports a consolidation system produces is the IC matrix — a grid showing all intercompany balances between every pair of entities, with mismatches highlighted.</p>
+
+<svg class="diagram" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+  <text x="340" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Intercompany matrix (AR/AP, $ thousands)</text>
+
+  <text x="80" y="62" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">Owed by →</text>
+  <text x="80" y="75" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">Owed to ↓</text>
+
+  <text x="180" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Parent</text>
+  <text x="280" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Sub A</text>
+  <text x="380" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Sub B</text>
+  <text x="480" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Sub C</text>
+  <text x="580" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">Match?</text>
+
+  <line x1="130" y1="75" x2="630" y2="75" stroke="#cbd5e1"/>
+  <line x1="130" y1="105" x2="630" y2="105" stroke="#cbd5e1"/>
+  <line x1="130" y1="135" x2="630" y2="135" stroke="#cbd5e1"/>
+  <line x1="130" y1="165" x2="630" y2="165" stroke="#cbd5e1"/>
+  <line x1="130" y1="195" x2="630" y2="195" stroke="#cbd5e1"/>
+
+  <text x="80" y="93" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Parent</text>
+  <rect x="130" y="78" width="100" height="27" fill="#f1f5f9"/>
+  <text x="280" y="93" text-anchor="middle" font-size="11" font-family="monospace">500</text>
+  <text x="380" y="93" text-anchor="middle" font-size="11" font-family="monospace">—</text>
+  <text x="480" y="93" text-anchor="middle" font-size="11" font-family="monospace">200</text>
+  <text x="580" y="93" text-anchor="middle" font-size="11" fill="#16a34a">✓</text>
+
+  <text x="80" y="123" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Sub A</text>
+  <text x="180" y="123" text-anchor="middle" font-size="11" font-family="monospace">500</text>
+  <rect x="230" y="108" width="100" height="27" fill="#f1f5f9"/>
+  <text x="380" y="123" text-anchor="middle" font-size="11" font-family="monospace" fill="#dc2626">75</text>
+  <text x="480" y="123" text-anchor="middle" font-size="11" font-family="monospace">—</text>
+  <text x="580" y="123" text-anchor="middle" font-size="11" fill="#dc2626">✗</text>
+
+  <text x="80" y="153" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Sub B</text>
+  <text x="180" y="153" text-anchor="middle" font-size="11" font-family="monospace">—</text>
+  <text x="280" y="153" text-anchor="middle" font-size="11" font-family="monospace" fill="#dc2626">80</text>
+  <rect x="330" y="138" width="100" height="27" fill="#f1f5f9"/>
+  <text x="480" y="153" text-anchor="middle" font-size="11" font-family="monospace">50</text>
+  <text x="580" y="153" text-anchor="middle" font-size="11" fill="#16a34a">✓</text>
+
+  <text x="80" y="183" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Sub C</text>
+  <text x="180" y="183" text-anchor="middle" font-size="11" font-family="monospace">200</text>
+  <text x="280" y="183" text-anchor="middle" font-size="11" font-family="monospace">—</text>
+  <text x="380" y="183" text-anchor="middle" font-size="11" font-family="monospace">50</text>
+  <rect x="430" y="168" width="100" height="27" fill="#f1f5f9"/>
+  <text x="580" y="183" text-anchor="middle" font-size="11" fill="#16a34a">✓</text>
+</svg>
+
+<p>The matrix is symmetric in the abstract — if Sub A says it's owed $80 from Sub B, then Sub B should say it owes $80 to Sub A. When the two sides disagree, the matrix is the place where the discrepancy gets surfaced and resolved.</p>
+
+<h2>State transition</h2>
+
+<p>After elimination runs, data moves from <span class="term" data-term="data-state-standardized">Standardized</span> to <span class="term" data-term="data-state-eliminated">Eliminated</span>. At this point:</p>
+
+<ul>
+  <li>Internal transactions between group entities have been removed.</li>
+  <li>The combined entity-level data, when added together, reflects only the group's external activity (with two exceptions that will be handled in later steps: investment in subsidiaries hasn't been eliminated yet, and ownership math hasn't been applied).</li>
+  <li>Intercompany variance accounts reflect any unmatched residuals.</li>
+</ul>
+
+<h2>Unrealized profit — a special case</h2>
+
+<p>One particular kind of intercompany activity gets its own treatment: profit on intercompany inventory transfers when the inventory hasn't been sold to an external customer yet. This is the <span class="term" data-term="unrealized-profit">unrealized profit</span> elimination, covered in <a href="2-9-unrealized-profit.html">Lesson 2.9</a>.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Intercompany matching is the most operationally painful part of every close. The product can save customers a tremendous amount of time here. Some design principles:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Counterparty entity is required for IC-flagged accounts.</strong> Validate at ingest, not at elimination.</li>
+    <li><strong>Tolerances are configurable per account type / counterparty pair.</strong> Different relationships have different reasonable mismatch thresholds.</li>
+    <li><strong>Surface mismatches as work items, not just report rows.</strong> The user should be able to click into a mismatch and see both sides, attempt resolution, and track progress.</li>
+    <li><strong>Eliminations are journal entries, posted in a layer of their own.</strong> They sit on top of subsidiary data without modifying it — so we can drill back to "this $100 was eliminated by the consolidation, but Sub A's local books still show $100 revenue."</li>
+    <li><strong>Make the IC matrix a primary report.</strong> It's the first place users go when something doesn't reconcile.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Intercompany transactions between group entities have to be removed in consolidation — they don't represent external activity.</li>
+  <li>The four common categories: AR vs. AP, IC revenue vs. IC expense, IC loans, IC dividends.</li>
+  <li>Matching identifies pairs of intercompany balances; both sides must agree (within tolerance).</li>
+  <li>Mismatches are common — caused by timing, errors, disputes, FX, or cut-off — and need resolution or variance absorption.</li>
+  <li>Eliminations are posted as journal entries at the consolidation layer, not in the subsidiaries' local books.</li>
+  <li>After elimination, data is in Eliminated state — combined external activity, ready for ownership math.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-5-ownership.html">← 2.5 Ownership & consolidation methods</a>
+        <div class="spacer"></div>
+        <a href="2-7-investment-elimination.html">2.7 Investment elimination & goodwill →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unrealized profit elimination — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-9-unrealized-profit.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 9 · Pipeline: C.9 (special case)</div>
+        <h1>Unrealized profit elimination</h1>
+      </header>
+      
+<p>Most intercompany eliminations are straightforward: one sub records revenue, another records the matching expense, and both get cancelled. But when one sub sells <em>inventory</em> to another sub, and that inventory is still sitting on the receiving sub's shelves at period end, something subtler happens. The selling sub booked a profit. From the group's perspective, no profit has actually been realized — nothing has been sold to the outside world yet. That phantom profit needs to be eliminated. This is the <span class="term" data-term="unrealized-profit">unrealized profit</span> elimination.</p>
+
+<p><strong>Pipeline reference:</strong> This is a special case of <em>IC Elimination</em> (step C.9). It often runs as a sub-process because it needs information about period-end inventory and intercompany margins.</p>
+
+<h2>Why it happens</h2>
+
+<p>Suppose Sub A manufactures widgets at a cost of $60 each. Sub A sells widgets to Sub B for $100 each (a typical intercompany markup, often set by transfer pricing rules). Sub B then sells widgets to external customers.</p>
+
+<p>In one period:</p>
+<ul>
+  <li>Sub A sells 100 widgets to Sub B at $100 each. Sub A records: revenue $10,000, COGS $6,000, gross profit $4,000.</li>
+  <li>Sub B receives the widgets at cost of $100 each (which is what Sub A charged).</li>
+  <li>Sub B sells 80 widgets to external customers at $150 each. Sub B records: revenue $12,000, COGS $8,000, gross profit $4,000.</li>
+  <li>Sub B's remaining inventory: 20 widgets at $100 each = $2,000.</li>
+</ul>
+
+<p>From the group's perspective:</p>
+
+<ul>
+  <li>Only the 80 widgets that left the group are truly sold. External revenue: $12,000.</li>
+  <li>The group's actual cost for those 80 widgets is 80 × $60 (Sub A's manufacturing cost) = $4,800.</li>
+  <li>Real group profit: $12,000 − $4,800 = $7,200.</li>
+</ul>
+
+<p>But if you just sum the two subs' results after IC revenue/expense elimination:</p>
+
+<ul>
+  <li>Combined revenue: $12,000 (external only — the IC revenue of $10,000 was eliminated).</li>
+  <li>Combined COGS: $8,000 (Sub B's COGS) + $6,000 (Sub A's COGS) − $10,000 (the IC COGS Sub B booked, eliminated) = $4,000.</li>
+  <li>Wait — that gives $12,000 − $4,000 = $8,000 of profit. But the real profit should be $7,200.</li>
+</ul>
+
+<p>The $800 difference is the unrealized profit sitting in Sub B's ending inventory: 20 widgets × ($100 IC price − $60 manufacturing cost) = 20 × $40 = $800.</p>
+
+<h2>Visualizing the issue</h2>
+
+<svg class="diagram" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="200" height="100" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="120" y="40" font-size="13" font-weight="700" fill="#1e40af" text-anchor="middle">Sub A (maker)</text>
+  <text x="35" y="62" font-size="11" fill="#1e293b">Makes widgets @ $60 cost</text>
+  <text x="35" y="80" font-size="11" fill="#1e293b">Sells to B @ $100 (IC)</text>
+  <text x="35" y="100" font-size="11" font-weight="600" fill="#059669">Books $40 profit per widget</text>
+
+  <text x="240" y="76" font-size="20" fill="#64748b">→</text>
+
+  <rect x="260" y="20" width="200" height="100" fill="#fef3c7" stroke="#f59e0b" rx="4"/>
+  <text x="360" y="40" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">Sub B (reseller)</text>
+  <text x="275" y="62" font-size="11" fill="#1e293b">Buys from A @ $100</text>
+  <text x="275" y="80" font-size="11" fill="#1e293b">Sells 80 to outside @ $150</text>
+  <text x="275" y="100" font-size="11" font-weight="600" fill="#059669">Books $50 profit per widget</text>
+
+  <text x="480" y="76" font-size="20" fill="#64748b">→</text>
+
+  <rect x="500" y="20" width="180" height="100" fill="#d1fae5" stroke="#059669" rx="4"/>
+  <text x="590" y="40" font-size="13" font-weight="700" fill="#059669" text-anchor="middle">External market</text>
+  <text x="515" y="62" font-size="11" fill="#1e293b">Receives 80 widgets</text>
+  <text x="515" y="80" font-size="11" fill="#1e293b">Pays $12,000 total</text>
+
+  <rect x="100" y="160" width="500" height="140" fill="#fef2f2" stroke="#dc2626" rx="4"/>
+  <text x="350" y="180" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">The problem: 20 widgets still in Sub B's inventory</text>
+  <text x="120" y="208" font-size="11" fill="#1e293b">Sub B carries them at $100 each ($2,000 total)</text>
+  <text x="120" y="226" font-size="11" fill="#1e293b">Group's actual cost was $60 each ($1,200 total)</text>
+  <text x="120" y="244" font-size="11" font-weight="600" fill="#991b1b">Unrealized profit hiding in inventory: $800</text>
+  <text x="120" y="272" font-size="11" fill="#1e293b">This profit isn't real until those widgets leave the group.</text>
+  <text x="120" y="288" font-size="11" fill="#1e293b">Until then, it has to be removed in consolidation.</text>
+</svg>
+
+<h2>The elimination entry</h2>
+
+<p>To correct the consolidated results, the unrealized profit ($800) needs to be removed from both ending inventory and the period's profit (via COGS):</p>
+
+<table>
+  <thead><tr><th>Account</th><th>Debit</th><th>Credit</th></tr></thead>
+  <tbody>
+    <tr><td>COGS (to increase, reducing profit)</td><td style="text-align: right;">$800</td><td></td></tr>
+    <tr><td>Inventory (to decrease)</td><td></td><td style="text-align: right;">$800</td></tr>
+  </tbody>
+</table>
+
+<p>After this entry, consolidated profit drops to $7,200 (matching reality) and consolidated inventory drops to $1,200 (the group's actual cost basis).</p>
+
+<h2>Upstream vs. downstream</h2>
+
+<p>Two terms come up:</p>
+
+<ul>
+  <li><strong>Downstream sale:</strong> Parent sells to subsidiary. The unrealized profit was booked by the parent.</li>
+  <li><strong>Upstream sale:</strong> Subsidiary sells to parent (or to another sub, conceptually). The unrealized profit was booked by the subsidiary.</li>
+</ul>
+
+<p>This distinction matters when there's a <span class="term" data-term="nci">non-controlling interest</span>. The unrealized profit elimination reduces consolidated profit — but whose share of profit gets reduced?</p>
+
+<ul>
+  <li>Downstream: the eliminated profit was the parent's. The elimination fully reduces parent equity. NCI is unaffected.</li>
+  <li>Upstream: the eliminated profit was the subsidiary's, in which the NCI has a share. The elimination is split between parent equity and NCI proportionally.</li>
+</ul>
+
+<p>Most consolidation software handles this by tagging each unrealized profit elimination with the originating entity, so the NCI engine knows whether to allocate or not.</p>
+
+<h2>The next period — realizing what was previously unrealized</h2>
+
+<p>Suppose in the following period, Sub B sells the remaining 20 widgets to external customers. Now the profit that was unrealized last period becomes real. The previous period's elimination has to be reversed:</p>
+
+<table>
+  <thead><tr><th>Account</th><th>Debit</th><th>Credit</th></tr></thead>
+  <tbody>
+    <tr><td>Opening retained earnings (carries forward last period's adjustment)</td><td style="text-align: right;">$800</td><td></td></tr>
+    <tr><td>COGS</td><td></td><td style="text-align: right;">$800</td></tr>
+  </tbody>
+</table>
+
+<p>This recognizes the $800 of previously-eliminated profit in the current period. Tracking this requires careful bookkeeping — every unrealized profit elimination is a <em>temporary</em> adjustment that has to be reversed when the underlying inventory is finally sold (or written off).</p>
+
+<h2>Other unrealized profit situations</h2>
+
+<p>Inventory is the most common case, but the same principle applies to:</p>
+
+<ul>
+  <li><strong>Intercompany sales of fixed assets.</strong> If Sub A sells equipment to Sub B at a markup, the unrealized profit is "released" as Sub B depreciates the asset over its useful life.</li>
+  <li><strong>Intercompany construction in progress.</strong> Same idea — markup on construction work for another group entity sits as unrealized profit until the asset starts being used and depreciated.</li>
+</ul>
+
+<p>The mechanics get more involved (matching the unrealized profit reversal to the depreciation pattern), but the principle is the same: profit isn't real until it leaves the group.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Unrealized profit is one of the trickier eliminations to automate. Some design notes:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>You need to know intercompany margins per product or transaction type.</strong> Just knowing IC revenue isn't enough — you need to know the cost basis to compute the eliminated profit.</li>
+    <li><strong>You need period-end inventory disaggregated by source.</strong> Which of Sub B's inventory came from Sub A vs. external suppliers? Without that, you can't determine what to eliminate.</li>
+    <li><strong>Reversal logic carries the elimination across periods.</strong> Last period's elimination has to be carried forward and reversed when the inventory is consumed. This is essentially a separate set of carryforward balances.</li>
+    <li><strong>Allocation between parent and NCI depends on the direction of the sale.</strong> Upstream vs. downstream is a critical metadata flag.</li>
+    <li><strong>Many groups use a simplifying assumption.</strong> Rather than tracking each transaction, they use an average IC margin applied to total IC inventory on hand at period end. This is less accurate but operationally feasible. Either approach should be supported.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>When one group entity sells to another at a markup and the receiving entity hasn't yet sold the items externally, the seller's profit sits unrealized in the receiver's inventory.</li>
+  <li>Consolidation eliminates this unrealized profit by reducing both ending inventory and reducing profit (typically via COGS).</li>
+  <li>Direction matters: downstream eliminations reduce parent equity; upstream eliminations split between parent and NCI.</li>
+  <li>The elimination is temporary — it reverses in the period when the underlying inventory is finally sold to the outside world.</li>
+  <li>The same principle extends to intercompany sales of fixed assets, where the reversal tracks depreciation rather than COGS.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-8-nci.html">← 2.8 Non-controlling interest</a>
+        <div class="spacer"></div>
+        <a href="2-10-equity-rollforward.html">2.10 Equity rollforward & retained earnings →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

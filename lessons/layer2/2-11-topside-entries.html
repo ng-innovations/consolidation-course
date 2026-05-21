@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adjustments & topside entries — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-11-topside-entries.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 11 · Pipeline: C.8, C.11</div>
+        <h1>Adjustments & topside entries</h1>
+      </header>
+      
+<p>Not every consolidation entry can be automated from subsidiary data. Some adjustments live only at the group level — accounting policy alignments, late corrections, reclassifications, manual overlays. These are <span class="term" data-term="topside">topside entries</span> (sometimes called "topside adjustments" or "consolidation journal entries"). They're posted on top of the consolidated data without modifying the underlying subsidiary books.</p>
+
+<p><strong>Pipeline reference:</strong> Topside entries can be posted at two distinct points: in <em>Standardize</em> (step C.8) before eliminations and ownership math run, or in <em>Group Adjustments</em> (step C.11) after the mechanical consolidation completes. The injection point matters and is covered below.</p>
+
+<h2>Why topside entries exist</h2>
+
+<p>Subsidiaries close their books on a defined schedule using their local accounting policies. Group consolidation happens on top of those closed books. Several things commonly require a post-close adjustment at the group level:</p>
+
+<ul>
+  <li><strong>Accounting policy alignment.</strong> A subsidiary may use a different depreciation method, inventory costing method, or revenue recognition policy from the group. The group makes an adjustment to bring the sub's numbers into line with group policy — without forcing the sub to restate its local books.</li>
+  <li><strong>GAAP/IFRS conversion.</strong> Subsidiaries reporting under local GAAP need conversion to the group's reporting framework. These conversion entries live at the group level.</li>
+  <li><strong>Late information.</strong> An accrual that needed to be recorded was missed by the sub. Rather than reopening the sub's books, the group records it topside.</li>
+  <li><strong>Reclassifications.</strong> Reorganizing how something is presented (e.g., moving a balance from one line to another) for group reporting purposes only.</li>
+  <li><strong>Estimates and overlays.</strong> Allowances, reserves, and provisions that are estimated at the group level (e.g., a goodwill impairment evaluation done centrally).</li>
+  <li><strong>Audit adjustments.</strong> After audit, adjustments come back that need to be applied for the final reported numbers.</li>
+</ul>
+
+<h2>The two injection points</h2>
+
+<p>Where in the pipeline a topside entry is posted affects what happens to it downstream. There are two natural injection points:</p>
+
+<svg class="diagram" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="120" height="50" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="80" y="42" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Sub data</text>
+  <text x="80" y="58" font-size="11" fill="#1e40af" text-anchor="middle">(Translated)</text>
+
+  <text x="150" y="50" font-size="14" fill="#64748b">→</text>
+
+  <rect x="170" y="20" width="140" height="50" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="240" y="42" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Standardize</text>
+  <text x="240" y="58" font-size="11" fill="#1e40af" text-anchor="middle">(C.8)</text>
+
+  <rect x="220" y="90" width="200" height="36" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="4"/>
+  <text x="320" y="113" font-size="11" font-weight="700" fill="#92400e" text-anchor="middle">Topside type A injection</text>
+  <line x1="240" y1="70" x2="240" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="320" y="50" font-size="14" fill="#64748b">→</text>
+
+  <rect x="340" y="20" width="120" height="50" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="400" y="42" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Eliminate</text>
+  <text x="400" y="58" font-size="11" fill="#1e40af" text-anchor="middle">(C.9)</text>
+
+  <text x="470" y="50" font-size="14" fill="#64748b">→</text>
+
+  <rect x="490" y="20" width="120" height="50" fill="#dbeafe" stroke="#1e40af" rx="4"/>
+  <text x="550" y="42" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Ownership</text>
+  <text x="550" y="58" font-size="11" fill="#1e40af" text-anchor="middle">(C.10–11)</text>
+
+  <rect x="475" y="90" width="200" height="36" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="4"/>
+  <text x="575" y="113" font-size="11" font-weight="700" fill="#92400e" text-anchor="middle">Topside type B injection</text>
+  <line x1="550" y1="70" x2="550" y2="90" stroke="#f59e0b" stroke-width="1.5"/>
+
+  <rect x="20" y="170" width="660" height="90" fill="#f1f5f9" stroke="#475569" rx="4"/>
+  <text x="350" y="190" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">The difference matters because:</text>
+  <text x="40" y="212" font-size="11" fill="#1e293b">• Type A entries (Standardize) go through subsequent processing: they may be eliminated against other entities,</text>
+  <text x="40" y="228" font-size="11" fill="#1e293b">   they share in ownership allocation, they get FX retranslation if FX is recalculated.</text>
+  <text x="40" y="244" font-size="11" fill="#1e293b">• Type B entries (Group Adjustments) are applied to already-consolidated numbers and don't trigger further processing.</text>
+</svg>
+
+<h3>Type A — entries that should flow through consolidation</h3>
+
+<p>Examples:</p>
+
+<ul>
+  <li>A policy alignment adjustment that changes a subsidiary's revenue. If the revenue line is shared with another sub via intercompany, eliminations need to see the adjusted amount.</li>
+  <li>A correction to opening retained earnings of a subsidiary. The ownership engine needs the corrected amount to compute NCI properly.</li>
+  <li>A late accrual that affects an account participating in IC matching.</li>
+</ul>
+
+<p>These should be posted as <em>entity-level</em> topside entries before standardization completes. They sit in the same data scope as the sub's own data — at the sub's level — and inherit subsequent processing.</p>
+
+<h3>Type B — entries that apply only to the consolidated result</h3>
+
+<p>Examples:</p>
+
+<ul>
+  <li>A goodwill impairment booked at the group level — there's no sub it "belongs" to.</li>
+  <li>A reclassification of how a line is presented in the consolidated statements.</li>
+  <li>A pure consolidation entry like setting up CTA or recording a deferred tax effect at the group level.</li>
+  <li>An audit adjustment to the final consolidated number.</li>
+</ul>
+
+<p>These should be posted at the <em>group level</em>, after the mechanical consolidation. They don't need to be eliminated (they don't involve another entity), they don't get split with NCI (or, if they do, the split is computed manually as part of the entry), and they don't get retranslated.</p>
+
+<h2>Anatomy of a topside entry</h2>
+
+<p>Every topside entry should carry:</p>
+
+<ul>
+  <li><strong>Entity it relates to.</strong> Either a specific subsidiary (type A) or the consolidation/group level (type B).</li>
+  <li><strong>Period.</strong> Which fiscal period it adjusts.</li>
+  <li><strong>Accounts and amounts.</strong> Debits equal credits, just like any journal entry.</li>
+  <li><strong>Reason / category.</strong> Policy alignment, late accrual, reclassification, impairment, etc.</li>
+  <li><strong>Author and approver.</strong> Topside entries are high-trust transactions; segregation of duties matters.</li>
+  <li><strong>Supporting documentation.</strong> A description and ideally an attached file explaining the entry.</li>
+  <li><strong>Recurring flag.</strong> Some entries recur every period (e.g., monthly policy alignment); others are one-off.</li>
+</ul>
+
+<h2>Topside entries and NCI</h2>
+
+<p>For type A topside entries (entity-level), the entry adjusts a subsidiary's numbers, so the NCI calculation naturally picks up the NCI's share of the adjustment. No special handling.</p>
+
+<p>For type B topside entries (group-level), the engine doesn't know how to split it between parent and NCI — unless the entry itself specifies. Options:</p>
+
+<ul>
+  <li>The entry includes an "applicable to which entity's results" tag — the engine then splits the entry per that entity's ownership.</li>
+  <li>The entry pre-splits parent and NCI portions as separate accounts (e.g., a debit to parent equity for $80 and a debit to NCI for $20 on a $100 adjustment with 80% ownership).</li>
+  <li>The entry is treated as 100% parent (sometimes appropriate, e.g., parent-only goodwill impairment under partial-goodwill method).</li>
+</ul>
+
+<p>This is one of the places where consolidation software needs to be opinionated — the rule should be clear and consistent.</p>
+
+<h2>Risk and controls</h2>
+
+<p>Topside entries are the single largest source of restatement risk in consolidated reporting. Some reasons:</p>
+
+<ul>
+  <li>They're posted manually, bypassing the automated controls in subsidiary systems.</li>
+  <li>They often have weak supporting documentation.</li>
+  <li>They may be set up as recurring without being re-validated each period.</li>
+  <li>They're an obvious place for management override.</li>
+</ul>
+
+<p>Strong controls around topside entries include: approval workflows, dual review, materiality thresholds for required documentation, automatic flagging of unusual amounts, and a clear audit trail. Most public companies' auditors specifically scrutinize topside entries during the audit.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>Topside entries are a critical product surface — they're how users handle the unautomated parts of consolidation. Design priorities:</p>
+
+  <ul style="margin-top: 8px;">
+    <li><strong>The two injection points are distinct first-class concepts.</strong> Entity-level vs. group-level. The UI should make the choice explicit, not bury it.</li>
+    <li><strong>Recurring entries need a lifecycle.</strong> Set up once, apply each period, optionally roll forward with rate updates or amount updates.</li>
+    <li><strong>Workflow + audit trail are non-negotiable.</strong> Who created, who approved, when, with what supporting docs — all queryable.</li>
+    <li><strong>Materiality thresholds and approval routing should be configurable.</strong> Entries above a threshold require senior approval; entries above another threshold require CFO sign-off.</li>
+    <li><strong>Reversal handling.</strong> Some topside entries reverse next period (an accrual that gets paid). The product should support both manual and auto-reversal.</li>
+    <li><strong>Reporting must distinguish ordinary results from topside-adjusted results.</strong> Stakeholders often want to see "what's the subsidiary's actual number" vs. "what's the group-adjusted view" — both should be available.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>Topside entries are adjustments posted at the consolidation layer that don't modify subsidiary books.</li>
+  <li>Common reasons: policy alignment, GAAP conversion, late info, reclassifications, estimates, audit adjustments.</li>
+  <li>Two injection points matter: entity-level (subject to subsequent elimination/ownership/FX processing) and group-level (applied to the consolidated result).</li>
+  <li>NCI handling differs by injection point — entity-level entries split automatically; group-level entries need explicit allocation rules.</li>
+  <li>Topside entries are a high-risk area and need strong controls, approvals, and audit trail.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-10-equity-rollforward.html">← 2.10 Equity rollforward & retained earnings</a>
+        <div class="spacer"></div>
+        <a href="2-12-cash-flow.html">2.12 Cash flow consolidation →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>
