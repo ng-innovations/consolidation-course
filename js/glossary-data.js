@@ -329,17 +329,60 @@ const GLOSSARY = {
     body: `
       <p>A list of every account in the <span class="term" data-term="gl">general ledger</span> with its current balance. If the bookkeeping is correct, total debits should equal total credits.</p>
       <p>The trial balance is the standard input to consolidation. Each subsidiary submits its trial balance for the period, and the consolidation process combines them all.</p>
+      <p>Accounts are conventionally grouped: assets and expenses normally carry debit balances; liabilities, equity, and revenue normally carry credit balances.</p>
       <div class="example-box">
-        <strong>Typical TB layout:</strong>
-        <table style="font-size: 12px; margin-top: 8px;">
-          <tr><th>Account</th><th>Debit</th><th>Credit</th></tr>
-          <tr><td>Cash</td><td class="num">50,000</td><td></td></tr>
-          <tr><td>Accounts Receivable</td><td class="num">30,000</td><td></td></tr>
-          <tr><td>Accounts Payable</td><td></td><td class="num">20,000</td></tr>
-          <tr><td>Share Capital</td><td></td><td class="num">60,000</td></tr>
-          <tr><th>Total</th><th class="num">80,000</th><th class="num">80,000</th></tr>
+        <strong>Sample TB — Acme Industrials, year-end (USD):</strong>
+        <table class="tb-mock">
+          <thead>
+            <tr><th>Code</th><th>Account</th><th class="num">Debit</th><th class="num">Credit</th></tr>
+          </thead>
+          <tbody>
+            <tr class="section"><td colspan="4">Assets</td></tr>
+            <tr><td>1010</td><td>Cash &amp; equivalents</td><td class="num">125,000</td><td></td></tr>
+            <tr><td>1015</td><td>Petty cash</td><td class="num">1,500</td><td></td></tr>
+            <tr><td>1100</td><td>Accounts receivable</td><td class="num">180,000</td><td></td></tr>
+            <tr><td>1105</td><td>Allowance for doubtful A/R</td><td></td><td class="num">8,000</td></tr>
+            <tr><td>1200</td><td>Inventory</td><td class="num">220,000</td><td></td></tr>
+            <tr><td>1300</td><td>Prepaid expenses</td><td class="num">12,000</td><td></td></tr>
+            <tr><td>1500</td><td>Property, plant &amp; equipment</td><td class="num">850,000</td><td></td></tr>
+            <tr><td>1505</td><td>Accumulated depreciation</td><td></td><td class="num">310,000</td></tr>
+            <tr><td>1700</td><td>Goodwill</td><td class="num">75,000</td><td></td></tr>
+            <tr><td>1800</td><td>Investment in subsidiaries</td><td class="num">40,000</td><td></td></tr>
+
+            <tr class="section"><td colspan="4">Liabilities</td></tr>
+            <tr><td>2010</td><td>Accounts payable</td><td></td><td class="num">95,000</td></tr>
+            <tr><td>2020</td><td>Accrued expenses</td><td></td><td class="num">28,000</td></tr>
+            <tr><td>2030</td><td>Income tax payable</td><td></td><td class="num">22,000</td></tr>
+            <tr><td>2100</td><td>Short-term debt</td><td></td><td class="num">60,000</td></tr>
+            <tr><td>2500</td><td>Long-term debt</td><td></td><td class="num">250,000</td></tr>
+            <tr><td>2600</td><td>Deferred revenue</td><td></td><td class="num">15,000</td></tr>
+
+            <tr class="section"><td colspan="4">Equity</td></tr>
+            <tr><td>3010</td><td>Share capital</td><td></td><td class="num">100,000</td></tr>
+            <tr><td>3020</td><td>Additional paid-in capital</td><td></td><td class="num">50,000</td></tr>
+            <tr><td>3500</td><td>Retained earnings (opening)</td><td></td><td class="num">427,000</td></tr>
+
+            <tr class="section"><td colspan="4">Revenue</td></tr>
+            <tr><td>4010</td><td>Sales revenue</td><td></td><td class="num">1,200,000</td></tr>
+            <tr><td>4020</td><td>Service revenue</td><td></td><td class="num">180,000</td></tr>
+            <tr><td>4900</td><td>Other income</td><td></td><td class="num">8,000</td></tr>
+
+            <tr class="section"><td colspan="4">Expenses</td></tr>
+            <tr><td>5010</td><td>Cost of goods sold</td><td class="num">720,000</td><td></td></tr>
+            <tr><td>6010</td><td>Salaries &amp; wages</td><td class="num">290,000</td><td></td></tr>
+            <tr><td>6020</td><td>Rent expense</td><td class="num">60,000</td><td></td></tr>
+            <tr><td>6030</td><td>Utilities expense</td><td class="num">18,000</td><td></td></tr>
+            <tr><td>6040</td><td>Office supplies</td><td class="num">6,500</td><td></td></tr>
+            <tr><td>6050</td><td>Marketing expense</td><td class="num">42,000</td><td></td></tr>
+            <tr><td>6090</td><td>Depreciation expense</td><td class="num">55,000</td><td></td></tr>
+            <tr><td>7010</td><td>Interest expense</td><td class="num">22,000</td><td></td></tr>
+            <tr><td>7100</td><td>Income tax expense</td><td class="num">36,000</td><td></td></tr>
+
+            <tr class="total"><th colspan="2" style="text-align:right;">Total</th><th class="num">2,753,000</th><th class="num">2,753,000</th></tr>
+          </tbody>
         </table>
       </div>
+      <p>Notice that debits equal credits — that's the defining property of a trial balance.</p>
     `
   },
 

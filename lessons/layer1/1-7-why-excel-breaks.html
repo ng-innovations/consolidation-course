@@ -29,15 +29,15 @@
 
 <p>This is the trajectory consolidation software is designed to interrupt.</p>
 
-<h2>Where Excel breaks</h2>
+<h2>What Excel lacks</h2>
 
-<h3>1. Formulas silently break</h3>
+<h3>1. Stable formula references</h3>
 
-<p>Excel formulas reference cells. When someone inserts a row, deletes a column, sorts a sheet, or renames a tab, formulas can break &mdash; sometimes loudly (with a #REF! error), sometimes silently (the formula still calculates, but on the wrong cells).</p>
+<p>Excel formulas point at cell addresses. When someone inserts a row, deletes a column, sorts a sheet, or renames a tab, those references can shift to the wrong place &mdash; sometimes loudly (with a #REF! error), sometimes silently (the formula still calculates, but on the wrong cells).</p>
 
 <p>Silent breakage is the dangerous kind. The consolidated numbers might be off by thousands or millions, and no one notices until the auditor finds it.</p>
 
-<h3>2. No audit trail</h3>
+<h3>2. An audit trail</h3>
 
 <p>Excel records the current state of every cell &mdash; but not who changed it, when, or what it used to be. If someone overrode a number on Tuesday and then changed it again on Thursday, there's no trace.</p>
 
@@ -45,25 +45,25 @@
 
 <p>For a public company subject to <span class="term" data-term="sec">SEC</span> reporting, this is a serious compliance gap. Sarbanes-Oxley requires demonstrable internal controls over financial reporting.</p>
 
-<h3>4. No version control</h3>
+<h3>3. Version control</h3>
 
 <p>If two people open the same workbook from a shared drive, the last one to save wins &mdash; and the other person's changes are gone. "ConsolidationFinal_v3_REAL.xlsx" sitting next to "ConsolidationFinal_v3_REAL_FINAL.xlsx" is a familiar sight.</p>
 
-<h3>5. Manual intercompany matching</h3>
+<h3>4. Automated intercompany matching</h3>
 
 <p>In Excel, intercompany matching is typically done by pasting both subs' IC balances into a sheet and eyeballing whether they match. With 5 subs, that's 10 pairs to check. With 25 subs, it's 300 pairs &mdash; impossible to do by hand.</p>
 
 <p>Even with formulas to flag mismatches, the resolution work (figuring out <em>why</em> a balance doesn't match) is still manual: pulling backup documentation from each side, comparing transaction lists, reconciling timing differences.</p>
 
-<h3>6. FX complexity</h3>
+<h3>5. Built-in FX handling</h3>
 
 <p>Manual currency translation in Excel involves applying different rate types to different account categories, computing CTA as a balancing item, and re-applying rates whenever the rates themselves change.</p>
 
 <p>It's doable for one or two foreign subs. It becomes a maintenance nightmare for many. And every time a controller adjusts a rate after the fact, every dependent number has to be recomputed by hand.</p>
 
-<h3>7. Concentration of knowledge</h3>
+<h3>6. A structure that outlives the original builder</h3>
 
-<p>The "spreadsheet wizard" problem. Over years, the workbook accumulates conventions, hacks, hidden tabs, and undocumented formulas that only the person who built it understands. When that person leaves, the workbook becomes a liability instead of an asset.</p>
+<p>The "spreadsheet wizard" problem. Over years, a workbook accumulates conventions, hacks, hidden tabs, and undocumented formulas that only the person who built it understands. When that person leaves, the workbook becomes a liability instead of an asset.</p>
 
 <p>This isn't a technical problem &mdash; it's an organizational one. But it's the most common reason companies finally commit to a real consolidation system.</p>
 
@@ -83,23 +83,12 @@
   <li>A monthly close that takes more than a few days</li>
 </ul>
 
-<p>Our product is for the companies past that line.</p>
-
-<h2>Why this matters for the software</h2>
-
-<div class="callout callout-dev">
-  <div class="callout-title">For developers</div>
-  <p>This list is a useful design checklist. For every feature we build, we should ask: "How does this solve a problem that Excel users hit?" Features that don't trace back to a real pain point on this list might be solving the wrong thing.</p>
-  <p>Also worth noting: customers often arrive carrying Excel habits. Many will expect to be able to drop in a spreadsheet of overrides, build their own reports, and treat the consolidation engine as an "Excel that doesn't break." Some of those expectations are reasonable; some have to be carefully redirected toward the structured approach.</p>
-</div>
-
 <h2>Summary</h2>
 
 <ul>
   <li>Excel works for small consolidations but breaks predictably as groups grow.</li>
-  <li>The breaking points include silent formula errors, no audit trail, no version control, no concurrency, manual intercompany matching, FX complexity, and concentration of knowledge.</li>
-  <li>Each weakness corresponds to a capability that consolidation software is designed to provide.</li>
-  <li>The product is for companies past the Excel breaking point &mdash; typically 5+ subsidiaries, multiple currencies, material intercompany activity, or public reporting.</li>
+  <li>The gaps include unstable formula references, no audit trail, no version control, no concurrency, manual intercompany matching, awkward FX handling, and concentration of knowledge in one builder.</li>
+  <li>Each gap corresponds to a capability that consolidation software is designed to provide.</li>
 </ul>
 
       <nav class="lesson-nav">

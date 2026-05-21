@@ -57,7 +57,7 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for Layer 3.
 
-6. **Every lesson ends with a "For developers" callout** — a `<div class="callout callout-dev">` near the end that talks directly to engineers about implications for the app: what the data model needs to support, what edge cases to plan for, what gets confusing in implementation.
+6. **Most lessons end with a "For developers" callout** — a `<div class="callout callout-dev">` near the end that talks directly to engineers about implications for the app: what the data model needs to support, what edge cases to plan for, what gets confusing in implementation. Skip the callout when a lesson doesn't have meaningful app-implementation implications, or when the body has already said everything a dev would need. Forced or generic callouts dilute the ones that do matter.
 
 7. **Every lesson ends with a Summary bullet list.** 4–6 bullets recapping key takeaways.
 

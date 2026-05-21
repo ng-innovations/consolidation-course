@@ -446,6 +446,59 @@ html, body {
   font-size: 13px;
 }
 
+/* Trial-balance mock-up tables shown inside glossary entries */
+.glossary-entry .tb-mock {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.glossary-entry .tb-mock th,
+.glossary-entry .tb-mock td {
+  padding: 2px 4px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.glossary-entry .tb-mock thead tr {
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.glossary-entry .tb-mock thead th {
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 10px;
+}
+
+.glossary-entry .tb-mock th.num,
+.glossary-entry .tb-mock td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+.glossary-entry .tb-mock tr.section td {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: var(--color-accent);
+  padding: 5px 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 10px;
+}
+
+.glossary-entry .tb-mock tr.total {
+  border-top: 2px solid #1e3a8a;
+  font-weight: 700;
+}
+
+.glossary-entry .tb-mock tr.total th {
+  padding: 5px 4px;
+}
+
 .glossary-entry .glossary-svg {
   display: block;
   width: 100%;
