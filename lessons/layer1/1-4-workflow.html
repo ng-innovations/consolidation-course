@@ -103,81 +103,81 @@
 
 <h2>1. Entities produce reports</h2>
 
-<p>Each <span class="term" data-term="legal-entity">legal entity</span> in the <span class="term" data-term="group">group</span> closes its own books for the period and produces a <span class="term" data-term="trial-balance">trial balance</span> &mdash; in its local currency, using its own account codes, on its own schedule. This is just normal single-entity accounting; nothing special about it for <span class="term" data-term="consolidation">consolidation</span>.</p>
+<p>Each <span class="term" data-term="legal-entity">legal entity</span> in the <span class="term" data-term="group">group</span> closes its own books for the period and produces a <span class="term" data-term="trial-balance">trial balance</span> &mdash; in its local currency, using its own account codes, on its own schedule. This is just normal single-entity accounting; nothing special about it for consolidation.</p>
 
-<p>Before being handed off to the <span class="term" data-term="consolidation">consolidation</span> work, each <span class="term" data-term="trial-balance">trial balance</span> is mapped to the <span class="term" data-term="group">group</span>'s <span class="term" data-term="coa">chart of accounts</span>. Sub A's "1010 &mdash; Operating Cash" and Sub B's "C-100 &mdash; Cash on Hand" both need to land in the group's "Cash &amp; equivalents" account. This is normally part of validation at ingest, but it's worth flagging here: the entities produce numbers in their own structure, and someone has to translate that structure to the group's view.</p>
+<p>Before being handed off to the consolidation work, each trial balance is mapped to the group's <span class="term" data-term="coa">chart of accounts</span>. Sub A's "1010 &mdash; Operating Cash" and Sub B's "C-100 &mdash; Cash on Hand" both need to land in the group's "Cash &amp; equivalents" account. This is normally part of validation at ingest, but it's worth flagging here: the entities produce numbers in their own structure, and someone has to translate that structure to the group's view.</p>
 
 <h2>2. Translate to common currency</h2>
 
-<p>The <span class="term" data-term="trial-balance">trial balances</span> arrive in different currencies. A French sub's books are in euros; a US <span class="term" data-term="group">group</span> reports in dollars. Before the entities can be added together, each balance is translated at the appropriate <span class="term" data-term="fx">FX</span> rate.</p>
+<p>The trial balances arrive in different currencies. A French sub's books are in euros; a US group reports in dollars. Before the entities can be added together, each balance is translated at the appropriate <span class="term" data-term="fx">FX</span> rate.</p>
 
 <p>More detail on how this is done is in Layer 2 &mdash; including why different account types use different rate types, and what the <span class="term" data-term="cta">CTA</span> balancing item is.</p>
 
 <h2>3. Standardize</h2>
 
-<p>After translation, every entity's numbers are in the same currency and the same account structure. But there's still some preparation work needed before the <span class="term" data-term="consolidation">consolidation</span> math (<span class="term" data-term="elimination">eliminations</span>, ownership) can run cleanly. Things like:</p>
+<p>After translation, every entity's numbers are in the same currency and the same account structure. But there's still some preparation work needed before the consolidation math (<span class="term" data-term="elimination">eliminations</span>, ownership) can run cleanly. Things like:</p>
 
 <ul>
   <li><strong>Carry forward <span class="term" data-term="goodwill">goodwill</span> and acquisition baselines</strong> so the ownership step has what it needs.</li>
   <li><strong>Apply any pre-elimination adjustments</strong> that have to be reflected before <span class="term" data-term="intercompany">intercompany</span> matching runs. For example, correcting a misclassified balance that would otherwise prevent IC matching from succeeding.</li>
-  <li><strong>Set up the reference data</strong> the next steps will use &mdash; entity <span class="term" data-term="ownership-percentage">ownership percentages</span>, <span class="term" data-term="intercompany">intercompany</span> pairings, <span class="term" data-term="elimination">elimination</span> rules.</li>
+  <li><strong>Set up the reference data</strong> the next steps will use &mdash; entity <span class="term" data-term="ownership-percentage">ownership percentages</span>, intercompany pairings, elimination rules.</li>
 </ul>
 
-<p>Standardize is also the first of two points where <span class="term" data-term="topside">topside entries</span> can be posted. The second is in step 7 (Apply <span class="term" data-term="group">group</span> adjustments). The difference matters: topsides posted here flow through <span class="term" data-term="elimination">eliminations</span> and ownership math; topsides posted in step 7 don't. Layer 2 covers when to use each.</p>
+<p>Standardize is also the first of two points where <span class="term" data-term="topside">topside entries</span> can be posted. The second is in step 7 (Apply group adjustments). The difference matters: topsides posted here flow through eliminations and ownership math; topsides posted in step 7 don't. Layer 2 covers when to use each.</p>
 
 <h2>4. Combine books</h2>
 
-<p>This is the simplest step in the workflow: add the entities together. With every prepared <span class="term" data-term="trial-balance">trial balance</span> using the same structure, the combined balance is a sum across entities, line by line.</p>
+<p>This is the simplest step in the workflow: add the entities together. With every prepared trial balance using the same structure, the combined balance is a sum across entities, line by line.</p>
 
-<p>The combined <span class="term" data-term="trial-balance">trial balance</span> isn't yet a meaningful set of <span class="term" data-term="group">group</span> results &mdash; it still contains all the internal activity between group companies, and it doesn't yet reflect who actually owns what. Those are the next two steps.</p>
+<p>The combined trial balance isn't yet a meaningful set of group results &mdash; it still contains all the internal activity between group companies, and it doesn't yet reflect who actually owns what. Those are the next two steps.</p>
 
 <h2>5. Eliminate intra-group activity</h2>
 
-<p>If Sub A sold $1,000 of goods to Sub B, the <span class="term" data-term="group">group</span> as a whole didn't earn $1,000 &mdash; the money just moved from one pocket to another. Sub A's revenue and Sub B's expense both have to be removed. Same with the corresponding receivable and payable.</p>
+<p>If Sub A sold $1,000 of goods to Sub B, the group as a whole didn't earn $1,000 &mdash; the money just moved from one pocket to another. Sub A's revenue and Sub B's expense both have to be removed. Same with the corresponding receivable and payable.</p>
 
-<p>The common categories of <span class="term" data-term="intercompany">intercompany</span> activity that get eliminated:</p>
+<p>The common categories of intercompany activity that get eliminated:</p>
 
 <ul>
-  <li><span class="term" data-term="intercompany">Intercompany</span> <span class="term" data-term="ar">AR</span> against <span class="term" data-term="intercompany">intercompany</span> <span class="term" data-term="ap">AP</span></li>
-  <li><span class="term" data-term="intercompany">Intercompany</span> revenue against the matching <span class="term" data-term="intercompany">intercompany</span> expense</li>
-  <li><span class="term" data-term="intercompany">Intercompany</span> loans</li>
-  <li><span class="term" data-term="intercompany">Intercompany</span> dividends</li>
-  <li><span class="term" data-term="unrealized-profit">Unrealized profit</span> on <span class="term" data-term="intercompany">intercompany</span> <span class="term" data-term="inventory">inventory</span> still on hand at period end</li>
+  <li>Intercompany <span class="term" data-term="ar">AR</span> against intercompany <span class="term" data-term="ap">AP</span></li>
+  <li>Intercompany revenue against the matching intercompany expense</li>
+  <li>Intercompany loans</li>
+  <li>Intercompany dividends</li>
+  <li><span class="term" data-term="unrealized-profit">Unrealized profit</span> on intercompany <span class="term" data-term="inventory">inventory</span> still on hand at period end</li>
 </ul>
 
-<p><span class="term" data-term="elimination">Eliminations</span> are recorded as <span class="term" data-term="journal-entry">journal entries</span> at the <span class="term" data-term="consolidation">consolidation</span> layer, not in the entities' local books. Each entity's own books stay correct from its standalone perspective; the <span class="term" data-term="elimination">elimination</span> entries only affect the <span class="term" data-term="group">group</span> view.</p>
+<p>Eliminations are recorded as <span class="term" data-term="journal-entry">journal entries</span> at the consolidation layer, not in the entities' local books. Each entity's own books stay correct from its standalone perspective; the elimination entries only affect the group view.</p>
 
 <h2>6. Apply ownership</h2>
 
-<p>This is the step that distinguishes <span class="term" data-term="consolidation">consolidation</span> from just adding companies together. The <span class="term" data-term="parent">parent</span> doesn't necessarily own 100% of every <span class="term" data-term="subsidiary">subsidiary</span>, and the parent's "Investment in Subsidiary" line represents the same economic stake as the sub's <span class="term" data-term="equity">equity</span> &mdash; one viewed from above, the other from below. Three things happen here:</p>
+<p>This is the step that distinguishes consolidation from just adding companies together. The <span class="term" data-term="parent">parent</span> doesn't necessarily own 100% of every <span class="term" data-term="subsidiary">subsidiary</span>, and the parent's "Investment in Subsidiary" line represents the same economic stake as the sub's <span class="term" data-term="equity">equity</span> &mdash; one viewed from above, the other from below. Three things happen here:</p>
 
 <ul>
-  <li><strong>Eliminate the parent's investment against the sub's <span class="term" data-term="equity">equity</span>.</strong> If the parent paid more than the sub's <span class="term" data-term="book-value">book value</span> at acquisition, the difference becomes <span class="term" data-term="goodwill">goodwill</span> on the consolidated <span class="term" data-term="balance-sheet">balance sheet</span>.</li>
-  <li><strong>Break out the outside shareholders' share</strong> as <span class="term" data-term="nci">non-controlling interest</span>, shown separately on both the <span class="term" data-term="balance-sheet">balance sheet</span> and the <span class="term" data-term="income-statement">income statement</span>.</li>
+  <li><strong>Eliminate the parent's investment against the sub's equity.</strong> If the parent paid more than the sub's <span class="term" data-term="book-value">book value</span> at acquisition, the difference becomes goodwill on the consolidated <span class="term" data-term="balance-sheet">balance sheet</span>.</li>
+  <li><strong>Break out the outside shareholders' share</strong> as <span class="term" data-term="nci">non-controlling interest</span>, shown separately on both the balance sheet and the <span class="term" data-term="income-statement">income statement</span>.</li>
   <li><strong>Handle indirect ownership chains.</strong> If the parent owns 80% of Sub X, which owns 60% of Sub Y, the parent's effective ownership of Sub Y is 48% &mdash; and the ownership math has to reflect that.</li>
 </ul>
 
 <h2>7. Apply group adjustments</h2>
 
-<p>With the mechanical work done, there's usually still a layer of judgement-driven adjustments to apply at the <span class="term" data-term="group">group</span> level. These don't belong in any individual entity's books, but they have to be reflected in the consolidated reports. Common examples:</p>
+<p>With the mechanical work done, there's usually still a layer of judgement-driven adjustments to apply at the group level. These don't belong in any individual entity's books, but they have to be reflected in the consolidated reports. Common examples:</p>
 
 <ul>
   <li><strong>Accounting policy alignment.</strong> A sub depreciates equipment over 5 years; group policy is 7 years. A group-level adjustment reconciles the two without forcing the sub to change its local books.</li>
-  <li><strong>Local <span class="term" data-term="gaap">GAAP</span> to group GAAP differences.</strong> A foreign sub reports under local rules; the group reports under <span class="term" data-term="gaap">US GAAP</span> or <span class="term" data-term="ifrs">IFRS</span>. The conversion happens here.</li>
+  <li><strong>Local <span class="term" data-term="gaap">GAAP</span> to group GAAP differences.</strong> A foreign sub reports under local rules; the group reports under US GAAP or <span class="term" data-term="ifrs">IFRS</span>. The conversion happens here.</li>
   <li><strong>Reclassifications.</strong> Presenting a balance under a different line for group-reporting purposes.</li>
   <li><strong>Audit adjustments.</strong> Corrections identified during review.</li>
   <li><strong>Late accruals or estimates.</strong> Items recognized at the group level after subs have already closed.</li>
 </ul>
 
-<p>These are typically posted as <span class="term" data-term="topside">topside entries</span> &mdash; the second of the two topside injection points mentioned in step 3. Because they bypass the controls in <span class="term" data-term="subsidiary">subsidiary</span> systems, they're a high-scrutiny area in audit.</p>
+<p>These are typically posted as topside entries &mdash; the second of the two topside injection points mentioned in step 3. Because they bypass the controls in subsidiary systems, they're a high-scrutiny area in audit.</p>
 
 <h2>8. Report and lock</h2>
 
-<p>With all the math and adjustments done, the consolidated <span class="term" data-term="trial-balance">trial balance</span> is used to produce the reporting outputs:</p>
+<p>With all the math and adjustments done, the consolidated trial balance is used to produce the reporting outputs:</p>
 
 <ul>
-  <li>The four primary statements (<span class="term" data-term="balance-sheet">balance sheet</span>, <span class="term" data-term="income-statement">income statement</span>, <span class="term" data-term="cash-flow-statement">cash flow statement</span>, statement of changes in <span class="term" data-term="equity">equity</span>)</li>
-  <li>Supporting schedules &mdash; <span class="term" data-term="intercompany">intercompany</span> matrix, flux analysis, <span class="term" data-term="segment">segment</span> breakdowns</li>
+  <li>The four primary statements (balance sheet, income statement, <span class="term" data-term="cash-flow-statement">cash flow statement</span>, statement of changes in equity)</li>
+  <li>Supporting schedules &mdash; intercompany matrix, flux analysis, <span class="term" data-term="segment">segment</span> breakdowns</li>
   <li>Disclosure notes for external reporting</li>
 </ul>
 
@@ -195,25 +195,25 @@
 
 <ul>
   <li>You can't combine entities until they're in the same currency and account structure &mdash; adding euros to dollars produces nothing meaningful.</li>
-  <li>You can't eliminate <span class="term" data-term="intercompany">intercompany</span> balances until both sides are denominated in the same currency &mdash; otherwise there's nothing to match against.</li>
-  <li>You can't calculate <span class="term" data-term="nci">non-controlling interest</span> until <span class="term" data-term="elimination">eliminations</span> are done &mdash; NCI is a percentage of the <span class="term" data-term="subsidiary">subsidiary</span>'s <span class="term" data-term="equity">equity</span>, and that equity isn't right until <span class="term" data-term="intercompany">intercompany</span> cleanup is complete.</li>
-  <li>You can't apply <span class="term" data-term="group">group</span> adjustments to numbers that haven't been combined and cleaned.</li>
+  <li>You can't eliminate intercompany balances until both sides are denominated in the same currency &mdash; otherwise there's nothing to match against.</li>
+  <li>You can't calculate non-controlling interest until eliminations are done &mdash; NCI is a percentage of the subsidiary's equity, and that equity isn't right until intercompany cleanup is complete.</li>
+  <li>You can't apply group adjustments to numbers that haven't been combined and cleaned.</li>
   <li>You can't report numbers that haven't been adjusted, eliminated, and allocated.</li>
 </ul>
 
-<p>This is why <span class="term" data-term="consolidation">consolidation</span> is a <em>workflow</em>, not a bag of independent calculations. Whatever tool you use, the work has to be sequenced this way to be correct.</p>
+<p>This is why consolidation is a <em>workflow</em>, not a bag of independent calculations. Whatever tool you use, the work has to be sequenced this way to be correct.</p>
 
 <h2>Why this matters for the software</h2>
 
 <div class="callout callout-dev">
   <div class="callout-title">For developers</div>
-  <p>The workflow is sequential, but real life isn't tidy: subs resubmit <span class="term" data-term="trial-balance">trial balances</span>, <span class="term" data-term="mapping">mapping</span> errors surface late, audit adjustments arrive after step 7 has already run. A <span class="term" data-term="consolidation">consolidation</span> engine has to handle re-running from any step and propagating the changes forward through every later step.</p>
+  <p>The workflow is sequential, but real life isn't tidy: subs resubmit trial balances, <span class="term" data-term="mapping">mapping</span> errors surface late, audit adjustments arrive after step 7 has already run. A consolidation engine has to handle re-running from any step and propagating the changes forward through every later step.</p>
   <p>A few properties this implies:</p>
   <ul style="margin-top: 8px;">
     <li>Each step's output should be a reproducible function of its input &mdash; no hidden state, no manual touch-ups baked into the run.</li>
     <li>Each step's output should be persistable as a distinct data state, so the engine can resume from any point rather than re-running everything.</li>
     <li>Re-running a step should be safe to do repeatedly. Idempotent.</li>
-    <li><span class="term" data-term="topside">Topside entries</span> posted in steps 3 and 7 are deliberate human inputs that need to survive re-runs &mdash; they shouldn't be wiped when an earlier step is replayed.</li>
+    <li>Topside entries posted in steps 3 and 7 are deliberate human inputs that need to survive re-runs &mdash; they shouldn't be wiped when an earlier step is replayed.</li>
   </ul>
   <p>The named data states (Local, Translated, Standardized, Eliminated, Ownership-Adjusted, Top) are the persistence boundaries between steps. They're how the system knows where to resume from.</p>
 </div>
@@ -221,11 +221,11 @@
 <h2>Summary</h2>
 
 <ul>
-  <li><span class="term" data-term="consolidation">Consolidation</span> is a sequence of eight steps: entities produce reports, translate to common currency, standardize, combine, eliminate intra-group activity, apply ownership, apply <span class="term" data-term="group">group</span> adjustments, and report &amp; lock.</li>
+  <li>Consolidation is a sequence of eight steps: entities produce reports, translate to common currency, standardize, combine, eliminate intra-group activity, apply ownership, apply group adjustments, and report &amp; lock.</li>
   <li>The order isn't optional &mdash; each step depends on the previous ones to produce correct results.</li>
   <li>The work is the same whether done in Excel, in code, by hand, or with an LLM; only the tooling changes.</li>
   <li>Between steps, the data sits in named states (Local, Translated, Standardized, Eliminated, Ownership-Adjusted, Top) used throughout the course.</li>
-  <li><span class="term" data-term="topside">Topside entries</span> can be posted at two distinct points &mdash; step 3 (which flows through <span class="term" data-term="elimination">eliminations</span> and ownership) and step 7 (which doesn't).</li>
+  <li>Topside entries can be posted at two distinct points &mdash; step 3 (which flows through eliminations and ownership) and step 7 (which doesn't).</li>
   <li>Layer 2 covers the mechanics of each step in detail.</li>
 </ul>
 

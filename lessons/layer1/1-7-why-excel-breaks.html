@@ -15,15 +15,15 @@
         <h1>Why Excel breaks at scale</h1>
       </header>
 
-<p>Many companies start out doing consolidation in Excel. For a small group &mdash; say, two or three subsidiaries, one currency, simple ownership &mdash; Excel works fine. It's flexible, everyone knows how to use it, and the formulas are easy to write.</p>
+<p>Many companies start out doing <span class="term" data-term="consolidation">consolidation</span> in Excel. For a small <span class="term" data-term="group">group</span> &mdash; say, two or three <span class="term" data-term="subsidiary">subsidiaries</span>, one currency, simple ownership &mdash; Excel works fine. It's flexible, everyone knows how to use it, and the formulas are easy to write.</p>
 
 <p>But as the group grows, Excel-based consolidation starts to break in predictable ways. Every consolidation software product on the market exists because of these breaking points. Understanding them is understanding what the product we're building has to solve.</p>
 
 <h2>How a typical Excel consolidation grows</h2>
 
-<p>Year 1: one workbook. A tab per subsidiary, a mapping tab, an eliminations tab, an output tab. A finance person spends two days each month assembling it.</p>
+<p>Year 1: one workbook. A tab per subsidiary, a <span class="term" data-term="mapping">mapping</span> tab, an <span class="term" data-term="elimination">eliminations</span> tab, an output tab. A finance person spends two days each month assembling it.</p>
 
-<p>Year 3: the company acquired three more subsidiaries, opened a European office, and entered a joint venture. Now the workbook has 30 tabs. The two-day close has become a five-day close. One spreadsheet wizard knows where all the formulas point.</p>
+<p>Year 3: the company acquired three more subsidiaries, opened a European office, and entered a <span class="term" data-term="joint-venture">joint venture</span>. Now the workbook has 30 tabs. The two-day <span class="term" data-term="close">close</span> has become a five-day close. One spreadsheet wizard knows where all the formulas point.</p>
 
 <p>Year 5: the company has 25 subsidiaries across 12 countries. There are now several workbooks linked together. The close takes 10 working days. The spreadsheet wizard has left the company. The new controller spends evenings tracing why one number changed.</p>
 
@@ -43,7 +43,7 @@
 
 <p>The closest Excel gets to an <span class="term" data-term="audit-trail">audit trail</span> is "track changes" &mdash; but it's not designed for the volume or complexity of consolidation, and it can be turned off.</p>
 
-<p>For a public company subject to <span class="term" data-term="sec">SEC</span> reporting, this is a serious compliance gap. Sarbanes-Oxley requires demonstrable internal controls over financial reporting.</p>
+<p>For a public company subject to <span class="term" data-term="sec">SEC</span> reporting, this is a serious compliance gap. <span class="term" data-term="sox">Sarbanes-Oxley</span> requires demonstrable internal controls over financial reporting.</p>
 
 <h3>3. Version control</h3>
 
@@ -51,13 +51,13 @@
 
 <h3>4. Automated intercompany matching</h3>
 
-<p>In Excel, intercompany matching is typically done by pasting both subs' IC balances into a sheet and eyeballing whether they match. With 5 subs, that's 10 pairs to check. With 25 subs, it's 300 pairs &mdash; impossible to do by hand.</p>
+<p>In Excel, <span class="term" data-term="intercompany">intercompany</span> matching is typically done by pasting both subs' IC balances into a sheet and eyeballing whether they match. With 5 subs, that's 10 pairs to check. With 25 subs, it's 300 pairs &mdash; impossible to do by hand.</p>
 
 <p>Even with formulas to flag mismatches, the resolution work (figuring out <em>why</em> a balance doesn't match) is still manual: pulling backup documentation from each side, comparing transaction lists, reconciling timing differences.</p>
 
 <h3>5. Built-in FX handling</h3>
 
-<p>Manual currency translation in Excel involves applying different rate types to different account categories, computing CTA as a balancing item, and re-applying rates whenever the rates themselves change.</p>
+<p>Manual currency translation in Excel involves applying different rate types to different account categories, computing <span class="term" data-term="cta">CTA</span> as a balancing item, and re-applying rates whenever the rates themselves change.</p>
 
 <p>It's doable for one or two foreign subs. It becomes a maintenance nightmare for many. And every time a controller adjusts a rate after the fact, every dependent number has to be recomputed by hand.</p>
 
@@ -87,7 +87,7 @@
 
 <ul>
   <li>Excel works for small consolidations but breaks predictably as groups grow.</li>
-  <li>The gaps include unstable formula references, no audit trail, no version control, no concurrency, manual intercompany matching, awkward FX handling, and concentration of knowledge in one builder.</li>
+  <li>The gaps include unstable formula references, no audit trail, no version control, no concurrency, manual intercompany matching, awkward <span class="term" data-term="fx">FX</span> handling, and concentration of knowledge in one builder.</li>
   <li>Each gap corresponds to a capability that consolidation software is designed to provide.</li>
 </ul>
 

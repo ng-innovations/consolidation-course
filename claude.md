@@ -53,10 +53,10 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 3. **Every acronym goes in the glossary** with both the full expansion and an explanation. GAAP, IFRS, NCI, CTA, COA, AR, AP, COGS, P&L, JV, REIT, FX, VIE, GL, TB, OCI, APIC, IC, JE, XBRL.
 
-4. **No term used before it's introduced — and link policy differs by layer.** Glossary entries can cross-reference each other freely. Wrapping is done with `<span class="term" data-term="key">term</span>`.
-    - **Layer 1:** wrap **every** appearance of a glossary term in the lesson body — not just the first one. Readers in Layer 1 are new to the vocabulary; a term that's clickable on its third occurrence saves them from scrolling back to find it.
-    - **Layer 2 and beyond:** wrap only the **first** appearance of each term in a given lesson. Subsequent appearances stay as plain text — the reader is by then assumed to know the term, and over-marking adds visual noise without value.
-    - In all layers, do **not** wrap glossary terms inside: headings (`h1`–`h4`), SVG `<text>` elements, the page `<title>`, attribute values, the prev/next `lesson-nav` block, or company chips. Don't double-wrap text already inside a `.term` span.
+4. **No term used before it's introduced — wrap only the first occurrence per lesson.** Glossary entries can cross-reference each other freely. Wrapping is done with `<span class="term" data-term="key">term</span>`.
+    - In each lesson body, wrap **only the first appearance** of a given glossary term. Subsequent occurrences in that same lesson stay as plain text — wrapping all of them creates visual noise without adding value, since one clickable instance per lesson is enough to reach the definition.
+    - Each lesson resets its own first-occurrence tracking. A term appearing in lesson 1.2 and lesson 1.3 gets wrapped once in each — they're independent.
+    - In all lessons, do **not** wrap glossary terms inside: headings (`h1`–`h4`), SVG `<text>` elements, the page `<title>`, attribute values, the prev/next `lesson-nav` block, or company chips. Don't double-wrap text already inside a `.term` span.
 
 5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for Layer 3.
 
