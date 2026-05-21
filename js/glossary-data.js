@@ -79,6 +79,36 @@ const GLOSSARY = {
     `
   },
 
+  'sox': {
+    term: 'Sarbanes-Oxley Act',
+    acronym: 'SOX',
+    body: `
+      <p>A US federal law passed in 2002, after the Enron and WorldCom accounting scandals, that tightened the rules around financial reporting at public companies.</p>
+      <p>For consolidation, the parts that matter most:</p>
+      <ul>
+        <li>The CEO and CFO have to personally sign off on the consolidated financial statements and certify they are accurate. If the numbers are wrong, that's on them — personally.</li>
+        <li>Companies have to document and test the internal controls behind those numbers. "We trust the spreadsheet" is not an acceptable answer.</li>
+        <li>External auditors have to independently audit those controls, not just the final numbers.</li>
+      </ul>
+      <p>For software building the consolidation pipeline, SOX is why every calculation needs an <span class="term" data-term="audit-trail">audit trail</span>, every change needs to be attributable, and every period needs to be reproducible long after it closes.</p>
+    `
+  },
+
+  'auditor': {
+    term: 'Auditor',
+    body: `
+      <p>An independent accountant — usually from an outside firm — hired to examine a company's financial statements and confirm they are accurate, complete, and prepared in line with the relevant accounting rules (<span class="term" data-term="gaap">GAAP</span> or <span class="term" data-term="ifrs">IFRS</span>).</p>
+      <p>The result of the work is an <strong>audit opinion</strong> attached to the statements. A "clean" (unqualified) opinion tells outside readers the numbers can be trusted; anything else is a warning sign.</p>
+      <p>For consolidation, auditors check that:</p>
+      <ul>
+        <li>Each subsidiary's underlying numbers are accurate.</li>
+        <li>The consolidation calculations — translation, elimination, ownership adjustments — were done correctly.</li>
+        <li>The company can show <em>how</em> it got from subsidiary books to the consolidated total. This is why <span class="term" data-term="audit-trail">audit trails</span> matter.</li>
+      </ul>
+      <p>Public-company audits in the US are required by law and regulated under the <span class="term" data-term="sox">Sarbanes-Oxley Act</span>. The big audit firms (PwC, Deloitte, EY, KPMG — collectively the "Big Four") handle most of these engagements.</p>
+    `
+  },
+
   'financial-statements': {
     term: 'Financial Statements',
     body: `
@@ -501,6 +531,21 @@ const GLOSSARY = {
         <li>The value drops permanently (impairment)</li>
       </ul>
       <p>Under modern <span class="term" data-term="ifrs">IFRS</span> and <span class="term" data-term="gaap">GAAP</span>, most of these small investments are now marked to fair value at each reporting date instead.</p>
+    `
+  },
+
+  'ma': {
+    term: 'M&A',
+    acronym: 'Mergers and Acquisitions',
+    body: `
+      <p>The catch-all term for deals where one company buys, sells, or combines with another. The "acquisition" half is the common case: one company (the <strong>acquirer</strong>) buys a controlling stake in another (the <strong>target</strong>) and the target becomes a <span class="term" data-term="subsidiary">subsidiary</span>. The "merger" half is two companies combining into one new legal entity, which is much rarer in practice.</p>
+      <p>M&A is where consolidation gets interesting:</p>
+      <ul>
+        <li>The acquirer needs to combine the target into its group statements going forward.</li>
+        <li>The price paid above the target's net asset value becomes <span class="term" data-term="goodwill">goodwill</span> on the consolidated balance sheet.</li>
+        <li>If the acquirer didn't buy 100%, the leftover slice is tracked as <span class="term" data-term="nci">non-controlling interest</span>.</li>
+      </ul>
+      <p>Before a deal closes, both sides — and their advisors — pore over the target's consolidated statements to value the business and negotiate the price.</p>
     `
   },
 

@@ -65,6 +65,8 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 9. **No persuasive content, no marketing voice.** Explanatory, neutral, factual.
 
+10. **Don't invent company doctrine.** Curriculum content must not phrase observations as firm principles, doctrines, or "rules" the company holds — formulations like "Every architectural decision must…", "Our three core principles…", "The company always…" should be avoided unless that exact framing came from the founders or product leadership. Where it would be useful to highlight considerations, present them as a plain list of points to keep in mind, common patterns to be aware of, or trade-offs worth thinking about — not as declared principles attributed to the team. When in doubt, soften the framing.
+
 ---
 
 ## Lesson template

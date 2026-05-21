@@ -23,7 +23,7 @@
 
 <p>The same applies in nearly every developed country. Public companies in Europe, Japan, the UK, Canada, Australia — they all have equivalent regulatory requirements. The specific rules come from <span class="term" data-term="gaap">GAAP</span> (in the US) or <span class="term" data-term="ifrs">IFRS</span> (most of the rest of the world), but both frameworks demand consolidated statements when a parent controls one or more subsidiaries.</p>
 
-<p>Even many private companies are required to consolidate — by lenders, by investors, by <span class="term" data-term="joint-venture">joint venture</span> partners, or by tax authorities in certain jurisdictions.</p>
+<p>Even private companies can be legally required to consolidate — for example, by tax authorities in jurisdictions that tax groups on a consolidated basis.</p>
 
 <h3>The principle behind the requirement</h3>
 
@@ -54,21 +54,21 @@
   <li><strong>Investors</strong> deciding whether to buy or hold the company's shares</li>
   <li><strong>Lenders</strong> deciding whether to extend credit and at what rate</li>
   <li><strong>Rating agencies</strong> assigning credit ratings</li>
-  <li><strong>Analysts</strong> covering the company professionally</li>
-  <li><strong>Acquirers</strong> evaluating the business in M&A negotiations</li>
+  <li><strong>Research analysts</strong> who publish reports and forecasts about the company for investors</li>
+  <li><strong>Acquirers</strong> evaluating the business in <span class="term" data-term="ma">M&amp;A</span> negotiations</li>
   <li><strong>Tax authorities</strong> in certain regimes (e.g., some countries tax on a group basis)</li>
-  <li><strong>Joint venture partners</strong> who want to see consolidated performance</li>
+  <li><strong><span class="term" data-term="joint-venture">Joint venture</span> partners</strong> who want to see consolidated performance</li>
 </ul>
 
-<p>All of these audiences treat the consolidated statements as the canonical source of truth about the company's performance.</p>
+<p>All of these audiences treat the consolidated statements as the official record of how the company is performing.</p>
 
 <h2>Why this is hard, not just tedious</h2>
 
-<p>Producing consolidated statements isn't bookkeeping. It's a structured process with real judgment, real risk, and real consequences for getting it wrong.</p>
+<p><em>Producing consolidated statements isn't bookkeeping.</em> It's a structured process with real judgment, real risk, and real consequences for getting it wrong.</p>
 
 <h3>The numbers carry weight</h3>
 
-<p>A misstated consolidated number can move a stock price, trigger a debt covenant default, mislead investors, or expose executives to legal liability. The Sarbanes-Oxley Act in the US makes CEOs and CFOs personally certify the accuracy of consolidated statements. Auditors examine them in detail. Mistakes are public and expensive.</p>
+<p>A misstated consolidated number can move a stock price, break a loan agreement (lenders often write rules into the contract that require the company to keep certain financial ratios — miss them and the loan can be called due), mislead investors, or expose executives to legal liability. The <span class="term" data-term="sox">Sarbanes-Oxley Act</span> in the US makes CEOs and CFOs personally certify the accuracy of consolidated statements. <span class="term" data-term="auditor">Auditors</span> examine them in detail. Mistakes are public and expensive.</p>
 
 <h3>The process is constrained by time</h3>
 
@@ -82,7 +82,7 @@
 
 <div class="callout callout-dev">
   <div class="callout-title">For developers</div>
-  <p>The product exists because consolidation is high-stakes, time-pressured, and complex enough that doing it manually in Excel breaks down. Every architectural decision should be made with three things in mind:</p>
+  <p>The product exists because consolidation is high-stakes, time-pressured, and complex enough that doing it manually in Excel breaks down. Keep these points in mind while making architectural decisions:</p>
   <ul style="margin-top: 8px;">
     <li><strong>Correctness.</strong> The numbers must be right. There's no "mostly right."</li>
     <li><strong>Speed.</strong> Closes are calendar-driven. Slow software costs the customer real money.</li>
@@ -97,7 +97,7 @@
   <li>The underlying principle is the "true and fair view" of group financials.</li>
   <li>Management needs it to make business decisions, not just to file reports.</li>
   <li>External stakeholders rely on it for their own decisions.</li>
-  <li>The combination of stakes, time pressure, and audit requirements makes it a serious software problem.</li>
+  <li>The combination of consequences, time pressure, and audit requirements makes it a serious software problem.</li>
 </ul>
 
       <nav class="lesson-nav">
