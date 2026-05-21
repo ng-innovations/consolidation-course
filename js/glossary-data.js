@@ -592,11 +592,36 @@ const GLOSSARY = {
     `
   },
 
+  'depreciation': {
+    term: 'Depreciation',
+    body: `
+      <p>The way an asset's cost is spread across the years it's used, rather than being expensed all at once when it's bought.</p>
+      <div class="example-box">
+        <strong>Example:</strong> A $50,000 truck expected to last 5 years gets expensed at $10,000 per year. Each year, $10,000 hits the income statement as "depreciation expense" and the truck's recorded value on the balance sheet drops by $10,000. After 3 years, the truck is at $20,000 on the books even though the cash was spent up front.
+      </div>
+      <p>The cumulative amount that's been depreciated so far is called <strong>accumulated depreciation</strong>. The idea is to match the cost of using an asset to the periods that benefit from it, instead of having one giant expense in the year of purchase.</p>
+      <p>Land typically isn't depreciated (it doesn't wear out). Intangible assets get a parallel treatment called <em>amortization</em>.</p>
+    `
+  },
+
+  'impairment': {
+    term: 'Impairment',
+    body: `
+      <p>A one-off reduction in an asset's recorded value, made when something has happened that means the asset is no longer worth what it's currently shown as on the books. Triggered by specific events — damage, equipment becoming outdated, a subsidiary's earnings collapsing, a market downturn.</p>
+      <p>Compared to <span class="term" data-term="depreciation">depreciation</span>:</p>
+      <ul>
+        <li>Depreciation is <em>scheduled</em> — a predictable amount each period over the asset's useful life.</li>
+        <li>Impairment is <em>event-driven</em> — recognized when something specific has gone wrong and the recorded value no longer reflects reality.</li>
+      </ul>
+      <p>Under <span class="term" data-term="gaap">US GAAP</span>, once an asset has been impaired its recorded value generally can't be raised again later, even if conditions improve.</p>
+    `
+  },
+
   'book-value': {
     term: 'Book Value (Carrying Value)',
     body: `
-      <p>The value of an asset (or company) as recorded on the books, after subtracting accumulated depreciation, impairment, and similar adjustments.</p>
-      <p>At the asset level, this is more often called the <strong>carrying value</strong> (or <strong>carrying amount</strong>) — for example, "the carrying value of the investment in Acme Industrials is $5,000." Under the <span class="term" data-term="equity-method">equity method</span>, the carrying value of an investment goes up when the investee earns profit, and down when dividends are received or losses are recognized.</p>
+      <p>The value of an asset (or company) as recorded on the books, after subtracting things like <span class="term" data-term="depreciation">depreciation</span> and <span class="term" data-term="impairment">impairment</span>.</p>
+      <p>At the asset level this is more often called the <strong>carrying value</strong> (or <strong>carrying amount</strong>) — for example, "the carrying value of the investment in Acme Industrials is $5,000."</p>
       <p>Book value often differs from <span class="term" data-term="fair-value">fair value</span>. A building bought 20 years ago for $1 million might be on the books at $400,000 (after depreciation) but be worth $3 million today.</p>
     `
   },

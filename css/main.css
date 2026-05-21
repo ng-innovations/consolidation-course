@@ -534,6 +534,19 @@ html, body {
   font-weight: 600;
 }
 
+/* Inline chip used to refer to a named entity from a diagram in body text.
+   Background color is set inline per company so it matches the diagram. */
+.company-chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
 /* Diagram styling for inline SVG in content */
 .diagram {
   display: block;

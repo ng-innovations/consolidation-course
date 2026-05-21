@@ -60,11 +60,25 @@
 
 <p><strong>Example:</strong> Parent buys 5% of BrightWave Energy, a publicly traded company, as a financial investment — no board seat, no role in decisions, just shares.</p>
 
+<svg class="diagram" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="600" height="30" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="3"/>
+  <rect x="40" y="40" width="30" height="30" fill="#cbd5e1" stroke="#64748b" stroke-width="1.5" rx="3"/>
+  <text x="55" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Parent 5%</text>
+  <text x="355" y="30" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">Other shareholders 95%</text>
+</svg>
+
 <h3>Associate — significant influence (typically 20% to 50%)</h3>
 
 <p>The investor has enough ownership to influence the investee but not control it. They might have a board seat, participate in policy decisions, or have a material voice in operations. An investee in this range is called an <span class="term" data-term="associate">associate</span>.</p>
 
 <p><strong>Example:</strong> Parent owns 30% of Acme Industrials and holds one of three board seats. It has a real voice in how Acme is run but can be outvoted on major decisions.</p>
+
+<svg class="diagram" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="600" height="30" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="3"/>
+  <rect x="40" y="40" width="180" height="30" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5" rx="3"/>
+  <text x="130" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Parent 30%</text>
+  <text x="430" y="30" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">Other shareholders 70%</text>
+</svg>
 
 <h3>Joint venture — joint control</h3>
 
@@ -72,11 +86,40 @@
 
 <p><strong>Example:</strong> Parent and Northwind Logistics each put up half the capital for a new shipping venture. They split the board two-and-two, and major decisions require unanimous consent.</p>
 
+<svg class="diagram" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="600" height="30" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="3"/>
+  <rect x="40" y="40" width="300" height="30" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="1.5" rx="3"/>
+  <rect x="340" y="40" width="300" height="30" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5" rx="3"/>
+  <text x="190" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Parent 50%</text>
+  <text x="490" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#3730a3">Northwind Logistics 50%</text>
+</svg>
+
 <h3>Subsidiary — control (typically over 50%)</h3>
 
 <p>The investor has <span class="term" data-term="control">control</span> — the power to direct the investee's activities. The investee is now a <span class="term" data-term="subsidiary">subsidiary</span> of the investor.</p>
 
 <p><strong>Example:</strong> Parent owns 80% of Summit Foods and appoints four of five board seats. The remaining 20% is held by outside investors with no ability to block Parent's decisions.</p>
+
+<svg class="diagram" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="600" height="30" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="3"/>
+  <rect x="40" y="40" width="480" height="30" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" rx="3"/>
+  <text x="280" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Parent 80%</text>
+  <text x="580" y="30" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">Others 20%</text>
+</svg>
+
+<h3>Non-controlling interest</h3>
+
+<p>Not a separate category of investor-to-investee relationship, but a label for the collective slice <em>left over</em> when a parent owns most — but not all — of a subsidiary. The <span class="term" data-term="nci">non-controlling interest</span> (NCI) is the combined stake held by everyone other than the parent: in the Summit Foods example above, NCI is the 20% held by all those outside investors taken together.</p>
+
+<p>NCI only exists alongside a controlled subsidiary; in passive, associate, or joint-venture relationships there's no equivalent line. It appears later in this lesson and again in the treatments below.</p>
+
+<svg class="diagram" viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="40" width="600" height="30" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="3"/>
+  <rect x="40" y="40" width="480" height="30" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" rx="3"/>
+  <rect x="520" y="40" width="120" height="30" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" rx="3"/>
+  <text x="280" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">Parent 80%</text>
+  <text x="580" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">NCI 20%</text>
+</svg>
 
 <h2>Treatments</h2>
 
@@ -173,7 +216,7 @@
 
 <p>Conversely, a company might own 60% and not have control because of a shareholder agreement that requires unanimous consent for major decisions.</p>
 
-<p>In edge cases — particularly with special-purpose vehicles — <span class="term" data-term="gaap">US GAAP</span> uses the concept of a <span class="term" data-term="vie">Variable Interest Entity</span> (VIE): an entity controlled through contractual arrangements rather than equity ownership. If you're the "primary beneficiary" of a VIE, you must consolidate it as if it were a regular subsidiary, even with zero shares.</p>
+<p>Edge cases like these — including special-purpose entities controlled through contracts rather than equity ownership — are covered in Layer 4 of this course.</p>
 
 <h2>Non-controlling interest in more detail</h2>
 
@@ -187,44 +230,44 @@
 
 <p>Most groups don't have a flat structure where the parent directly owns every subsidiary. Real-world groups look more like trees: the parent owns intermediate holding companies, which own operating subsidiaries, which sometimes own further subsidiaries.</p>
 
-<svg class="diagram" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
-  <rect x="290" y="20" width="100" height="40" fill="#1e3a8a" rx="4"/>
-  <text x="340" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="white">Parent P</text>
+<svg class="diagram" viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg">
+  <rect x="270" y="20" width="140" height="42" fill="#1e3a8a" rx="5"/>
+  <text x="340" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="white">Apex Holdings</text>
 
-  <line x1="340" y1="60" x2="200" y2="100" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="340" y1="60" x2="480" y2="100" stroke="#64748b" stroke-width="1.5"/>
-  <text x="250" y="80" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
-  <text x="420" y="80" font-size="11" fill="#1e3a8a" font-weight="600">80%</text>
+  <line x1="340" y1="62" x2="180" y2="108" stroke="#475569" stroke-width="1.5"/>
+  <line x1="340" y1="62" x2="500" y2="108" stroke="#475569" stroke-width="1.5"/>
+  <text x="240" y="85" font-size="11" font-weight="700" fill="#1e3a8a">100%</text>
+  <text x="425" y="85" font-size="11" font-weight="700" fill="#1e3a8a">80%</text>
 
-  <rect x="150" y="100" width="100" height="40" fill="#3b82f6" rx="4"/>
-  <text x="200" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="white">Holdco H</text>
+  <rect x="110" y="108" width="140" height="42" fill="#0d9488" rx="5"/>
+  <text x="180" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="white">Cedar Capital</text>
 
-  <rect x="430" y="100" width="100" height="40" fill="#3b82f6" rx="4"/>
-  <text x="480" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="white">Sub C</text>
+  <rect x="430" y="108" width="140" height="42" fill="#be185d" rx="5"/>
+  <text x="500" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="white">Beacon Health</text>
 
-  <line x1="200" y1="140" x2="120" y2="180" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="200" y1="140" x2="280" y2="180" stroke="#64748b" stroke-width="1.5"/>
-  <text x="145" y="160" font-size="11" fill="#1e3a8a" font-weight="600">100%</text>
-  <text x="255" y="160" font-size="11" fill="#1e3a8a" font-weight="600">70%</text>
+  <line x1="180" y1="150" x2="90" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <line x1="180" y1="150" x2="270" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <text x="110" y="175" font-size="11" font-weight="700" fill="#1e3a8a">100%</text>
+  <text x="225" y="175" font-size="11" font-weight="700" fill="#1e3a8a">70%</text>
 
-  <rect x="70" y="180" width="100" height="40" fill="#60a5fa" rx="4"/>
-  <text x="120" y="205" text-anchor="middle" font-size="12" font-weight="600" fill="white">Sub A</text>
+  <rect x="20" y="200" width="140" height="42" fill="#d97706" rx="5"/>
+  <text x="90" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="white">Pioneer Foods</text>
 
-  <rect x="230" y="180" width="100" height="40" fill="#60a5fa" rx="4"/>
-  <text x="280" y="205" text-anchor="middle" font-size="12" font-weight="600" fill="white">Sub B</text>
+  <rect x="200" y="200" width="140" height="42" fill="#7c3aed" rx="5"/>
+  <text x="270" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="white">Halcyon Tools</text>
 
-  <text x="340" y="260" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">P's indirect ownership of B = 100% × 70% = 70%</text>
+  <text x="340" y="275" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">Apex Holdings' indirect ownership of Halcyon Tools = 100% × 70% = 70%</text>
 </svg>
 
 <p>In the diagram above:</p>
 
 <ul>
-  <li>P directly owns 100% of Holdco H and 80% of Sub C.</li>
-  <li>H owns 100% of Sub A and 70% of Sub B.</li>
-  <li>P's <strong>direct</strong> ownership of B is 0% — but P's <strong>indirect</strong> ownership through H is 100% × 70% = 70%.</li>
+  <li><span class="company-chip" style="background:#1e3a8a;">Apex Holdings</span> directly owns 100% of <span class="company-chip" style="background:#0d9488;">Cedar Capital</span> and 80% of <span class="company-chip" style="background:#be185d;">Beacon Health</span>.</li>
+  <li><span class="company-chip" style="background:#0d9488;">Cedar Capital</span> owns 100% of <span class="company-chip" style="background:#d97706;">Pioneer Foods</span> and 70% of <span class="company-chip" style="background:#7c3aed;">Halcyon Tools</span>.</li>
+  <li><span class="company-chip" style="background:#1e3a8a;">Apex Holdings</span>' <strong>direct</strong> ownership of <span class="company-chip" style="background:#7c3aed;">Halcyon Tools</span> is 0% — but its <strong>indirect</strong> ownership through <span class="company-chip" style="background:#0d9488;">Cedar Capital</span> is 100% × 70% = 70%.</li>
 </ul>
 
-<p>For consolidation purposes, what matters is the <em>effective</em> ownership — the chain of percentages multiplied together. And whether the group must consolidate B depends on whether P, through H, controls it (which here, with 70%, it does).</p>
+<p>For consolidation purposes, what matters is the <em>effective</em> ownership — the chain of percentages multiplied together. And whether the group must consolidate <span class="company-chip" style="background:#7c3aed;">Halcyon Tools</span> depends on whether <span class="company-chip" style="background:#1e3a8a;">Apex Holdings</span>, through <span class="company-chip" style="background:#0d9488;">Cedar Capital</span>, controls it (which here, with 70%, it does).</p>
 
 <h2>Why this matters for the software</h2>
 
