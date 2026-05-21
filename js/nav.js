@@ -49,7 +49,7 @@
       layer.lessons.forEach(lesson => {
         const isActive = activeFile && lesson.file.endsWith(activeFile);
         html += `<li><a href="${root}${lesson.file}" class="${isActive ? 'active' : ''}">
-          <span class="nav-num">${lesson.num}</span>${lesson.title}
+          <span class="nav-check"></span><span class="nav-num">${lesson.num}</span>${lesson.title}
         </a></li>`;
       });
       html += '</ul></div>';
