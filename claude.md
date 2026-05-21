@@ -55,7 +55,7 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 4. **No term used before it's introduced.** Glossary entries can cross-reference each other freely, but the *first time a term appears in a lesson body* it should be marked with `<span class="term" data-term="key">term</span>`. Subsequent appearances in the same lesson don't need re-marking.
 
-5. **Worked examples are small.** Single-digit subs (Sub A, Sub B), round numbers ($100, $1,000), one or two currencies max. Save bigger fictional companies and richer scenarios for Layer 3.
+5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for Layer 3.
 
 6. **Every lesson ends with a "For developers" callout** — a `<div class="callout callout-dev">` near the end that talks directly to engineers about implications for the app: what the data model needs to support, what edge cases to plan for, what gets confusing in implementation.
 
@@ -66,6 +66,8 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 9. **No persuasive content, no marketing voice.** Explanatory, neutral, factual.
 
 10. **Don't invent company doctrine.** Curriculum content must not phrase observations as firm principles, doctrines, or "rules" the company holds — formulations like "Every architectural decision must…", "Our three core principles…", "The company always…" should be avoided unless that exact framing came from the founders or product leadership. Where it would be useful to highlight considerations, present them as a plain list of points to keep in mind, common patterns to be aware of, or trade-offs worth thinking about — not as declared principles attributed to the team. When in doubt, soften the framing.
+
+11. **Illustrative examples need concrete names, not placeholders.** When an example is meant to help the reader picture a scenario — "Parent owns 30% of X and has one board seat", "Sub Y borrows from Sub Z" — give the entities realistic-sounding fictional company names (Acme Industrials, BrightWave Energy, Northwind Logistics, Summit Foods, Cedar Manufacturing, Stellar Health, etc.) rather than abstract placeholders like "Sub A" or "Sub B". The point of an example is to make a concept tangible; a name like "Acme Industrials" lets the reader build a mental picture, while "Sub A" stays generic and forgettable. Abstract placeholders (P, S, Sub A, Sub B) are appropriate **only** in worked numerical/accounting walkthroughs and in structural diagrams (org charts, ownership trees) where a real name would distract from the relationships being illustrated. "Parent" can remain abstract — the reader is meant to identify with it — but the entities it holds or transacts with should be named.
 
 ---
 

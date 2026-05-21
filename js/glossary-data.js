@@ -408,12 +408,7 @@ const GLOSSARY = {
     term: 'Control',
     body: `
       <p>In consolidation accounting, "control" means having the power to direct the activities of another company. Under both <span class="term" data-term="gaap">GAAP</span> and <span class="term" data-term="ifrs">IFRS</span>, control is what triggers <em>full consolidation</em>.</p>
-      <p>The most common form of control is owning more than 50% of voting shares. But control can also exist through:</p>
-      <ul>
-        <li>Contractual rights</li>
-        <li>Board appointment power</li>
-        <li>Variable interests in special-purpose entities</li>
-      </ul>
+      <p>The most common form of control is owning more than 50% of voting shares, but there are other ways control can be established.</p>
       <p>If you control a company, you must consolidate it fully. If you have influence but not control, you use the <span class="term" data-term="equity-method">equity method</span> instead.</p>
     `
   },
@@ -445,6 +440,20 @@ const GLOSSARY = {
     term: 'Associate',
     body: `
       <p>A company in which the investor has <em>significant influence</em> but not <span class="term" data-term="control">control</span> — typically a 20%–50% ownership stake.</p>
+      <p><strong>Naming gotcha:</strong> "associate" refers to the <em>held</em> company (the investee), not the holder. The investor isn't called the associate; the company it has significant influence over is.</p>
+      <svg class="glossary-svg" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="20" width="240" height="50" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5" rx="4"/>
+        <text x="160" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#0c4a6e">Investor company</text>
+        <text x="160" y="58" text-anchor="middle" font-size="11" fill="#475569">(e.g., the parent)</text>
+
+        <line x1="160" y1="72" x2="160" y2="132" stroke="#1e3a8a" stroke-width="1.5"/>
+        <polygon points="160,138 154,128 166,128" fill="#1e3a8a"/>
+        <text x="170" y="106" font-size="11" font-weight="600" fill="#1e3a8a">owns 20–50%</text>
+
+        <rect x="40" y="140" width="240" height="55" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2" rx="4"/>
+        <text x="160" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Investee</text>
+        <text x="160" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">= the "Associate"</text>
+      </svg>
       <p>Associates are not fully consolidated. Instead, they're accounted for using the <span class="term" data-term="equity-method">equity method</span>: the investor records its share of the associate's profit each period, but doesn't combine all the line-by-line activity.</p>
     `
   },
@@ -455,7 +464,7 @@ const GLOSSARY = {
     body: `
       <p>An arrangement where two or more parties jointly control a separate business. Typical setup: two companies each own 50% and share decision-making.</p>
       <p>Under <span class="term" data-term="ifrs">IFRS</span>, joint ventures are accounted for using the <span class="term" data-term="equity-method">equity method</span> (just like associates).</p>
-      <p>Some older guidance allowed <strong>proportional consolidation</strong> — combining your share of each line — but this is rare today.</p>
+      <p>Some older guidance allowed <span class="term" data-term="proportional-consolidation">proportional consolidation</span> — combining your share of each line — but this is rare today.</p>
     `
   },
 
@@ -465,7 +474,7 @@ const GLOSSARY = {
     body: `
       <p>The portion of a subsidiary that the parent does <em>not</em> own. If the parent owns 80% of a subsidiary, the other 20% is the non-controlling interest.</p>
       <p>When we consolidate, we include <strong>100%</strong> of the subsidiary's assets, liabilities, revenue, and expenses — because the parent controls all of it. But we have to acknowledge that some of the equity and net income belongs to other shareholders. That's where NCI comes in.</p>
-      <p>On the <span class="term" data-term="balance-sheet">consolidated balance sheet</span>, NCI is shown as a separate line within equity. On the <span class="term" data-term="income-statement">income statement</span>, the bottom is split into "Net income attributable to parent" and "Net income attributable to NCI."</p>
+      <p>On the consolidated <span class="term" data-term="balance-sheet">balance sheet</span>, NCI is shown as a separate line within equity. On the <span class="term" data-term="income-statement">income statement</span>, the bottom is split into "Net income attributable to parent" and "Net income attributable to NCI."</p>
       <svg class="glossary-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
         <text x="160" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Subsidiary Equity = $1,000</text>
         <rect x="40" y="40" width="240" height="60" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1.5"/>
@@ -534,6 +543,21 @@ const GLOSSARY = {
     `
   },
 
+  'proportional-consolidation': {
+    term: 'Proportional Consolidation',
+    body: `
+      <p>An older method of accounting for <span class="term" data-term="joint-venture">joint ventures</span>. The investor pulls its <em>share</em> of each line item — its share of cash, revenue, expense, and so on — into its own consolidated statements. So a 50/50 JV partner would pick up 50% of every line of the venture.</p>
+      <p>It sits between the two other consolidation methods:</p>
+      <ul>
+        <li><span class="term" data-term="full-consolidation">Full consolidation</span> brings in 100% of each line, with the slice you don't own tracked separately as <span class="term" data-term="nci">non-controlling interest</span>.</li>
+        <li>The <span class="term" data-term="equity-method">equity method</span> collapses your entire stake into a single line on the balance sheet and a single line on the income statement.</li>
+        <li>Proportional consolidation sits in between: your % of every line, fully visible but scaled down.</li>
+      </ul>
+      <p>Modern <span class="term" data-term="ifrs">IFRS</span> (IFRS 11, effective 2013) eliminated proportional consolidation for joint ventures — all JVs now use the equity method. <span class="term" data-term="gaap">US GAAP</span> never broadly permitted it for general JVs either, although similar treatment still appears in narrow industries (e.g., undivided interests in oil-and-gas operations).</p>
+      <p>You'll still see proportional consolidation mentioned in older statements and textbooks. For new consolidations, treat it as a historical footnote rather than something you'd build for.</p>
+    `
+  },
+
   'ma': {
     term: 'M&A',
     acronym: 'Mergers and Acquisitions',
@@ -569,9 +593,10 @@ const GLOSSARY = {
   },
 
   'book-value': {
-    term: 'Book Value',
+    term: 'Book Value (Carrying Value)',
     body: `
-      <p>The value of an asset (or company) as recorded on the books, after subtracting accumulated depreciation and similar adjustments.</p>
+      <p>The value of an asset (or company) as recorded on the books, after subtracting accumulated depreciation, impairment, and similar adjustments.</p>
+      <p>At the asset level, this is more often called the <strong>carrying value</strong> (or <strong>carrying amount</strong>) — for example, "the carrying value of the investment in Acme Industrials is $5,000." Under the <span class="term" data-term="equity-method">equity method</span>, the carrying value of an investment goes up when the investee earns profit, and down when dividends are received or losses are recognized.</p>
       <p>Book value often differs from <span class="term" data-term="fair-value">fair value</span>. A building bought 20 years ago for $1 million might be on the books at $400,000 (after depreciation) but be worth $3 million today.</p>
     `
   },
