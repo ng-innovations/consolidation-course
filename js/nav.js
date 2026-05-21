@@ -10,8 +10,8 @@
           { num: '1.3', title: 'Ownership & control', file: 'lessons/layer1/1-3-cast-of-characters.html' },
           { num: '1.4', title: 'The consolidation workflow', file: 'lessons/layer1/1-4-workflow.html' },
           { num: '1.5', title: 'Key outputs', file: 'lessons/layer1/1-5-key-outputs.html' },
-          { num: '1.6', title: 'Why Excel breaks', file: 'lessons/layer1/1-6-why-excel-breaks.html' },
-          { num: '1.7', title: 'Data states through the pipeline', file: 'lessons/layer1/1-7-data-states.html' }
+          { num: '1.6', title: 'Source data', file: 'lessons/layer1/1-6-source-data.html' },
+          { num: '1.7', title: 'Why Excel breaks at scale', file: 'lessons/layer1/1-7-why-excel-breaks.html' }
         ]
       },
       {

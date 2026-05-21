@@ -79,7 +79,9 @@ html, body {
 }
 
 .nav-list li a {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
   padding: 6px 10px;
   font-size: 13px;
   color: var(--color-text);
@@ -100,8 +102,7 @@ html, body {
 }
 
 .nav-num {
-  display: inline-block;
-  width: 32px;
+  flex: 0 0 26px;
   font-weight: 600;
   color: var(--color-text-muted);
 }
@@ -111,8 +112,7 @@ html, body {
 }
 
 .nav-check {
-  display: inline-block;
-  width: 14px;
+  flex: 0 0 14px;
   text-align: center;
   color: #16a34a;
   font-weight: 700;
