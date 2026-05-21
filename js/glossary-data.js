@@ -54,9 +54,9 @@ const GLOSSARY = {
     term: 'GAAP',
     acronym: 'Generally Accepted Accounting Principles',
     body: `
-      <p>The accounting rulebook used in the United States. It's set by the <strong>FASB</strong> (Financial Accounting Standards Board).</p>
+      <p>The accounting rulebook used in the United States. It's set by the <span class="term" data-term="fasb">FASB</span> (Financial Accounting Standards Board).</p>
       <p>GAAP tells companies how to recognize revenue, when to record expenses, how to value assets, and crucially for our purposes — how to consolidate financial statements.</p>
-      <p>US public companies are required to follow GAAP. Most other countries use IFRS instead.</p>
+      <p>US public companies are required to follow GAAP. Most other countries use <span class="term" data-term="ifrs">IFRS</span> instead.</p>
     `
   },
 
@@ -211,6 +211,19 @@ const GLOSSARY = {
     body: `
       <p>Money the company owes to suppliers for goods or services received but not yet paid for. It's a <span class="term" data-term="liabilities">liability</span> on the <span class="term" data-term="balance-sheet">balance sheet</span>.</p>
       <p>AR and AP are mirror images. If Company X sells to Company Y on credit, X has AR and Y has AP for the same amount.</p>
+    `
+  },
+
+  'counterparty': {
+    term: 'Counterparty',
+    body: `
+      <p>The other party in a transaction or contract. If your company sells goods to a customer, the customer is the counterparty on that sale; if you borrow money from a bank, the bank is the counterparty on that loan.</p>
+      <p>In consolidation, the term is useful because it lets you classify a transaction by <em>who</em> the other side is:</p>
+      <ul>
+        <li>If the counterparty is another entity in the same <span class="term" data-term="group">group</span>, the transaction is <span class="term" data-term="intercompany">intercompany</span> and must be eliminated.</li>
+        <li>If the counterparty is outside the group, the transaction stays in the consolidated results.</li>
+      </ul>
+      <p>"Counterparty risk" is the risk that the other party fails to pay or perform — and the group view is what tells you the total exposure to any one counterparty across all subsidiaries.</p>
     `
   },
 

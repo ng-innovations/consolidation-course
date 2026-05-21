@@ -1,5 +1,10 @@
-// Wait for both glossary data and DOM
+// Glossary panel: opens entries when a `.term` is clicked anywhere on the page
+// (including inside the glossary panel itself, to support cross-references), and
+// keeps a back stack so "← back" walks through the chain of viewed entries.
 (function() {
+  let backStack = [];
+  let currentKey = null;
+
   function init() {
     if (typeof GLOSSARY === 'undefined') {
       setTimeout(init, 50);
@@ -10,17 +15,17 @@
   }
 
   function setupGlossaryClicks() {
-    const terms = document.querySelectorAll('.term');
-    terms.forEach(t => {
-      t.addEventListener('click', function(e) {
-        e.preventDefault();
-        const key = this.getAttribute('data-term');
-        showGlossary(key);
-      });
+    document.addEventListener('click', function(e) {
+      const term = e.target.closest('.term');
+      if (!term) return;
+      e.preventDefault();
+      showGlossary(term.getAttribute('data-term'));
     });
   }
 
   function showInitialGlossary() {
+    backStack = [];
+    currentKey = null;
     const panel = document.getElementById('glossary-panel');
     if (!panel) return;
     panel.innerHTML = `
@@ -35,7 +40,7 @@
     `;
   }
 
-  function showGlossary(key) {
+  function renderEntry(key) {
     const panel = document.getElementById('glossary-panel');
     if (!panel) return;
     const entry = GLOSSARY[key];
@@ -45,7 +50,7 @@
     }
 
     let html = `
-      <button class="glossary-close" onclick="window.GlossaryAPI.clear()">← back</button>
+      <button class="glossary-close" onclick="window.GlossaryAPI.back()">← back</button>
       <div class="glossary-entry">
         <div class="glossary-term-header">Glossary</div>
         <div class="glossary-term">${entry.term}</div>
@@ -58,8 +63,25 @@
     panel.scrollTop = 0;
   }
 
+  function showGlossary(key) {
+    if (!key || key === currentKey) return;
+    if (currentKey) backStack.push(currentKey);
+    currentKey = key;
+    renderEntry(key);
+  }
+
+  function goBack() {
+    if (backStack.length === 0) {
+      showInitialGlossary();
+      return;
+    }
+    currentKey = backStack.pop();
+    renderEntry(currentKey);
+  }
+
   window.GlossaryAPI = {
     show: showGlossary,
+    back: goBack,
     clear: showInitialGlossary
   };
 
