@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Handsontable POC — Trial Balance Grid</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@14.6.1/dist/handsontable.full.min.css">
+<script src="https://cdn.jsdelivr.net/npm/hyperformula@2.7.1/dist/hyperformula.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handsontable@14.6.1/dist/handsontable.full.min.js"></script>
+<style>
+  /* POC-only visual overrides. Not for css/main.css. */
+  .total-row td {
+    background-color: #f1f5f9 !important;
+    font-weight: 700 !important;
+  }
+  .handsontable {
+    font-family: var(--font-body);
+  }
+</style>
+</head>
+<body>
+<div class="app" style="grid-template-columns: 1fr;">
+  <main class="main" style="grid-template-columns: 1fr;">
+    <article class="content" style="max-width: 900px;">
+      <header class="content-header">
+        <div class="content-eyebrow">POC</div>
+        <h1>Handsontable POC — Trial Balance Grid</h1>
+      </header>
+      <p>This page tests a live, recalculating spreadsheet grid for eventual use in Layer 2 lessons. Edit any debit or credit cell and the two totals at the bottom recompute automatically via formula. Refreshing the page resets the data to the starting trial balance — no persistence.</p>
+      <div id="grid" style="margin-top: 16px;"></div>
+    </article>
+  </main>
+</div>
+
+<script>
+  const data = [
+    ['1010', 'Cash', 50000, null],
+    ['1200', 'Accounts Receivable', 30000, null],
+    ['1500', 'Inventory', 40000, null],
+    ['1700', 'Equipment', 100000, null],
+    ['2010', 'Accounts Payable', null, 25000],
+    ['2500', 'Long-term Debt', null, 60000],
+    ['3010', 'Common Stock', null, 50000],
+    ['3020', 'Retained Earnings', null, 80000],
+    ['4010', 'Revenue', null, 120000],
+    ['5010', 'Cost of Goods Sold', 80000, null],
+    ['6010', 'Operating Expenses', 35000, null],
+    ['', 'Total Debits', '=SUM(C1:C11)', null],
+    ['', 'Total Credits', null, '=SUM(D1:D11)']
+  ];
+
+  const container = document.getElementById('grid');
+  new Handsontable(container, {
+    data: data,
+    colHeaders: ['Code', 'Account', 'Debit', 'Credit'],
+    rowHeaders: false,
+    colWidths: [70, 260, 130, 130],
+    height: 'auto',
+    licenseKey: 'non-commercial-and-evaluation',
+    formulas: {
+      engine: HyperFormula
+    },
+    columns: [
+      { type: 'text' },
+      { type: 'text' },
+      { type: 'numeric', numericFormat: { pattern: '0,0', culture: 'en-US' } },
+      { type: 'numeric', numericFormat: { pattern: '0,0', culture: 'en-US' } }
+    ],
+    cells: function(row, col) {
+      const props = {};
+      if (row === 11 || row === 12) {
+        props.className = 'total-row';
+        props.readOnly = true;
+      }
+      return props;
+    }
+  });
+</script>
+</body>
+</html>

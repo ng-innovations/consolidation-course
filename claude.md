@@ -25,11 +25,17 @@ The user's consolidation pipeline is documented in `Consolidation_Process.xlsx` 
 
 ## Structure
 
-The course has three layers:
+The course has five layers. Layers 1 and 2 are populated; Layers 3, 4, and 5 are placeholders for now.
 
 - **Layer 1 — Purpose & Concepts** (7 lessons): what consolidation is, why it exists, the high-level workflow. Concept-first; no app-pipeline order forced.
-- **Layer 2 — Mechanics** (13 lessons): the accounting logic of each pipeline step. Taught in **pedagogical order**, but each lesson tags the app's pipeline step(s) it covers (e.g. "Pipeline: C.8, C.10"). Some concepts span multiple pipeline steps and are kept as one lesson for clarity.
-- **Layer 3 — Hands-on in Excel** (planned): follows the app's pipeline order **exactly**, 1:1 with pipeline steps. Builds a working consolidation from a single sample dataset.
+
+- **Layer 2 — Consolidation Steps** (13 lessons): the granular operations of consolidation, in pedagogical order. Each lesson explains one step, walks through a worked example, and (in time) embeds a live spreadsheet grid showing the same operation. Each lesson also tags the app's pipeline step(s) it covers (e.g. "Pipeline: C.8, C.10"). Some concepts span multiple pipeline steps and are kept as one lesson for clarity.
+
+- **Layer 3 — Advanced Concepts** (planned, coming soon): edge cases and wrinkles that are too detailed for a first pass through Layer 2 — step acquisitions, push-down accounting, partial disposals, deconsolidation, hyperinflationary economies, etc. Layer 2 lessons cross-reference Layer 3 inline ("see Advanced Concepts 3.5 for more on step acquisitions"). Heuristic: if a wrinkle would clutter the main flow of a Layer 2 lesson but a curious reader would still want it documented somewhere, it goes in Layer 3.
+
+- **Layer 4 — Industry-Specific Handling** (planned, coming soon): rarer treatments that only apply in particular industries — REITs, PE fund-of-funds structures, insurance, banks, oil & gas, etc. A reader can safely skip Layer 4 unless their work touches that industry. Heuristic: Layer 3 covers wrinkles that apply across industries; Layer 4 covers wrinkles specific to one.
+
+- **Layer 5 — Coming from Other Systems** (planned, coming soon): mental-model translation for developers who've worked with other consolidation systems (NetSuite OneWorld, Oracle EPM, Workday Adaptive, SAP Group Reporting, Excel-based consolidation). The framing is "here's how the concepts you already know map to ours, and where the workflows differ." This is **not** competitive analysis and **not** a system tutorial — only mental-model migration.
 
 The app's pipeline phases are: **A. Setup → B. Ingest → C. Consolidate → D. Close**. When unsure which pipeline step a concept maps to, ask before guessing. Lesson 1.4 frames these phases as one opinionated way to organize the work — not as universal accounting truth — so be careful not to over-anchor lessons to the four-phase framing.
 
@@ -58,7 +64,7 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
     - Each lesson resets its own first-occurrence tracking. A term appearing in lesson 1.2 and lesson 1.3 gets wrapped once in each — they're independent.
     - In all lessons, do **not** wrap glossary terms inside: headings (`h1`–`h4`), SVG `<text>` elements, the page `<title>`, attribute values, the prev/next `lesson-nav` block, or company chips. Don't double-wrap text already inside a `.term` span.
 
-5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for Layer 3.
+5. **Worked examples are small.** Round numbers ($100, $1,000), two or three entities, one or two currencies max. Save bigger fictional companies and richer multi-entity scenarios for the live spreadsheet grids that will accompany Layer 2 lessons, or for Layer 3's edge-case treatments.
 
 6. **Most lessons end with a "For developers" callout** — a `<div class="callout callout-dev">` near the end that talks directly to engineers about implications for the app: what the data model needs to support, what edge cases to plan for, what gets confusing in implementation. Skip the callout when a lesson doesn't have meaningful app-implementation implications, or when the body has already said everything a dev would need. Forced or generic callouts dilute the ones that do matter.
 
@@ -202,7 +208,7 @@ Follow this order. Do not skip steps.
 
 2. **Check the glossary before introducing terms.** Open `js/glossary-data.js` first. If the term exists, link to it. If it doesn't, add it before publishing the lesson that uses it.
 
-3. **Respect the layer boundaries.** Don't push Layer 3 (Excel hands-on) details into Layer 2. Don't push Layer 2 mechanics into Layer 1. If a Layer 1 lesson is starting to teach mechanics, that's a signal it belongs in Layer 2 instead.
+3. **Respect the layer boundaries.** Don't push Layer 3 edge cases or wrinkles into Layer 2 — Layer 2 is the first-pass narrative. Don't push Layer 2 mechanics into Layer 1. Don't push Layer 4 industry-specific material anywhere outside Layer 4. If a Layer 1 lesson is starting to teach mechanics, that's a signal it belongs in Layer 2 instead; if a Layer 2 lesson is bogging down in a niche scenario, that's a signal to move the niche to Layer 3 and leave a cross-reference behind.
 
 4. **When in doubt about pipeline alignment, ask.** The user knows the app's pipeline best. If a revision touches which pipeline step a concept covers, confirm before changing the tag. Don't guess.
 

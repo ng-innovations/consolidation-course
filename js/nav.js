@@ -5,6 +5,7 @@
       {
         label: 'Layer 1 — Purpose & Concepts',
         lessons: [
+          { num: '1.0', title: 'Overview', file: 'lessons/layer1/1-0-overview.html' },
           { num: '1.1', title: 'What is financial consolidation?', file: 'lessons/layer1/1-1-what-is-consolidation.html' },
           { num: '1.2', title: 'Why companies consolidate', file: 'lessons/layer1/1-2-why-consolidate.html' },
           { num: '1.3', title: 'Ownership & control', file: 'lessons/layer1/1-3-cast-of-characters.html' },
@@ -15,8 +16,9 @@
         ]
       },
       {
-        label: 'Layer 2 — Mechanics',
+        label: 'Layer 2 — Consolidation Steps',
         lessons: [
+          { num: '2.0', title: 'Overview', file: 'lessons/layer2/2-0-overview.html' },
           { num: '2.1', title: 'Chart of accounts & mapping', file: 'lessons/layer2/2-1-coa-mapping.html' },
           { num: '2.2', title: 'Trial balance collection', file: 'lessons/layer2/2-2-trial-balance.html' },
           { num: '2.3', title: 'Carryforward & opening balances', file: 'lessons/layer2/2-3-carryforward.html' },
@@ -33,15 +35,15 @@
         ]
       },
       {
-        label: 'Layer 3 — Hands-On Examples',
+        label: 'Layer 3 — Advanced Concepts',
         comingSoon: true
       },
       {
-        label: 'Layer 4 — Industry Specific Handling',
+        label: 'Layer 4 — Industry-Specific Handling',
         comingSoon: true
       },
       {
-        label: 'Layer 5 — Existing Systems',
+        label: 'Layer 5 — Coming from Other Systems',
         comingSoon: true
       }
     ]
