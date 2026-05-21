@@ -7,7 +7,7 @@
         lessons: [
           { num: '1.1', title: 'What is financial consolidation?', file: 'lessons/layer1/1-1-what-is-consolidation.html' },
           { num: '1.2', title: 'Why companies consolidate', file: 'lessons/layer1/1-2-why-consolidate.html' },
-          { num: '1.3', title: 'The cast of characters', file: 'lessons/layer1/1-3-cast-of-characters.html' },
+          { num: '1.3', title: 'Ownership & control', file: 'lessons/layer1/1-3-cast-of-characters.html' },
           { num: '1.4', title: 'The consolidation workflow', file: 'lessons/layer1/1-4-workflow.html' },
           { num: '1.5', title: 'Key outputs', file: 'lessons/layer1/1-5-key-outputs.html' },
           { num: '1.6', title: 'Why Excel breaks', file: 'lessons/layer1/1-6-why-excel-breaks.html' },
@@ -31,6 +31,18 @@
           { num: '2.12', title: 'Cash flow consolidation', file: 'lessons/layer2/2-12-cash-flow.html' },
           { num: '2.13', title: 'Reporting & disclosures', file: 'lessons/layer2/2-13-reporting-disclosures.html' }
         ]
+      },
+      {
+        label: 'Layer 3 — Hands-On Examples',
+        comingSoon: true
+      },
+      {
+        label: 'Layer 4 — Industry Specific Handling',
+        comingSoon: true
+      },
+      {
+        label: 'Layer 5 — Existing Systems',
+        comingSoon: true
       }
     ]
   };
@@ -45,7 +57,12 @@
     `;
 
     NAV.layers.forEach(layer => {
-      html += `<div class="nav-layer"><div class="nav-layer-header">${layer.label}</div><ul class="nav-list">`;
+      html += `<div class="nav-layer"><div class="nav-layer-header">${layer.label}</div>`;
+      if (layer.comingSoon) {
+        html += `<div class="nav-coming-soon">Coming soon</div></div>`;
+        return;
+      }
+      html += `<ul class="nav-list">`;
       layer.lessons.forEach(lesson => {
         const isActive = activeFile && lesson.file.endsWith(activeFile);
         html += `<li><a href="${root}${lesson.file}" class="${isActive ? 'active' : ''}">
