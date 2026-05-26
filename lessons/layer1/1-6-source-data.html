@@ -15,13 +15,70 @@
         <h1>Source data</h1>
       </header>
 
-<p>Before any of the workflow can run, the <span class="term" data-term="consolidation">consolidation</span> engine has to be fed something. The previous lessons described what comes out of consolidation; this one describes what goes in.</p>
+<p>Before any of the workflow can run, the <span class="term" data-term="consolidation">consolidation</span> engine has to be fed something. The short answer: a <span class="term" data-term="trial-balance">trial balance</span> per entity per period, with enough identifying information to support the work that follows.</p>
 
-<p>The short answer: a <span class="term" data-term="trial-balance">trial balance</span> per entity per period, with enough identifying information to support the work that follows. The longer answer &mdash; what "enough identifying information" means, and what you can and can't do with TB data alone &mdash; is what the rest of this lesson is about.</p>
+<h2>Trial balance</h2>
+
+<p>A trial balance is a list of every account in an entity's <span class="term" data-term="gl">general ledger</span> with its current balance. If the bookkeeping is correct, total debits equal total credits.</p>
+
+<div class="example-box">
+  <strong>Sample TB &mdash; Acme Industrials, year-end (USD):</strong>
+  <table class="tb-mock">
+    <thead>
+      <tr><th>Code</th><th>Account</th><th class="num">Debit</th><th class="num">Credit</th></tr>
+    </thead>
+    <tbody>
+      <tr class="section"><td colspan="4">Assets</td></tr>
+      <tr><td>1010</td><td>Cash &amp; equivalents</td><td class="num">125,000</td><td></td></tr>
+      <tr><td>1015</td><td>Petty cash</td><td class="num">1,500</td><td></td></tr>
+      <tr><td>1100</td><td>Accounts receivable</td><td class="num">180,000</td><td></td></tr>
+      <tr><td>1105</td><td>Allowance for doubtful A/R</td><td></td><td class="num">8,000</td></tr>
+      <tr><td>1200</td><td>Inventory</td><td class="num">220,000</td><td></td></tr>
+      <tr><td>1300</td><td>Prepaid expenses</td><td class="num">12,000</td><td></td></tr>
+      <tr><td>1500</td><td>Property, plant &amp; equipment</td><td class="num">850,000</td><td></td></tr>
+      <tr><td>1505</td><td>Accumulated depreciation</td><td></td><td class="num">310,000</td></tr>
+      <tr><td>1700</td><td>Goodwill</td><td class="num">75,000</td><td></td></tr>
+      <tr><td>1800</td><td>Investment in subsidiaries</td><td class="num">40,000</td><td></td></tr>
+
+      <tr class="section"><td colspan="4">Liabilities</td></tr>
+      <tr><td>2010</td><td>Accounts payable</td><td></td><td class="num">95,000</td></tr>
+      <tr><td>2020</td><td>Accrued expenses</td><td></td><td class="num">28,000</td></tr>
+      <tr><td>2030</td><td>Income tax payable</td><td></td><td class="num">22,000</td></tr>
+      <tr><td>2100</td><td>Short-term debt</td><td></td><td class="num">60,000</td></tr>
+      <tr><td>2500</td><td>Long-term debt</td><td></td><td class="num">250,000</td></tr>
+      <tr><td>2600</td><td>Deferred revenue</td><td></td><td class="num">15,000</td></tr>
+
+      <tr class="section"><td colspan="4">Equity</td></tr>
+      <tr><td>3010</td><td>Share capital</td><td></td><td class="num">100,000</td></tr>
+      <tr><td>3020</td><td>Additional paid-in capital</td><td></td><td class="num">50,000</td></tr>
+      <tr><td>3500</td><td>Retained earnings (opening)</td><td></td><td class="num">427,000</td></tr>
+
+      <tr class="section"><td colspan="4">Revenue</td></tr>
+      <tr><td>4010</td><td>Sales revenue</td><td></td><td class="num">1,200,000</td></tr>
+      <tr><td>4020</td><td>Service revenue</td><td></td><td class="num">180,000</td></tr>
+      <tr><td>4900</td><td>Other income</td><td></td><td class="num">8,000</td></tr>
+
+      <tr class="section"><td colspan="4">Expenses</td></tr>
+      <tr><td>5010</td><td>Cost of goods sold</td><td class="num">720,000</td><td></td></tr>
+      <tr><td>6010</td><td>Salaries &amp; wages</td><td class="num">290,000</td><td></td></tr>
+      <tr><td>6020</td><td>Rent expense</td><td class="num">60,000</td><td></td></tr>
+      <tr><td>6030</td><td>Utilities expense</td><td class="num">18,000</td><td></td></tr>
+      <tr><td>6040</td><td>Office supplies</td><td class="num">6,500</td><td></td></tr>
+      <tr><td>6050</td><td>Marketing expense</td><td class="num">42,000</td><td></td></tr>
+      <tr><td>6090</td><td>Depreciation expense</td><td class="num">55,000</td><td></td></tr>
+      <tr><td>7010</td><td>Interest expense</td><td class="num">22,000</td><td></td></tr>
+      <tr><td>7100</td><td>Income tax expense</td><td class="num">36,000</td><td></td></tr>
+
+      <tr class="total"><th colspan="2" style="text-align:right;">Total</th><th class="num">2,753,000</th><th class="num">2,753,000</th></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Accounts are conventionally grouped: assets and expenses normally carry debit balances; liabilities, equity, and revenue normally carry credit balances. The defining property is that the two columns add to the same total.</p>
 
 <h2>Why trial balance, not transaction-level</h2>
 
-<p>Every entity's <span class="term" data-term="gl">general ledger</span> contains every individual transaction posted during the period &mdash; thousands of payments, invoices, accruals, payroll runs, <span class="term" data-term="journal-entry">journal entries</span>. The trial balance is the summary: for each account, what's the ending balance? Consolidation works from the summary, not the underlying transactions.</p>
+<p>Every entity's general ledger contains every individual transaction posted during the period &mdash; thousands of payments, invoices, accruals, payroll runs, <span class="term" data-term="journal-entry">journal entries</span>. The trial balance is the summary: for each account, what's the ending balance? Consolidation works from the summary, not the underlying transactions.</p>
 
 <p>There are good reasons for this:</p>
 
@@ -62,99 +119,14 @@
   </tbody>
 </table>
 
-<p>The first three of these are usually obvious from the structure of the data: the account is the account code on the line, the period and currency are headers on the whole submission. The last one &mdash; identifying the intercompany <span class="term" data-term="counterparty">counterparty</span> &mdash; is the one that tends to drive design decisions, and it's where source data varies most across entities.</p>
-
-<h2>Handling intercompany account balances</h2>
-
-<p>Two common approaches exist for identifying the intercompany counterparty on a line. From the consolidation engine's perspective, either is perfectly workable &mdash; the choice usually comes down to what each sub's source accounting system can produce.</p>
-
-<h3>Approach A: account-encoded</h3>
-
-<p>Have a separate account for each trading partner. Sub A's books include:</p>
-
-<ul>
-  <li>12100 &mdash; IC <span class="term" data-term="ar">AR</span> with Sub B</li>
-  <li>12101 &mdash; IC AR with Sub C</li>
-  <li>12102 &mdash; IC AR with Sub D</li>
-  <li>...and one more for every other group entity it does business with</li>
-</ul>
-
-<p>Each line on the trial balance already names the partner because the account itself does. The engine can read the account and know who's on the other side.</p>
-
-<h3>Approach B: dimensional</h3>
-
-<p>Have one IC AR account and one IC <span class="term" data-term="ap">AP</span> account, and attach a "trading partner" tag (a dimension) to each line. Sub A's books include just:</p>
-
-<ul>
-  <li>12100 &mdash; IC AR  &mdash;  with partner tag of "Sub B" / "Sub C" / "Sub D" / etc. on individual lines</li>
-</ul>
-
-<p>The account stays single; the partner identification moves to a separate field on each line.</p>
-
-<svg class="diagram" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Approach A box -->
-  <rect x="20" y="20" width="310" height="160" fill="#f8fafc" stroke="#475569" stroke-width="1.5" rx="6"/>
-  <text x="175" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Approach A: account-encoded</text>
-
-  <text x="35" y="72" font-size="11" font-family="monospace" fill="#1e293b">12100 — IC AR with Sub B    $4,000</text>
-  <text x="35" y="90" font-size="11" font-family="monospace" fill="#1e293b">12101 — IC AR with Sub C    $2,500</text>
-  <text x="35" y="108" font-size="11" font-family="monospace" fill="#1e293b">12102 — IC AR with Sub D    $1,200</text>
-
-  <text x="35" y="148" font-size="11" fill="#475569" font-style="italic">Partner identified by which</text>
-  <text x="35" y="164" font-size="11" fill="#475569" font-style="italic">account the balance is in.</text>
-
-  <!-- Approach B box -->
-  <rect x="350" y="20" width="310" height="160" fill="#f8fafc" stroke="#475569" stroke-width="1.5" rx="6"/>
-  <text x="505" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Approach B: dimensional</text>
-
-  <text x="365" y="72" font-size="11" font-family="monospace" fill="#1e293b">12100 — IC AR · Sub B    $4,000</text>
-  <text x="365" y="90" font-size="11" font-family="monospace" fill="#1e293b">12100 — IC AR · Sub C    $2,500</text>
-  <text x="365" y="108" font-size="11" font-family="monospace" fill="#1e293b">12100 — IC AR · Sub D    $1,200</text>
-
-  <text x="365" y="148" font-size="11" fill="#475569" font-style="italic">Partner identified by a</text>
-  <text x="365" y="164" font-size="11" fill="#475569" font-style="italic">separate tag on each line.</text>
-</svg>
-
-<p>What drives which approach a sub uses is mostly the capability of its source accounting system. Smaller companies running simpler systems (QuickBooks and the like) tend toward Approach A &mdash; separate accounts &mdash; because that's what's natively exportable. Larger entities on full ERPs (NetSuite, SAP, Oracle, Workday) typically support dimensions natively and lean toward Approach B.</p>
-
-<h2>When trial balance isn't enough</h2>
-
-<p>TB data covers most of what consolidation needs to do, but a few operations need more than summary balances. Two common examples:</p>
-
-<ul>
-  <li><strong>Intercompany matching disputes.</strong> When two subs disagree on what they owe each other, resolving the difference needs transaction-level detail (which invoice, which period) &mdash; not just the TB totals.</li>
-  <li><strong><span class="term" data-term="unrealized-profit">Unrealized profit</span> on intercompany <span class="term" data-term="inventory">inventory</span>.</strong> Removing the markup on inventory still sitting between subs requires knowing what came from inside the group and at what price &mdash; usually supplied as a separate IC inventory schedule alongside the TB.</li>
-</ul>
-
-<p>Layer 2 covers both in depth.</p>
-
-<h2>Granularity versus effort</h2>
-
-<p>The principle behind all of the above: more granularity in the source data means more flexibility in the consolidation engine, but it also means more work to collect, validate, and store. A small group with simple intercompany activity can get away with very plain TBs &mdash; a few account codes, no dimensions, no supporting schedules. A large group with many subs trading with each other, multiple <span class="term" data-term="segment">segments</span>, multi-currency loans, and inventory transfers needs much richer source data.</p>
-
-<p>The right level of detail isn't fixed. It depends on what the group needs to report, what its subs' source systems can produce, and what the consolidation tool can accept. Layer 2 will show, for each step of the workflow, what data it actually needs and what it can do without.</p>
-
-<h2>Why this matters for the software</h2>
-
-<div class="callout callout-dev">
-  <div class="callout-title">For developers</div>
-  <p>Things the data model needs to acknowledge at this stage:</p>
-  <ul style="margin-top: 8px;">
-    <li>Source data is more than a flat trial balance &mdash; TB lines plus the dimensions and supporting schedules a sub may submit alongside it.</li>
-    <li>Intercompany counterparty can come from the account code itself, a separate dimension field, or both. The schema should accept either encoding.</li>
-    <li>Some operations (IC inventory unrealized profit, IC dispute resolution) rely on data that isn't on the TB. There needs to be a place for supporting schedules &mdash; with their own period, version, and source attribution.</li>
-    <li>Transaction-level detail usually stays in the source system. Storing source-system IDs (invoice, document) on TB lines is enough to link back later without mirroring the underlying transactions.</li>
-  </ul>
-</div>
+<p>The first three are usually obvious from the structure of the data: the account is the account code on the line, the period and currency are headers on the whole submission. The fourth &mdash; identifying the intercompany <span class="term" data-term="counterparty">counterparty</span> &mdash; varies most across entities, because it depends on how each sub's source system encodes that information.</p>
 
 <h2>Summary</h2>
 
 <ul>
   <li>Consolidation runs on trial balance data &mdash; account-level summaries per entity per period &mdash; not raw transactions.</li>
   <li>For each line of TB data, the engine needs to identify the account, period, amount, currency, and (for intercompany lines) the trading partner.</li>
-  <li>Intercompany counterparty can be encoded in the account code itself or as a separate dimension. Both work; which approach a sub uses depends on its source accounting system.</li>
-  <li>Two operations &mdash; IC dispute resolution and unrealized profit on IC inventory &mdash; need more than TB data and require either transaction-level drill-down or supplementary schedules.</li>
-  <li>Granularity trades off against effort. The right level depends on what the group needs to report and what its source systems can produce.</li>
+  <li>How the intercompany counterparty is encoded varies by source system, and that variation drives a lot of the design of the ingest layer.</li>
 </ul>
 
       <nav class="lesson-nav">
