@@ -2,22 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Equity rollforward & retained earnings — Consolidation Course</title>
+<title>Consolidated statement of changes in equity — Consolidation Course</title>
 <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <div class="app">
-  <nav class="nav" id="nav" data-active="2-10-equity-rollforward.html" data-root="../../"></nav>
+  <nav class="nav" id="nav" data-active="2-14-equity-rollforward.html" data-root="../../"></nav>
   <main class="main">
     <article class="content">
       <header class="content-header">
-        <div class="content-eyebrow">Layer 2 — Lesson 10 · Pipeline: C.11</div>
-        <h1>Equity rollforward & retained earnings</h1>
+        <div class="content-eyebrow">Layer 2 — Lesson 14 · Pipeline: C.11, D.12</div>
+        <h1>Consolidated statement of changes in equity</h1>
       </header>
-      
-<p>After translation, eliminations, and ownership math, the consolidated balance sheet has equity in it — and that equity has to tie together logically. Every component of equity should reconcile from beginning to end of the period: opening balance, plus what happened during the period, equals closing balance. This is the <em>equity rollforward</em>. It's the auditor's first stop and the most concrete proof that consolidation is internally consistent.</p>
 
-<p><strong>Pipeline reference:</strong> The rollforward is assembled in <em>Group Adjustments</em> (step C.11) and reported on the statement of changes in equity (step D.12).</p>
+<p>The statement of changes in equity (often called the <em>equity rollforward</em>) shows how the group's equity section moved from the beginning of the period to the end. It is the bridge that ties the income statement, which adds to <span class="term" data-term="retained-earnings">retained earnings</span>, to the balance sheet, which holds the closing equity. Every component should reconcile from opening to closing — and when it doesn't, something has gone wrong upstream.</p>
+
+<p><strong>Pipeline reference:</strong> The rollforward is assembled in <em>Group Adjustments</em> (step C.11) and presented as the statement of changes in equity in <em>Reporting</em> (step D.12).</p>
+
+<h2>What the consolidated version looks like</h2>
+
+<p>The statement accounts for every change in the equity section during the period:</p>
+
+<ul>
+  <li>Opening equity balance</li>
+  <li>Plus net income for the period</li>
+  <li>Plus <span class="term" data-term="oci">other comprehensive income</span> (including <span class="term" data-term="cta">CTA</span>)</li>
+  <li>Less dividends paid</li>
+  <li>Plus/minus share issuances, buybacks, etc.</li>
+  <li>Plus/minus <span class="term" data-term="nci">NCI</span> movements (NCI's share of net income, NCI's share of dividends, changes in NCI from buying or selling shares)</li>
+  <li>Equals closing equity balance</li>
+</ul>
+
+<p>This statement is what ties the period's income statement to the period's balance sheet — it shows how the period's profit became part of retained earnings, and how every other equity movement happened. The rest of this lesson walks through the structure of the report and the consistency checks it enables.</p>
+
+<h2>Example — a mocked-up consolidated statement of changes in equity</h2>
+
+<p>Same example group as in <a href="2-11-balance-sheet.html">Lesson 2.11</a>: Acme Industrials (parent) owns 80% of BrightWave Energy (sub); both report in USD. Acme's consolidated statement of changes in equity for the year looks like this:</p>
+
+<table>
+  <thead>
+    <tr><th></th><th>Common stock</th><th>Retained earnings (parent)</th><th>NCI</th><th>Total equity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Opening (Jan 1)</strong></td><td style="text-align: right;">$300</td><td style="text-align: right;">$700</td><td style="text-align: right;">$130</td><td style="text-align: right;">$1,130</td></tr>
+    <tr><td>Net income</td><td></td><td style="text-align: right;">$230</td><td style="text-align: right;">$20</td><td style="text-align: right;">$250</td></tr>
+    <tr><td>Dividends to parent shareholders</td><td></td><td style="text-align: right;">($80)</td><td></td><td style="text-align: right;">($80)</td></tr>
+    <tr><td>Dividends to NCI</td><td></td><td></td><td style="text-align: right;">($10)</td><td style="text-align: right;">($10)</td></tr>
+    <tr><td><strong>Closing (Dec 31)</strong></td><td style="text-align: right;"><strong>$300</strong></td><td style="text-align: right;"><strong>$850</strong></td><td style="text-align: right;"><strong>$140</strong></td><td style="text-align: right;"><strong>$1,290</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Where these numbers tie to the other reports:</p>
+
+<ul>
+  <li>The <strong>Net income</strong> row totals $250, matching the bottom of the income statement (<a href="2-12-income-statement.html">Lesson 2.12</a>). $230 lands in retained earnings; $20 lands in NCI.</li>
+  <li>The two <strong>Dividend</strong> rows ($80 + $10) match the financing-activity dividends on the cash flow statement (<a href="2-13-cash-flow.html">Lesson 2.13</a>).</li>
+  <li>The <strong>Closing</strong> balances of each column appear directly as equity lines on the balance sheet (<a href="2-11-balance-sheet.html">Lesson 2.11</a>): Common stock $300, Retained earnings $850, NCI $140.</li>
+</ul>
+
+<p>The example is intentionally minimal — no share issuances, OCI, or ownership changes during the year. The next sections cover the components and activities that show up in fuller real-world versions.</p>
 
 <h2>The components of consolidated equity</h2>
 
@@ -155,9 +198,9 @@
 </ul>
 
       <nav class="lesson-nav">
-        <a href="2-9-unrealized-profit.html">← 2.9 Unrealized profit elimination</a>
+        <a href="2-13-cash-flow.html">← 2.13 Consolidated cash flow statement</a>
         <div class="spacer"></div>
-        <a href="2-11-topside-entries.html">2.11 Adjustments & topside entries →</a>
+        <a href="2-15-reporting-disclosures.html">2.15 Reporting & disclosures →</a>
       </nav>
     </article>
     <aside class="glossary" id="glossary-panel"></aside>

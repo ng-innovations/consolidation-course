@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Consolidated income statement — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-12-income-statement.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 12 · Pipeline: D.12</div>
+        <h1>Consolidated income statement</h1>
+      </header>
+
+<p>The consolidated <span class="term" data-term="income-statement">income statement</span> shows the group's revenue, expenses, and resulting profit over the period. It is the report that tells outside readers how the business performed. This lesson walks through what the consolidated version looks like and how each earlier pipeline step contributes to it.</p>
+
+<p><strong>Pipeline reference:</strong> The consolidated income statement is produced in <em>Reporting</em> (step D.12). It draws on intercompany elimination, unrealized-profit elimination, ownership allocation, and topside entries.</p>
+
+<h2>What the consolidated version looks like</h2>
+
+<p>The structure is the same as any company's income statement:</p>
+
+<ul>
+  <li>Revenue</li>
+  <li><span class="term" data-term="cogs">Cost of goods sold</span></li>
+  <li>Gross profit</li>
+  <li>Operating expenses</li>
+  <li>Operating income</li>
+  <li>Other income/expense, interest, taxes</li>
+  <li>Net income</li>
+</ul>
+
+<p>What's different at the group level:</p>
+
+<ul>
+  <li><strong>Revenue is the group's external revenue only.</strong> Sales between subsidiaries are eliminated. If one sub sells $1M to another sub, and the buying sub re-sells to outside customers for $1.2M, the consolidated revenue is $1.2M, not $2.2M.</li>
+  <li><strong>Expenses are similarly external only.</strong> <span class="term" data-term="intercompany">Intercompany</span> expenses are eliminated against the matching intercompany revenue.</li>
+  <li><strong><span class="term" data-term="unrealized-profit">Unrealized profit</span> from intercompany sales is removed.</strong> If one sub made a profit selling to another sub and the goods are still sitting in the buyer's <span class="term" data-term="inventory">inventory</span> at period end, that profit is reversed because it has not yet been earned from the outside world.</li>
+  <li><strong>The bottom of the statement is split.</strong> Net income is shown as "Net income attributable to parent shareholders" plus "Net income attributable to <span class="term" data-term="nci">non-controlling interest</span>."</li>
+</ul>
+
+<p>The rest of this lesson walks through how each of those differences is produced.</p>
+
+<h2>Example — a mocked-up consolidated income statement</h2>
+
+<p>Same example group as in <a href="2-11-balance-sheet.html">Lesson 2.11</a>: Acme Industrials (parent) owns 80% of BrightWave Energy (sub); both report in USD. Acme's consolidated income statement for the year looks like this:</p>
+
+<table>
+  <thead><tr><th>Acme Industrials — consolidated income statement, year ended Dec 31</th><th>Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue</td><td style="text-align: right;">$1,000</td></tr>
+    <tr><td>Cost of goods sold</td><td style="text-align: right;">($550)</td></tr>
+    <tr><td><strong>Gross profit</strong></td><td style="text-align: right;"><strong>$450</strong></td></tr>
+    <tr><td>Operating expenses (including $50 depreciation)</td><td style="text-align: right;">($200)</td></tr>
+    <tr><td><strong>Net income</strong></td><td style="text-align: right;"><strong>$250</strong></td></tr>
+    <tr><td style="padding-left: 24px;">Attributable to parent shareholders</td><td style="text-align: right;">$230</td></tr>
+    <tr><td style="padding-left: 24px;">Attributable to non-controlling interest</td><td style="text-align: right;">$20</td></tr>
+  </tbody>
+</table>
+
+<p>Where these numbers reappear:</p>
+
+<ul>
+  <li><strong>Net income $250</strong> is the top line of the cash flow statement (<a href="2-13-cash-flow.html">Lesson 2.13</a>) and the total of the two net-income rows on the statement of changes in equity (<a href="2-14-equity-rollforward.html">Lesson 2.14</a>).</li>
+  <li><strong>Attributable to parent $230</strong> lands in the retained earnings column of the equity statement.</li>
+  <li><strong>Attributable to NCI $20</strong> lands in the NCI column of the equity statement.</li>
+  <li>After the equity statement also absorbs dividends, its closing balances become the equity lines on the balance sheet (<a href="2-11-balance-sheet.html">Lesson 2.11</a>).</li>
+</ul>
+
+<h2>The build-up — from local books to the consolidated income statement</h2>
+
+<table>
+  <thead><tr><th>Stage</th><th>What changed</th><th>Lesson</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Local</strong></td><td>Each <span class="term" data-term="subsidiary">subsidiary</span>'s P&amp;L in its own currency and chart of accounts.</td><td><a href="2-2-trial-balance.html">2.2</a></td></tr>
+    <tr><td><strong>Translated</strong></td><td>P&amp;L lines converted to the group's reporting currency at the period's <span class="term" data-term="average-rate">average rate</span>.</td><td><a href="2-4-currency-translation.html">2.4</a></td></tr>
+    <tr><td><strong>Standardized</strong></td><td>Mapped to the group's chart of accounts; entity-level topside adjustments applied.</td><td><a href="2-1-coa-mapping.html">2.1</a>, <a href="2-10-topside-entries.html">2.10</a></td></tr>
+    <tr><td><strong>Eliminated</strong></td><td>Intercompany revenue and the matching intercompany expense both removed; unrealized profit on inventory still held internally reversed.</td><td><a href="2-6-intercompany.html">2.6</a>, <a href="2-9-unrealized-profit.html">2.9</a></td></tr>
+    <tr><td><strong>Ownership-adjusted</strong></td><td>Net income split between parent shareholders and NCI based on each sub's ownership percentage.</td><td><a href="2-8-nci.html">2.8</a></td></tr>
+    <tr><td><strong>Top</strong></td><td>Group-level topside entries applied. The income statement is rendered from this state.</td><td><a href="2-10-topside-entries.html">2.10</a></td></tr>
+  </tbody>
+</table>
+
+<h2>A worked example</h2>
+
+<p>The <span class="term" data-term="parent">parent</span> owns 80% of a single subsidiary. Both report in USD. The standalone income statements are:</p>
+
+<table>
+  <thead><tr><th>Line</th><th>Parent</th><th>Sub</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue from external customers</td><td style="text-align: right;">$900</td><td style="text-align: right;">$400</td></tr>
+    <tr><td>Revenue from Sub (intercompany)</td><td style="text-align: right;">$100</td><td style="text-align: right;">—</td></tr>
+    <tr><td><strong>Total revenue</strong></td><td style="text-align: right;"><strong>$1,000</strong></td><td style="text-align: right;"><strong>$400</strong></td></tr>
+    <tr><td>Cost of goods sold</td><td style="text-align: right;">($600)</td><td style="text-align: right;">($200)</td></tr>
+    <tr><td style="padding-left: 24px;">of which IC purchase from Parent (all resold)</td><td style="text-align: right;">—</td><td style="text-align: right;">($100)</td></tr>
+    <tr><td>Operating expenses</td><td style="text-align: right;">($100)</td><td style="text-align: right;">($100)</td></tr>
+    <tr><td><strong>Net income</strong></td><td style="text-align: right;"><strong>$300</strong></td><td style="text-align: right;"><strong>$100</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Sub bought $100 of goods from Parent during the year and resold all of them externally. There is no leftover IC inventory at year-end, so no unrealized profit to worry about in this case.</p>
+
+<h3>Step 1 — Combine</h3>
+
+<p>Naive sum gives revenue of $1,400, total expenses of $1,000, and net income of $400.</p>
+
+<h3>Step 2 — Eliminate intercompany revenue and expense</h3>
+
+<p>The $100 IC sale appears as revenue on Parent's books and as part of cost on Sub's books. Both lines are removed. Revenue drops to $1,300, COGS drops to $700. Net income unchanged at $400. See <a href="2-6-intercompany.html">Lesson 2.6</a>.</p>
+
+<h3>Step 3 — Split net income between parent and NCI</h3>
+
+<p>Of the $400 net income, $300 came from Parent (100% attributable to parent shareholders) and $100 came from Sub. 80% of Sub's $100 ($80) belongs to parent shareholders; 20% ($20) belongs to NCI. See <a href="2-8-nci.html">Lesson 2.8</a>.</p>
+
+<h3>Step 4 — Consolidated income statement</h3>
+
+<table>
+  <thead><tr><th>Line</th><th>Consolidated</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue</td><td style="text-align: right;">$1,300</td></tr>
+    <tr><td>Cost of goods sold</td><td style="text-align: right;">($700)</td></tr>
+    <tr><td><strong>Gross profit</strong></td><td style="text-align: right;"><strong>$600</strong></td></tr>
+    <tr><td>Operating expenses</td><td style="text-align: right;">($200)</td></tr>
+    <tr><td><strong>Net income</strong></td><td style="text-align: right;"><strong>$400</strong></td></tr>
+    <tr><td style="padding-left: 24px;">Attributable to parent shareholders</td><td style="text-align: right;">$380</td></tr>
+    <tr><td style="padding-left: 24px;">Attributable to non-controlling interest</td><td style="text-align: right;">$20</td></tr>
+  </tbody>
+</table>
+
+<p>The two attribution lines are required presentation under both US GAAP and IFRS. They are what tells parent shareholders which portion of group profit is theirs.</p>
+
+<h3>What changes if Sub still holds IC inventory</h3>
+
+<p>Suppose Sub had bought $100 from Parent but only resold $70 by year-end, with $30 still in inventory. Parent's margin on the IC sale was 25% — so $30 of Sub's inventory contains $7.50 of Parent's unrecognized profit. The consolidation reverses that $7.50: Sub's inventory comes down by $7.50, and COGS goes up by $7.50 (or revenue is reduced, depending on convention). Group net income falls by $7.50 because the group has not yet earned that profit from the outside world. See <a href="2-9-unrealized-profit.html">Lesson 2.9</a>.</p>
+
+<h2>Why each consolidation step shows up here</h2>
+
+<h3>Intercompany revenue and expense both go to zero</h3>
+
+<p>The group views itself as a single entity. A sale from one of its pockets to another is not a sale at all from outside-the-fence. Eliminating IC revenue without eliminating the matching cost would understate consolidated profit; eliminating both keeps the income statement honest.</p>
+
+<h3>Unrealized profit on IC inventory is reversed</h3>
+
+<p>Profit on an internal sale is not real profit until the goods leave the group. Until then, the profit sits in the buyer's inventory account and inflates both group assets and group earnings. The elimination reduces inventory back to original cost and reverses the corresponding profit.</p>
+
+<h3>Net income splits at the bottom</h3>
+
+<p>The whole P&amp;L above the net income line represents activity of the group as a single economic unit, including the sub's full revenue and expense. But ownership is not always 100%. The split tells parent shareholders how much of the bottom line is actually theirs, and how much is owed to outside (NCI) shareholders. See <a href="2-8-nci.html">Lesson 2.8</a>.</p>
+
+<h3>OCI and CTA flow through a separate section</h3>
+
+<p>Certain gains and losses — currency translation differences, some pension remeasurements, certain hedge effects — bypass net income and go directly to <span class="term" data-term="oci">other comprehensive income</span>. Consolidated income statements often include a separate "Other comprehensive income" section below net income, or are presented as two statements (income statement plus a statement of comprehensive income). Translation-related OCI feeds the <span class="term" data-term="cta">CTA</span> line in equity. See <a href="2-4-currency-translation.html">Lesson 2.4</a>.</p>
+
+<h2>The tie-out checks</h2>
+
+<ul>
+  <li><strong>Net income flows to <span class="term" data-term="retained-earnings">retained earnings</span> on the balance sheet.</strong> Parent's share lands in parent equity's retained earnings; NCI's share lands in the NCI column. Both should reconcile through the statement of changes in equity (<a href="2-14-equity-rollforward.html">Lesson 2.14</a>).</li>
+  <li><strong>Net income also drives the top line of operating cash flow.</strong> Under the indirect method, the cash flow statement starts with net income and adjusts for non-cash items. The number must match. See <a href="2-13-cash-flow.html">Lesson 2.13</a>.</li>
+  <li><strong>NCI's share of net income equals NCI ownership % times the sub's net income.</strong> If it doesn't, an unrealized-profit reversal or a topside has been allocated incorrectly.</li>
+  <li><strong>OCI on the income statement equals OCI activity on the statement of changes in equity.</strong> They are two views of the same numbers.</li>
+</ul>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The income statement looks like a simple aggregation, but it depends on several pieces of metadata that have to be in place upstream:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Every revenue and expense transaction needs a counterparty tag.</strong> Without it, you can't tell which dollars are intercompany and which are external. This belongs on the line item, not as a separate reconciliation step.</li>
+    <li><strong>Unrealized profit needs an inventory-aging join.</strong> The engine needs to know what part of intercompany inventory is still on hand at period end and at what margin it was sold internally. This is harder than it looks at scale.</li>
+    <li><strong>NCI attribution is a derived calculation, not stored data.</strong> Compute it from current ownership and current sub net income; never persist parent-share / NCI-share as separate fields that can drift out of sync.</li>
+    <li><strong>Comparative columns are mandatory.</strong> Current period, prior period, year-to-date, year-to-date prior — most income statement views show four or more columns. Plan for it.</li>
+    <li><strong>Drill-down on revenue should reach the underlying transactions.</strong> A user clicking the revenue line should see contributing subs, then individual customers, then individual invoices if needed. The most common audit question is "where did this come from?"</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>The consolidated income statement shows the group's external revenue, external costs, and resulting profit.</li>
+  <li>Intercompany revenue and expense both cancel; unrealized profit on inventory still held internally is reversed.</li>
+  <li>The bottom of the statement splits net income between parent shareholders and non-controlling interest.</li>
+  <li>OCI and CTA sit in a separate section (or separate statement) below net income.</li>
+  <li>Net income ties forward to retained earnings on the balance sheet and to the top of the cash flow statement.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-11-balance-sheet.html">← 2.11 Consolidated balance sheet</a>
+        <div class="spacer"></div>
+        <a href="2-13-cash-flow.html">2.13 Consolidated cash flow statement →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/progress.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

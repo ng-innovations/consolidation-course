@@ -7,11 +7,11 @@
 </head>
 <body>
 <div class="app">
-  <nav class="nav" id="nav" data-active="1-4-workflow.html" data-root="../../"></nav>
+  <nav class="nav" id="nav" data-active="1-5-workflow.html" data-root="../../"></nav>
   <main class="main">
     <article class="content">
       <header class="content-header">
-        <div class="content-eyebrow">Layer 1 — Lesson 4</div>
+        <div class="content-eyebrow">Layer 1 — Lesson 5</div>
         <h1>The consolidation workflow</h1>
       </header>
 
@@ -105,13 +105,12 @@
 
 <p>Each <span class="term" data-term="legal-entity">legal entity</span> in the <span class="term" data-term="group">group</span> closes its own books for the period and produces a <span class="term" data-term="trial-balance">trial balance</span> &mdash; in its local currency, using its own account codes, on its own schedule. This is just normal single-entity accounting; nothing special about it for consolidation.</p>
 
-<p>Before being handed off to the consolidation work, each trial balance is mapped to the group's <span class="term" data-term="coa">chart of accounts</span>. Sub A's "1010 &mdash; Operating Cash" and Sub B's "C-100 &mdash; Cash on Hand" both need to land in the group's "Cash &amp; equivalents" account. This is normally part of validation at ingest, but it's worth flagging here: the entities produce numbers in their own structure, and someone has to translate that structure to the group's view.</p>
+<p>Before being handed off to the consolidation work, each trial balance is mapped to the group's <span class="term" data-term="coa">chart of accounts</span>. Sub A's "1010 &mdash; Operating Cash" and Sub B's "C-100 &mdash; Cash on Hand" both need to land in the group's "Cash &amp; equivalents" account. This is normally part of validation at ingest.</p>
 
 <h2>2. Translate to common currency</h2>
 
 <p>The trial balances arrive in different currencies. A French sub's books are in euros; a US group reports in dollars. Before the entities can be added together, each balance is translated at the appropriate <span class="term" data-term="fx">FX</span> rate.</p>
 
-<p>More detail on how this is done is in Layer 2 &mdash; including why different account types use different rate types, and what the <span class="term" data-term="cta">CTA</span> balancing item is.</p>
 
 <h2>3. Standardize</h2>
 
@@ -230,9 +229,9 @@
 </ul>
 
       <nav class="lesson-nav">
-        <a href="1-3-cast-of-characters.html">&larr; 1.3 Ownership &amp; control</a>
+        <a href="1-4-key-outputs.html">&larr; 1.4 Key outputs</a>
         <div class="spacer"></div>
-        <a href="1-5-key-outputs.html">1.5 Key outputs &rarr;</a>
+        <a href="1-6-source-data.html">1.6 Source data &rarr;</a>
       </nav>
     </article>
     <aside class="glossary" id="glossary-panel"></aside>

@@ -9,8 +9,8 @@
           { num: '1.1', title: 'What is financial consolidation?', file: 'lessons/layer1/1-1-what-is-consolidation.html' },
           { num: '1.2', title: 'Why companies consolidate', file: 'lessons/layer1/1-2-why-consolidate.html' },
           { num: '1.3', title: 'Ownership & control', file: 'lessons/layer1/1-3-cast-of-characters.html' },
-          { num: '1.4', title: 'The consolidation workflow', file: 'lessons/layer1/1-4-workflow.html' },
-          { num: '1.5', title: 'Key outputs', file: 'lessons/layer1/1-5-key-outputs.html' },
+          { num: '1.4', title: 'Key outputs', file: 'lessons/layer1/1-4-key-outputs.html' },
+          { num: '1.5', title: 'The consolidation workflow', file: 'lessons/layer1/1-5-workflow.html' },
           { num: '1.6', title: 'Source data', file: 'lessons/layer1/1-6-source-data.html' },
           { num: '1.7', title: 'Why Excel breaks at scale', file: 'lessons/layer1/1-7-why-excel-breaks.html' }
         ]
@@ -28,10 +28,12 @@
           { num: '2.7', title: 'Investment elimination & goodwill', file: 'lessons/layer2/2-7-investment-elimination.html' },
           { num: '2.8', title: 'Non-controlling interest', file: 'lessons/layer2/2-8-nci.html' },
           { num: '2.9', title: 'Unrealized profit elimination', file: 'lessons/layer2/2-9-unrealized-profit.html' },
-          { num: '2.10', title: 'Equity rollforward & RE', file: 'lessons/layer2/2-10-equity-rollforward.html' },
-          { num: '2.11', title: 'Adjustments & topside entries', file: 'lessons/layer2/2-11-topside-entries.html' },
-          { num: '2.12', title: 'Cash flow consolidation', file: 'lessons/layer2/2-12-cash-flow.html' },
-          { num: '2.13', title: 'Reporting & disclosures', file: 'lessons/layer2/2-13-reporting-disclosures.html' }
+          { num: '2.10', title: 'Adjustments & topside entries', file: 'lessons/layer2/2-10-topside-entries.html' },
+          { num: '2.11', title: 'Consolidated balance sheet', file: 'lessons/layer2/2-11-balance-sheet.html' },
+          { num: '2.12', title: 'Consolidated income statement', file: 'lessons/layer2/2-12-income-statement.html' },
+          { num: '2.13', title: 'Consolidated cash flow statement', file: 'lessons/layer2/2-13-cash-flow.html' },
+          { num: '2.14', title: 'Consolidated statement of changes in equity', file: 'lessons/layer2/2-14-equity-rollforward.html' },
+          { num: '2.15', title: 'Reporting & disclosures', file: 'lessons/layer2/2-15-reporting-disclosures.html' }
         ]
       },
       {

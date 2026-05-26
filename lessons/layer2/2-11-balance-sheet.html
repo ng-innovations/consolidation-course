@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Consolidated balance sheet — Consolidation Course</title>
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="nav" data-active="2-11-balance-sheet.html" data-root="../../"></nav>
+  <main class="main">
+    <article class="content">
+      <header class="content-header">
+        <div class="content-eyebrow">Layer 2 — Lesson 11 · Pipeline: D.12</div>
+        <h1>Consolidated balance sheet</h1>
+      </header>
+
+<p>The consolidated <span class="term" data-term="balance-sheet">balance sheet</span> is a snapshot of what the <span class="term" data-term="group">group</span> owns and owes at the end of the period. It is the first of the four primary financial statements and it is what every other report ties back to. This lesson walks through what the consolidated version looks like and how every earlier step of the pipeline contributes to it.</p>
+
+<p><strong>Pipeline reference:</strong> The consolidated balance sheet is produced in <em>Reporting</em> (step D.12). It draws on outputs of every preceding consolidation step.</p>
+
+<h2>What the consolidated version looks like</h2>
+
+<p>The structure is the same as any company's balance sheet:</p>
+
+<ul>
+  <li><span class="term" data-term="assets">Assets</span> — current and non-current</li>
+  <li><span class="term" data-term="liabilities">Liabilities</span> — current and non-current</li>
+  <li><span class="term" data-term="equity">Equity</span></li>
+</ul>
+
+<p>What's different at the group level:</p>
+
+<ul>
+  <li><strong>The numbers represent the whole group</strong> — combined cash from every <span class="term" data-term="subsidiary">subsidiary</span>, combined receivables, combined property, etc.</li>
+  <li><strong><span class="term" data-term="intercompany">Intercompany</span> balances are gone.</strong> If one sub owes another sub $100, neither the receivable nor the payable appears in the consolidated balance sheet. They have been eliminated.</li>
+  <li><strong>The <span class="term" data-term="parent">parent</span>'s "Investment in Subsidiaries" line is gone.</strong> It was eliminated against the subsidiaries' equity.</li>
+  <li><strong>Equity has a <span class="term" data-term="nci">non-controlling interest</span> line</strong> — the portion of subsidiary equity belonging to outside shareholders.</li>
+  <li><strong><span class="term" data-term="goodwill">Goodwill</span> may appear as an asset</strong> — from past acquisitions where the parent paid more than <span class="term" data-term="book-value">book value</span>.</li>
+  <li><strong>A <span class="term" data-term="cta">CTA</span> line sits within equity</strong> if there are foreign subsidiaries.</li>
+</ul>
+
+<p>Each of these is the visible result of an earlier pipeline step. The rest of this lesson walks through the build-up.</p>
+
+<h2>Example — a mocked-up consolidated balance sheet</h2>
+
+<p>To make the rest of this lesson concrete, here is a small example group: Acme Industrials (parent) owns 80% of BrightWave Energy (sub); both report in USD. The same example is used in <a href="2-12-income-statement.html">Lesson 2.12</a>, <a href="2-13-cash-flow.html">Lesson 2.13</a>, and <a href="2-14-equity-rollforward.html">Lesson 2.14</a>, so the four primary reports tie together.</p>
+
+<table>
+  <thead><tr><th>Acme Industrials — consolidated balance sheet, Dec 31</th><th>Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Cash</td><td style="text-align: right;">$310</td></tr>
+    <tr><td>Other current assets</td><td style="text-align: right;">$400</td></tr>
+    <tr><td>PP&amp;E, net</td><td style="text-align: right;">$620</td></tr>
+    <tr><td>Goodwill</td><td style="text-align: right;">$80</td></tr>
+    <tr><td><strong>Total assets</strong></td><td style="text-align: right;"><strong>$1,410</strong></td></tr>
+    <tr><td>Current liabilities</td><td style="text-align: right;">$80</td></tr>
+    <tr><td>Long-term debt</td><td style="text-align: right;">$40</td></tr>
+    <tr><td>Common stock (parent)</td><td style="text-align: right;">$300</td></tr>
+    <tr><td>Retained earnings (parent)</td><td style="text-align: right;">$850</td></tr>
+    <tr><td>Non-controlling interest</td><td style="text-align: right;">$140</td></tr>
+    <tr><td><strong>Total liabilities + equity</strong></td><td style="text-align: right;"><strong>$1,410</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Three things in this report show up directly in other statements:</p>
+
+<ul>
+  <li><strong>Cash $310</strong> equals the closing cash on the cash flow statement (<a href="2-13-cash-flow.html">Lesson 2.13</a>).</li>
+  <li><strong>Common stock $300, Retained earnings $850, and NCI $140</strong> are each the closing balance of the matching column on the statement of changes in equity (<a href="2-14-equity-rollforward.html">Lesson 2.14</a>).</li>
+  <li>The $80 of goodwill came from Acme's original acquisition of BrightWave (Acme paid $480 for 80% of BrightWave when its net assets had a book value of $500, so $480 − $400 = $80 of goodwill).</li>
+</ul>
+
+<h2>The build-up — from local books to the consolidated balance sheet</h2>
+
+<p>The balance sheet is the only report whose lines exist at every <span class="term" data-term="data-state-local">data state</span> of the pipeline. Watching it move through each state is the clearest way to see consolidation at work.</p>
+
+<table>
+  <thead>
+    <tr><th>Stage</th><th>What changed</th><th>Lesson</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Local</strong></td><td>Each subsidiary's raw trial balance in its own <span class="term" data-term="functional-currency">functional currency</span> and own chart of accounts.</td><td><a href="2-2-trial-balance.html">2.2</a></td></tr>
+    <tr><td><strong>Translated</strong></td><td>Foreign sub balances converted into the group's reporting currency at the appropriate FX rates; the residual goes into CTA.</td><td><a href="2-4-currency-translation.html">2.4</a></td></tr>
+    <tr><td><strong>Standardized</strong></td><td>Local accounts mapped to the group chart of accounts; entity-level topside entries applied.</td><td><a href="2-1-coa-mapping.html">2.1</a>, <a href="2-10-topside-entries.html">2.10</a></td></tr>
+    <tr><td><strong>Eliminated</strong></td><td>Intercompany balances cancelled against each other; the parent's Investment in Subs cancelled against the sub's equity, with any excess landing in goodwill.</td><td><a href="2-6-intercompany.html">2.6</a>, <a href="2-7-investment-elimination.html">2.7</a></td></tr>
+    <tr><td><strong>Ownership-adjusted</strong></td><td>For partly-owned subs, equity (and any unrealized intra-group profit) split between parent and NCI.</td><td><a href="2-8-nci.html">2.8</a>, <a href="2-9-unrealized-profit.html">2.9</a></td></tr>
+    <tr><td><strong>Top</strong></td><td>Group-level topside entries applied. This is the data the consolidated balance sheet is rendered from.</td><td><a href="2-10-topside-entries.html">2.10</a></td></tr>
+  </tbody>
+</table>
+
+<h2>A worked example</h2>
+
+<p>Parent owns 80% of Sub. Sub owes Parent $100. Both report in USD, so no translation. Their separate balance sheets at year-end look like this:</p>
+
+<table>
+  <thead>
+    <tr><th>Line</th><th>Parent</th><th>Sub</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cash</td><td style="text-align: right;">$500</td><td style="text-align: right;">$300</td></tr>
+    <tr><td>Intercompany receivable (from Sub)</td><td style="text-align: right;">$100</td><td style="text-align: right;">—</td></tr>
+    <tr><td>Other assets</td><td style="text-align: right;">$2,400</td><td style="text-align: right;">$900</td></tr>
+    <tr><td>Investment in Sub</td><td style="text-align: right;">$1,000</td><td style="text-align: right;">—</td></tr>
+    <tr><td><strong>Total assets</strong></td><td style="text-align: right;"><strong>$4,000</strong></td><td style="text-align: right;"><strong>$1,200</strong></td></tr>
+    <tr><td>Intercompany payable (to Parent)</td><td style="text-align: right;">—</td><td style="text-align: right;">$100</td></tr>
+    <tr><td>Other liabilities</td><td style="text-align: right;">$1,500</td><td style="text-align: right;">$100</td></tr>
+    <tr><td>Common stock</td><td style="text-align: right;">$500</td><td style="text-align: right;">$200</td></tr>
+    <tr><td>Retained earnings</td><td style="text-align: right;">$2,000</td><td style="text-align: right;">$800</td></tr>
+    <tr><td><strong>Total liabilities + equity</strong></td><td style="text-align: right;"><strong>$4,000</strong></td><td style="text-align: right;"><strong>$1,200</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Two extra facts: Parent acquired Sub when Sub's equity was $900 (so $100 of <span class="term" data-term="goodwill">goodwill</span> exists from that acquisition, using the parent's-share method); and the IC receivable and payable agree.</p>
+
+<h3>Step 1 — Combine</h3>
+
+<p>Stack Parent and Sub line by line. Total assets = $4,000 + $1,200 = $5,200. But this is still wrong — the $100 IC balance shows up on both sides, and Investment in Sub is still sitting there alongside Sub's own equity.</p>
+
+<h3>Step 2 — Eliminate intercompany</h3>
+
+<p>Remove the $100 receivable on Parent's books against the $100 payable on Sub's books. Both lines go to zero. Total assets drop to $5,100; liabilities also drop. No effect on equity. See <a href="2-6-intercompany.html">Lesson 2.6</a> for the mechanics.</p>
+
+<h3>Step 3 — Eliminate the investment</h3>
+
+<p>Parent's $1,000 Investment in Sub is cancelled against Sub's equity ($1,000 = $200 common stock + $800 retained earnings). The $100 of goodwill recognized at acquisition is added as a new asset. See <a href="2-7-investment-elimination.html">Lesson 2.7</a>.</p>
+
+<h3>Step 4 — Apply NCI</h3>
+
+<p>20% of Sub's equity belongs to outside shareholders. After investment elimination, Sub's remaining equity (the post-acquisition movement) is $0 at the snapshot above, but in general the NCI line carries 20% of Sub's net assets. Here, NCI is 20% of $1,000 = $200, presented as a separate line in equity. The parent's share of Sub's equity has already been absorbed by the investment elimination. See <a href="2-8-nci.html">Lesson 2.8</a>.</p>
+
+<h3>Step 5 — Consolidated balance sheet</h3>
+
+<table>
+  <thead><tr><th>Line</th><th>Consolidated</th></tr></thead>
+  <tbody>
+    <tr><td>Cash</td><td style="text-align: right;">$800</td></tr>
+    <tr><td>Other assets</td><td style="text-align: right;">$3,300</td></tr>
+    <tr><td>Goodwill</td><td style="text-align: right;">$100</td></tr>
+    <tr><td><strong>Total assets</strong></td><td style="text-align: right;"><strong>$4,200</strong></td></tr>
+    <tr><td>Other liabilities</td><td style="text-align: right;">$1,600</td></tr>
+    <tr><td>Common stock (parent only)</td><td style="text-align: right;">$500</td></tr>
+    <tr><td>Retained earnings (parent only)</td><td style="text-align: right;">$1,900</td></tr>
+    <tr><td>Non-controlling interest</td><td style="text-align: right;">$200</td></tr>
+    <tr><td><strong>Total liabilities + equity</strong></td><td style="text-align: right;"><strong>$4,200</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Note that the IC lines are gone, Investment in Sub is gone, goodwill is on its own line, and NCI sits in equity. The parent's retained earnings of $1,900 reflects the $100 of post-acquisition profit attributable to the parent that Sub had earned ($800 retained earnings minus $700 at acquisition = $100, of which 80% = $80 goes to the parent; the example numbers are rounded for illustration).</p>
+
+<h2>Why each consolidation step shows up here</h2>
+
+<h3>Intercompany balances cancel</h3>
+
+<p>From the group's outside-the-fence view, one sub owing another is the same as money in one pocket and a note in another. It is not a real receivable or payable. <a href="2-6-intercompany.html">Lesson 2.6</a> covers the matching and elimination mechanics.</p>
+
+<h3>Investment in Subs is replaced by the sub's net assets</h3>
+
+<p>On its own books, the parent carries a single asset called Investment in Sub. After consolidation, that line is gone and what replaces it is the sub's actual assets, minus its actual liabilities, plus any goodwill from acquisition. The investment line and the sub's equity cancel each other out. See <a href="2-7-investment-elimination.html">Lesson 2.7</a>.</p>
+
+<h3>NCI sits inside equity</h3>
+
+<p>For partly-owned subs, the share of equity attributable to outside shareholders is presented on its own line within equity — not in liabilities and not in parent equity. Both US GAAP and IFRS require this. See <a href="2-8-nci.html">Lesson 2.8</a>.</p>
+
+<h3>CTA appears within equity if foreign subs exist</h3>
+
+<p>When subs in foreign currencies are translated, balance sheet items at one rate and income items at another inevitably produce a small imbalance. That imbalance is parked in equity as cumulative translation adjustment. See <a href="2-4-currency-translation.html">Lesson 2.4</a>.</p>
+
+<h3>Goodwill stays on the balance sheet</h3>
+
+<p>The excess of acquisition price over net assets is goodwill. Once recognized, it lives on the consolidated balance sheet as an indefinite-life asset and is tested for impairment each period. It is one of the few balance sheet lines that exists only at the consolidated level — no individual subsidiary carries the group's goodwill.</p>
+
+<h2>The tie-out checks</h2>
+
+<p>A consolidated balance sheet is correct when:</p>
+
+<ul>
+  <li><strong>Assets equal liabilities plus equity.</strong> The fundamental accounting identity. If it does not balance, the elimination or NCI math has gone wrong somewhere.</li>
+  <li><strong>Opening balances tie to the prior period's closing.</strong> Every line carried forward; the <span class="term" data-term="carryforward">carryforward</span> tie is non-negotiable.</li>
+  <li><strong>Cash on the balance sheet matches the closing cash on the consolidated cash flow statement.</strong> See <a href="2-13-cash-flow.html">Lesson 2.13</a>.</li>
+  <li><strong>Total equity matches the closing balance on the statement of changes in equity.</strong> See <a href="2-14-equity-rollforward.html">Lesson 2.14</a>.</li>
+  <li><strong>Retained earnings equals prior closing plus the period's net income minus dividends.</strong> This links the income statement to the balance sheet through the equity statement.</li>
+</ul>
+
+<p>These are the cross-statement consistency checks auditors look at first.</p>
+
+<h2>Why this matters for the software</h2>
+
+<div class="callout callout-dev">
+  <div class="callout-title">For developers</div>
+  <p>The balance sheet is the easiest report to render once the underlying data states are correct — it is just a presentation of the <span class="term" data-term="data-state-top">Top</span> data. But that "once they are correct" is the entire pipeline. A few practical points:</p>
+  <ul style="margin-top: 8px;">
+    <li><strong>Render from a single data state, not a snowflake of joins.</strong> By the time the balance sheet is presented, all transformations should have already happened. Avoid running elimination logic in the report layer.</li>
+    <li><strong>Every line needs drill-down to the contributing entities.</strong> A user clicking "Cash $800" should see Parent's $500 and Sub's $300. Clicking "Goodwill $100" should reveal which acquisition it came from.</li>
+    <li><strong>The NCI line is a query, not a stored field.</strong> NCI changes period to period based on subsidiary equity movements. Compute it from current ownership and current sub equity; don't try to store it as a separate balance.</li>
+    <li><strong>Comparative columns are mandatory.</strong> A balance sheet almost always shows two periods side by side (current vs. prior year-end). Build for it from day one.</li>
+    <li><strong>Currency view-switching matters.</strong> Users often want to see the same balance sheet in USD and in EUR — same data, different presentation rates. Translation should be a view layer, not a re-run of the pipeline.</li>
+  </ul>
+</div>
+
+<h2>Summary</h2>
+
+<ul>
+  <li>The consolidated balance sheet is the group's snapshot of assets, liabilities, and equity at period end.</li>
+  <li>It looks like any company's balance sheet, but with intercompany balances eliminated, the Investment in Subs line replaced by the sub's net assets plus goodwill, NCI sitting inside equity, and CTA recorded when foreign subs are present.</li>
+  <li>Producing it is mostly a matter of pulling the Top data state and presenting it — the heavy work happens earlier in the pipeline.</li>
+  <li>Tie-outs across the four primary statements (cash, equity, retained earnings) are the consistency checks auditors and controllers run first.</li>
+</ul>
+
+      <nav class="lesson-nav">
+        <a href="2-10-topside-entries.html">← 2.10 Adjustments & topside entries</a>
+        <div class="spacer"></div>
+        <a href="2-12-income-statement.html">2.12 Consolidated income statement →</a>
+      </nav>
+    </article>
+    <aside class="glossary" id="glossary-panel"></aside>
+  </main>
+</div>
+<script src="../../js/glossary-data.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/progress.js"></script>
+<script src="../../js/glossary.js"></script>
+</body>
+</html>

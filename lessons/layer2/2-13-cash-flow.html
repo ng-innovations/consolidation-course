@@ -2,22 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cash flow consolidation — Consolidation Course</title>
+<title>Consolidated cash flow statement — Consolidation Course</title>
 <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
 <div class="app">
-  <nav class="nav" id="nav" data-active="2-12-cash-flow.html" data-root="../../"></nav>
+  <nav class="nav" id="nav" data-active="2-13-cash-flow.html" data-root="../../"></nav>
   <main class="main">
     <article class="content">
       <header class="content-header">
-        <div class="content-eyebrow">Layer 2 — Lesson 12 · Pipeline: D.12</div>
-        <h1>Cash flow consolidation</h1>
+        <div class="content-eyebrow">Layer 2 — Lesson 13 · Pipeline: D.12</div>
+        <h1>Consolidated cash flow statement</h1>
       </header>
-      
-<p>The <span class="term" data-term="cash-flow-statement">cash flow statement</span> is one of the four primary financial statements, but it's the only one that can't simply be summed across subsidiaries. Cash flows reflect changes between two balance sheet snapshots — and at the group level, those snapshots have already been through translation, elimination, and ownership processing. Reconstructing meaningful cash flow categories from a transformed consolidated balance sheet requires its own logic.</p>
+
+<p>The <span class="term" data-term="cash-flow-statement">cash flow statement</span> shows where the group's cash came from and went during the period. It's one of the four primary financial statements, but it's the only one that can't simply be summed across subsidiaries. This lesson walks through how the consolidated version is assembled and why a few line items only ever appear at the group level.</p>
 
 <p><strong>Pipeline reference:</strong> Cash flow consolidation happens in <em>Reporting</em> (step D.12), after all balance sheet and income statement processing is complete.</p>
+
+<h2>What the consolidated version looks like</h2>
+
+<p>The structure is the same three sections any cash flow statement has:</p>
+
+<ul>
+  <li>Operating activities</li>
+  <li>Investing activities</li>
+  <li>Financing activities</li>
+</ul>
+
+<p>What's different at the group level:</p>
+
+<ul>
+  <li><strong>It can't just be the sum of subsidiary cash flows.</strong> <span class="term" data-term="intercompany">Intercompany</span> cash movements (one <span class="term" data-term="subsidiary">subsidiary</span> paying another) net to zero at the group level — but each subsidiary's local cash flow statement shows them as outflows or inflows.</li>
+  <li><strong><span class="term" data-term="fx">FX</span> rate effects need their own line.</strong> Translating closing balances at a different rate than <span class="term" data-term="opening-balance">opening balances</span> creates apparent "cash movements" that aren't real cash movements — they're just rate changes. These get pulled out into a separate "Effect of exchange rates on cash" line.</li>
+  <li><strong>Acquisitions and divestitures are presented at the group level.</strong> If the group bought a new subsidiary mid-year, the cash paid for the acquisition shows up in investing activities, and from the acquisition date forward, the acquired entity's cash flows are included in the group totals.</li>
+</ul>
+
+<p>The rest of this lesson is about how to actually produce that statement — the mechanics behind each of those bullets.</p>
+
+<h2>Example — a mocked-up consolidated cash flow statement</h2>
+
+<p>Same example group as in <a href="2-11-balance-sheet.html">Lesson 2.11</a>: Acme Industrials (parent) owns 80% of BrightWave Energy (sub); both report in USD. Acme's consolidated cash flow statement for the year looks like this:</p>
+
+<table>
+  <thead><tr><th>Acme Industrials — consolidated cash flow, year ended Dec 31</th><th>Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Net income</td><td style="text-align: right;">$250</td></tr>
+    <tr><td>Add: depreciation (non-cash)</td><td style="text-align: right;">$50</td></tr>
+    <tr><td><strong>Cash from operating activities</strong></td><td style="text-align: right;"><strong>$300</strong></td></tr>
+    <tr><td>Capital expenditures</td><td style="text-align: right;">($100)</td></tr>
+    <tr><td><strong>Cash from investing activities</strong></td><td style="text-align: right;"><strong>($100)</strong></td></tr>
+    <tr><td>Dividends paid to parent shareholders</td><td style="text-align: right;">($80)</td></tr>
+    <tr><td>Dividends paid to NCI</td><td style="text-align: right;">($10)</td></tr>
+    <tr><td><strong>Cash from financing activities</strong></td><td style="text-align: right;"><strong>($90)</strong></td></tr>
+    <tr><td><strong>Net change in cash</strong></td><td style="text-align: right;"><strong>$110</strong></td></tr>
+    <tr><td>Opening cash</td><td style="text-align: right;">$200</td></tr>
+    <tr><td><strong>Closing cash</strong></td><td style="text-align: right;"><strong>$310</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Where these numbers reappear:</p>
+
+<ul>
+  <li><strong>Net income $250</strong> matches the income statement (<a href="2-12-income-statement.html">Lesson 2.12</a>).</li>
+  <li><strong>Closing cash $310</strong> equals the Cash line on the balance sheet (<a href="2-11-balance-sheet.html">Lesson 2.11</a>).</li>
+  <li>The two dividend rows (<strong>$80</strong> to parent shareholders, <strong>$10</strong> to NCI) match the dividend rows on the statement of changes in equity (<a href="2-14-equity-rollforward.html">Lesson 2.14</a>).</li>
+</ul>
+
+<p>This example assumes no foreign currency exposure, so there is no "effect of FX on cash" line. Multi-currency groups always have one, as the next sections explain.</p>
 
 <h2>The two methods — direct and indirect</h2>
 
@@ -157,9 +208,9 @@
 </ul>
 
       <nav class="lesson-nav">
-        <a href="2-11-topside-entries.html">← 2.11 Adjustments & topside entries</a>
+        <a href="2-12-income-statement.html">← 2.12 Consolidated income statement</a>
         <div class="spacer"></div>
-        <a href="2-13-reporting-disclosures.html">2.13 Reporting & disclosures →</a>
+        <a href="2-14-equity-rollforward.html">2.14 Consolidated statement of changes in equity →</a>
       </nav>
     </article>
     <aside class="glossary" id="glossary-panel"></aside>

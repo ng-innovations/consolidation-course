@@ -181,6 +181,17 @@ const GLOSSARY = {
     `
   },
 
+  'common-stock': {
+    term: 'Common Stock',
+    body: `
+      <p>The par value of shares the company has issued to its owners. It sits in the <span class="term" data-term="equity">equity</span> section of the <span class="term" data-term="balance-sheet">balance sheet</span> and represents the original capital that shareholders put in to fund the business.</p>
+      <div class="example-box">
+        <strong>Example:</strong> A startup issues 1,000 shares at $1 par value. Common stock on its balance sheet is $1,000.
+      </div>
+      <p>Common stock typically does not move much from period to period. It changes only when the company issues new shares or buys back its own shares.</p>
+    `
+  },
+
   'oci': {
     term: 'Other Comprehensive Income',
     acronym: 'OCI',
@@ -254,6 +265,17 @@ const GLOSSARY = {
         <li>If the counterparty is outside the group, the transaction stays in the consolidated results.</li>
       </ul>
       <p>"Counterparty risk" is the risk that the other party fails to pay or perform — and the group view is what tells you the total exposure to any one counterparty across all subsidiaries.</p>
+    `
+  },
+
+  'revenue': {
+    term: 'Revenue',
+    body: `
+      <p>The total amount a company earns from selling its goods or services during a period, before subtracting any costs. Also called sales or "top line" because it sits at the top of the <span class="term" data-term="income-statement">income statement</span>.</p>
+      <div class="example-box">
+        <strong>Example:</strong> A coffee shop sells 10,000 cups of coffee at $5 each in a year. Revenue is $50,000.
+      </div>
+      <p>Revenue minus <span class="term" data-term="cogs">cost of goods sold</span> equals gross profit; subtract operating expenses and the result is operating income; subtract interest and taxes and what is left is net income (the "bottom line").</p>
     `
   },
 
