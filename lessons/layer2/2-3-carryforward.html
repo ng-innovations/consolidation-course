@@ -11,13 +11,13 @@
   <main class="main">
     <article class="content">
       <header class="content-header">
-        <div class="content-eyebrow">Layer 2 — Lesson 3 · Pipeline: C.6, D.14</div>
-        <h1>Carryforward & opening balances</h1>
+        <div class="content-eyebrow">Layer 2 — Lesson 3</div>
+        <h1>Carryforward &amp; opening balances</h1>
       </header>
-      
-<p>Financial periods don't exist in isolation. Each period's <span class="term" data-term="opening-balance">opening balance</span> is the prior period's closing balance, and the math has to work out at every transition. This lesson covers <span class="term" data-term="carryforward">carryforward</span> — the mechanics of rolling balances between periods.</p>
 
-<p><strong>Pipeline reference:</strong> Carryforward shows up in two places — <em>Validate Carryforward</em> (step C.6, at the start of each period's consolidation) and <em>Balance Carryforward</em> (step D.14, at the end of the period to prepare for the next one).</p>
+<p>Financial periods don't exist in isolation. Each period's <span class="term" data-term="opening-balance">opening balance</span> is the prior period's closing balance, and the math has to work out at every transition. This lesson covers <span class="term" data-term="carryforward">carryforward</span> &mdash; the mechanics of rolling balances between periods.</p>
+
+<p><strong>Pipeline reference:</strong> Carryforward shows up at both ends of the period cycle. At the start of a period, it validates that this period's opening balances match the prior period's closing. At the end (after lock), it rolls closing balances forward into the next period's opening, with extra work at fiscal year-end.</p>
 
 <h2>Balance sheet vs. income statement behavior</h2>
 
@@ -25,15 +25,15 @@
 
 <h3>Balance sheet accounts roll forward</h3>
 
-<p>An <span class="term" data-term="assets">asset</span>, <span class="term" data-term="liabilities">liability</span>, or <span class="term" data-term="equity">equity</span> account's closing balance at the end of one period <em>is</em> the opening balance of the next period. The cash you had on December 31 is the cash you have on January 1.</p>
+<p>An <span class="term" data-term="assets">asset</span>, <span class="term" data-term="liabilities">liability</span>, or <span class="term" data-term="equity">equity</span> account's closing balance at the end of one period <em>is</em> the opening balance of the next period. The cash on hand on December 31 is the cash on hand on January 1.</p>
 
-<p>This is true regardless of period frequency. Monthly closes work the same way — January closing cash becomes February opening cash.</p>
+<p>This is true regardless of period frequency. Monthly closes work the same way &mdash; January closing cash becomes February opening cash.</p>
 
 <h3>Income statement accounts reset to zero — but go somewhere first</h3>
 
-<p>Revenue and expense accounts measure activity <em>during</em> a period. At the end of the fiscal year, they need to start fresh for the new year — January's revenue shouldn't include December's.</p>
+<p>Revenue and expense accounts measure activity <em>during</em> a period. At the end of the fiscal year, they need to start fresh for the new year &mdash; January's revenue shouldn't include December's.</p>
 
-<p>But the profit (or loss) for the year doesn't just disappear. It moves into <span class="term" data-term="retained-earnings">retained earnings</span> on the <span class="term" data-term="balance-sheet">balance sheet</span>. This is called the year-end "closing entry."</p>
+<p>But the profit (or loss) for the year doesn't just disappear. It moves into <span class="term" data-term="retained-earnings">retained earnings</span> on the <span class="term" data-term="balance-sheet">balance sheet</span>. This is called the year-end closing entry.</p>
 
 <svg class="diagram" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
   <text x="340" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Year-end closing entry</text>
@@ -59,7 +59,7 @@
   <text x="340" y="170" text-anchor="middle" font-size="11" font-style="italic" fill="#6b7280">Net income flows into retained earnings; P&amp;L accounts reset to zero for the new year.</text>
 </svg>
 
-<p>So at year end:</p>
+<p>At year end:</p>
 
 <ul>
   <li>Revenue and expense accounts close to zero (and stay at zero on Jan 1 of the new year).</li>
@@ -68,13 +68,11 @@
 
 <h3>Mid-year monthly closes</h3>
 
-<p>For monthly closes within a fiscal year, the income statement accounts <em>don't</em> reset. They accumulate year-to-date. So at the end of Q1, the revenue account reads three months of revenue, and at the end of Q2, it reads six months.</p>
-
-<p>This is why income statement accounts have an opening balance of zero only at the start of each fiscal year — but during the year, their "opening" balance is the prior period's closing balance, just like balance sheet accounts.</p>
+<p>For monthly closes within a fiscal year, the income statement accounts <em>don't</em> reset. They accumulate year-to-date. At the end of Q1, the revenue account reads three months of revenue; at the end of Q2, six months.</p>
 
 <h2>Why carryforward validation matters</h2>
 
-<p>It seems obvious that this period's opening should match last period's closing. But in practice, it's frequently broken — and broken carryforward is one of the most common sources of consolidation errors.</p>
+<p>It seems obvious that this period's opening should match last period's closing. But in practice, it's frequently broken &mdash; and broken carryforward is one of the most common sources of consolidation errors.</p>
 
 <h3>How it breaks</h3>
 
@@ -110,7 +108,7 @@
   <li><strong>Reset income statement accounts to zero.</strong> They start fresh.</li>
   <li><strong>Carry forward balance sheet balances.</strong> Closing → next period's opening.</li>
   <li><strong>Carry forward equity components.</strong> CTA cumulative balance, other OCI components, accumulated NCI, etc.</li>
-  <li><strong>Update beginning-of-year ownership percentages.</strong> If any acquisitions/divestitures happened, lock in the new structure.</li>
+  <li><strong>Lock in beginning-of-year ownership percentages.</strong></li>
 </ol>
 
 <h2>Equity components carryforward</h2>
@@ -121,14 +119,14 @@
   <tr><th>Component</th><th>How it carries forward</th></tr>
   <tr><td>Share capital</td><td>Closing balance carries forward. Only changes via share issuance/buyback.</td></tr>
   <tr><td>Retained earnings</td><td>Closing balance + net income for new period − dividends paid.</td></tr>
-  <tr><td>CTA</td><td>Cumulative — carries forward. New period's translation adds to it.</td></tr>
+  <tr><td>CTA</td><td>Cumulative &mdash; carries forward. New period's translation adds to it.</td></tr>
   <tr><td>NCI</td><td>Closing balance + NCI's share of new period's income − NCI dividends.</td></tr>
-  <tr><td>Other OCI</td><td>Cumulative — carries forward like CTA.</td></tr>
+  <tr><td>Other OCI</td><td>Cumulative &mdash; carries forward like CTA.</td></tr>
 </table>
 
 <h2>The carryforward journal</h2>
 
-<p>If the system records carryforward as actual journal entries (some do), they look like this for year-end:</p>
+<p>If the system records carryforward as actual journal entries, they look like this at year-end:</p>
 
 <div class="example-box">
 <strong>Year-end closing entries for Sub A:</strong>
@@ -139,17 +137,10 @@
   <tr><td>Operating Expenses</td><td></td><td class="num">40,000</td></tr>
   <tr><td>Retained Earnings</td><td></td><td class="num">40,000</td></tr>
 </table>
-<p style="margin-top: 8px;"><em>To close P&amp;L accounts to RE. Net income of $40,000 moved to retained earnings.</em></p>
+<p style="margin-top: 8px;"><em>P&amp;L accounts close to RE. Net income of $40,000 moved to retained earnings.</em></p>
 </div>
 
-<h2>Where this happens in the pipeline</h2>
-
-<p>Carryforward appears at both ends of the period cycle:</p>
-
-<ul>
-  <li><strong>At the start (step C.6):</strong> Validate that opening balances match prior closing. Reject the period if they don't (or surface for resolution).</li>
-  <li><strong>At the end (step D.14):</strong> After the period is locked, roll closing balances forward into the next period's opening, and apply year-end closing entries if it's year-end.</li>
-</ul>
+<h2>The period boundary</h2>
 
 <svg class="diagram" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
   <rect x="20" y="60" width="160" height="60" fill="#dcfce7" stroke="#15803d" stroke-width="1.5" rx="4"/>
@@ -159,7 +150,7 @@
 
   <line x1="180" y1="90" x2="220" y2="90" stroke="#475569" stroke-width="2"/>
   <polygon points="220,90 212,85 212,95" fill="#475569"/>
-  <text x="200" y="78" text-anchor="middle" font-size="10" font-style="italic" fill="#475569">D.14</text>
+  <text x="200" y="78" text-anchor="middle" font-size="10" font-style="italic" fill="#475569">roll forward</text>
 
   <rect x="240" y="40" width="160" height="100" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" rx="4"/>
   <text x="320" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Period N opens</text>
@@ -170,7 +161,7 @@
 
   <line x1="400" y1="90" x2="440" y2="90" stroke="#475569" stroke-width="2"/>
   <polygon points="440,90 432,85 432,95" fill="#475569"/>
-  <text x="420" y="78" text-anchor="middle" font-size="10" font-style="italic" fill="#475569">C.6</text>
+  <text x="420" y="78" text-anchor="middle" font-size="10" font-style="italic" fill="#475569">validate</text>
 
   <rect x="460" y="60" width="200" height="60" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5" rx="4"/>
   <text x="560" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Period N consolidation</text>
@@ -178,38 +169,32 @@
   <text x="560" y="114" text-anchor="middle" font-size="10" font-style="italic" fill="#1e40af">opening ties to N-1 closing</text>
 </svg>
 
-<h2>State transitions</h2>
-
-<p>Carryforward operations span across periods. The closing snapshot of Period N (Top state) becomes part of the input that produces Period N+1's Local state. Specifically, opening balances are part of the input data; the validation just confirms they match what was locked previously.</p>
-
 <h2>Why this matters for the software</h2>
 
 <div class="callout callout-dev">
   <div class="callout-title">For developers</div>
-  <p>Carryforward is where periods touch each other. A few design points:</p>
-  <ul style="margin-top: 8px;">
-    <li><strong>Locked periods must be immutable.</strong> Once Period N is locked, its closing balances cannot change — otherwise Period N+1's opening becomes a moving target. Authorized "unlock" should require explicit action and audit logging.</li>
+  <p>Carryforward is where periods touch each other.</p>
+  <ul>
+    <li><strong>Locked periods must be immutable.</strong> Once Period N is locked, its closing balances cannot change &mdash; otherwise Period N+1's opening becomes a moving target. Authorized "unlock" should require explicit action and audit logging.</li>
     <li><strong>Opening balance is its own concept, not the same row as closing balance.</strong> Store and surface them separately. A common bug pattern: showing only "current period balance" makes it hard to debug carryforward issues.</li>
     <li><strong>Year-end closing entries should be deterministic and replayable.</strong> The math is mechanical; don't let it become a human-driven process.</li>
-    <li><strong>Don't conflate accounting carryforward with database carryforward.</strong> Database rows from last period don't need to be "moved" — they stay where they are. The system just needs to know that Period N+1's opening balance for account X is whatever Period N's closing balance for account X was.</li>
+    <li><strong>Don't conflate accounting carryforward with database carryforward.</strong> Database rows from last period don't need to be moved. The system just needs to know that Period N+1's opening balance for account X is whatever Period N's closing balance for account X was.</li>
   </ul>
 </div>
 
 <h2>Summary</h2>
 
 <ul>
-  <li>Balance sheet account closing balances become next period's opening balances.</li>
-  <li>Income statement accounts reset to zero at fiscal year-end, with net income closing to retained earnings.</li>
-  <li>The carryforward validation check ensures this period's opening balances match last period's closing.</li>
-  <li>Mismatches arise from late entries, restatements, mapping changes, FX rate changes, and acquisitions.</li>
-  <li>Equity components — share capital, RE, CTA, NCI, OCI — each carry forward with their own rules.</li>
-  <li>Carryforward happens at both ends of the period cycle: validate at start, post-close at end.</li>
+  <li>Balance sheet account closing balances become next period's opening balances; income statement accounts reset to zero at fiscal year-end with net income closing to retained earnings.</li>
+  <li>The carryforward check ensures this period's opening balances match last period's closing for every balance sheet account.</li>
+  <li>Mismatches come from late entries, restatements, mapping changes, FX rate changes, or acquisitions/divestitures &mdash; each has to be investigated.</li>
+  <li>Equity components (share capital, RE, CTA, NCI, OCI) each carry forward with their own rules.</li>
 </ul>
 
       <nav class="lesson-nav">
-        <a href="2-2-trial-balance.html">← 2.2 Trial balance collection & validation</a>
+        <a href="2-2-trial-balance.html">&larr; 2.2 Trial balance collection &amp; validation</a>
         <div class="spacer"></div>
-        <a href="2-4-currency-translation.html">2.4 Currency translation & CTA →</a>
+        <a href="2-4-currency-translation.html">2.4 Currency translation &amp; CTA &rarr;</a>
       </nav>
     </article>
     <aside class="glossary" id="glossary-panel"></aside>
