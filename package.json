@@ -1,0 +1,12 @@
+{
+  "name": "consolidation-course",
+  "private": true,
+  "description": "Static consolidation course; served via Express server in ./server/ behind Microsoft SSO. This root package.json exists so Nixpacks (Railway) detects Node and installs it; the actual server deps live in server/package.json.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm ci --prefix server",
+    "start": "npm start --prefix server"
+  }
+}

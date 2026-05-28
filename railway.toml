@@ -1,11 +1,10 @@
-# Railway tells Nixpacks to build and run from server/.
-# The Express server there serves the static course content from STATIC_DIR=.. (the repo root)
-# behind the Microsoft SSO gate. See server/.env.example for required env vars.
+# Build & deploy config for Railway / Nixpacks.
+# Nixpacks detects Node from the root package.json (which only exists to
+# trigger Node detection — actual server code is in ./server/).
+# The root package.json's "build" and "start" scripts delegate to server/.
 
 [build]
 builder = "nixpacks"
-buildCommand = "cd server && npm ci"
 
 [deploy]
-startCommand = "cd server && npm start"
 restartPolicyType = "always"
