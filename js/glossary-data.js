@@ -904,6 +904,524 @@ const GLOSSARY = {
       <p>Each number in an XBRL-tagged report is associated with a standard taxonomy element (e.g., <code>us-gaap:Revenues</code>) so that regulators and analysts can compare numbers across companies programmatically.</p>
       <p>For a consolidation product, XBRL output is one of several export formats — typically generated from the same underlying data as the human-readable statements, with a mapping layer between internal account codes and the XBRL taxonomy.</p>
     `
+  },
+
+  'currency-translation': {
+    term: 'Currency Translation',
+    body: `
+      <p>Converting a foreign subsidiary's financial statements from its own currency into the <span class="term" data-term="group">group</span>'s reporting currency, so the entities can be combined. Different account types use different exchange rates — balance sheet items at the <span class="term" data-term="closing-rate">closing rate</span>, income items at the <span class="term" data-term="average-rate">average rate</span> — and the leftover difference lands in <span class="term" data-term="cta">CTA</span>.</p>
+      <p>Translation operates on an already-prepared trial balance. Contrast with <span class="term" data-term="remeasurement">remeasurement</span>, which goes back to original transaction amounts.</p>
+    `
+  },
+
+  'remeasurement': {
+    term: 'Remeasurement',
+    body: `
+      <p>Restating an entity's books as if every transaction had originally been recorded in its <span class="term" data-term="functional-currency">functional currency</span>. It's used when the currency a transaction was recorded in (the <span class="term" data-term="transaction-currency">transaction currency</span>) differs from the functional currency.</p>
+      <p>Unlike plain <span class="term" data-term="currency-translation">translation</span>, remeasurement reaches back to original transaction amounts and produces <span class="term" data-term="realized-unrealized-gains">realized and unrealized FX gains and losses</span> that flow through the income statement.</p>
+    `
+  },
+
+  'revaluation': {
+    term: 'Revaluation',
+    body: `
+      <p>Recalculating the home-currency value of foreign-currency balances using current exchange rates. Because rates move between when a balance was booked and the reporting date, the recalculated value differs — and the difference is recorded as an FX gain or loss.</p>
+      <p>Commonly run at period end on monetary balances such as foreign-currency cash, receivables, and payables.</p>
+    `
+  },
+
+  'transaction-currency': {
+    term: 'Transaction Currency',
+    body: `
+      <p>The currency a transaction is actually denominated in, before any conversion. A US entity that buys equipment priced in euros has a transaction currency of EUR on that line, even though its <span class="term" data-term="functional-currency">functional currency</span> is USD.</p>
+      <p>Consolidation often tracks up to four currency layers: transaction, functional, <span class="term" data-term="local-currency">local</span>, and <span class="term" data-term="group-currency">group</span>.</p>
+    `
+  },
+
+  'group-currency': {
+    term: 'Group Currency',
+    body: `
+      <p>The single currency the consolidated <span class="term" data-term="group">group</span> reports in — also called the <span class="term" data-term="presentation-currency">presentation currency</span>. Every entity's numbers are translated into this currency before they can be combined.</p>
+    `
+  },
+
+  'local-currency': {
+    term: 'Local Currency',
+    body: `
+      <p>The currency an entity is legally required to file its <span class="term" data-term="statutory-reporting">statutory accounts</span> in. It usually equals the <span class="term" data-term="functional-currency">functional currency</span>, and only becomes a distinct fourth currency layer when the two differ — for example, a UK operation whose functional currency is USD but which must still file local accounts in GBP.</p>
+    `
+  },
+
+  'statutory-reporting': {
+    term: 'Statutory Reporting',
+    body: `
+      <p>Financial statements an entity is legally required to file under the rules of the country it operates in — often in a prescribed local-currency and local chart-of-accounts format. The "statutory" view can differ from the group's internal or consolidated view.</p>
+      <p>A single subsidiary may produce statutory accounts for its local regulator and a separate package for group consolidation.</p>
+    `
+  },
+
+  'realized-unrealized-gains': {
+    term: 'Realized & Unrealized Gains/Losses',
+    body: `
+      <p>Currency (or value) gains and losses, split by whether they are locked in. <strong>Realized</strong> gains/losses arise from a completed transaction — e.g., a foreign payable is actually settled. <strong>Unrealized</strong> gains/losses exist only on paper at the reporting date, because rates moved on a balance you still hold.</p>
+    `
+  },
+
+  'step-acquisition': {
+    term: 'Step Acquisition / Fair-Value Step-Up',
+    body: `
+      <p>When a <span class="term" data-term="parent">parent</span> acquires a <span class="term" data-term="subsidiary">subsidiary</span>, the acquired company's assets are revalued from their <span class="term" data-term="historical-cost">historical cost</span> up to <span class="term" data-term="fair-value">fair value</span> at the acquisition date. That "step-up" is part of how the purchase price gets allocated, and any excess over the <span class="term" data-term="net-identifiable-assets">net identifiable assets</span> becomes <span class="term" data-term="goodwill">goodwill</span>.</p>
+      <p>"Step acquisition" specifically refers to building up control in stages (e.g., going from 30% to 60%); each step can trigger a remeasurement. The detailed mechanics are an advanced topic.</p>
+    `
+  },
+
+  'historical-cost': {
+    term: 'Historical Cost',
+    body: `
+      <p>The original amount paid for an asset, recorded on the books and generally left unchanged over time (apart from <span class="term" data-term="depreciation">depreciation</span>). Contrast with <span class="term" data-term="fair-value">fair value</span>, which is what the asset is worth today.</p>
+    `
+  },
+
+  'carrying-amount': {
+    term: 'Carrying Amount',
+    body: `
+      <p>The value of an asset or liability as currently recorded on the books — also called book value or carrying value. For an asset bought for $1,000 with $300 of accumulated <span class="term" data-term="depreciation">depreciation</span>, the carrying amount is $700.</p>
+      <p>Used heavily in <span class="term" data-term="impairment">impairment</span> testing: an asset is impaired when its carrying amount exceeds its <span class="term" data-term="recoverable-amount">recoverable amount</span>.</p>
+    `
+  },
+
+  'recoverable-amount': {
+    term: 'Recoverable Amount',
+    body: `
+      <p>The amount a business realistically expects to get back from an asset — either by using it or selling it. If the asset's <span class="term" data-term="carrying-amount">carrying amount</span> is higher than its recoverable amount, the difference is written down as an <span class="term" data-term="impairment">impairment</span> loss.</p>
+    `
+  },
+
+  'net-identifiable-assets': {
+    term: 'Net Identifiable Assets',
+    body: `
+      <p>In an acquisition, the acquired company's assets that can be separately identified and valued, minus its liabilities. The buyer measures these at <span class="term" data-term="fair-value">fair value</span>; any purchase price paid above this figure becomes <span class="term" data-term="goodwill">goodwill</span>.</p>
+    `
+  },
+
+  'contingent-consideration': {
+    term: 'Contingent Consideration',
+    body: `
+      <p>Part of an acquisition price that is only paid if future conditions are met — for example, an "earn-out" paid to the seller if the acquired business hits revenue targets. It's estimated and recorded at acquisition, then re-estimated over time as the outcome becomes clearer.</p>
+    `
+  },
+
+  'minority-interest': {
+    term: 'Minority Interest',
+    body: `
+      <p>An older name for <span class="term" data-term="nci">non-controlling interest</span> — the portion of a subsidiary owned by outside shareholders rather than the <span class="term" data-term="parent">parent</span>. The two terms mean the same thing; modern standards use "non-controlling interest," but "minority interest" is still common in practice.</p>
+    `
+  },
+
+  'apic': {
+    term: 'Additional Paid-In Capital',
+    acronym: 'APIC',
+    body: `
+      <p>The amount investors paid for shares above the shares' nominal (par) value. If a share with $1 par value is issued for $10, the extra $9 goes to APIC. It sits in the <span class="term" data-term="equity">equity</span> section of the <span class="term" data-term="balance-sheet">balance sheet</span> alongside <span class="term" data-term="common-stock">common stock</span>.</p>
+    `
+  },
+
+  'equity-pickup': {
+    term: 'Equity Pickup',
+    body: `
+      <p>Under the <span class="term" data-term="equity-method">equity method</span>, the parent records its share of an investee's profit or loss each period — "picking up" that slice into its own books. A 30% investor in a company that earned $1,000 picks up $300 of income and increases its investment balance by the same amount.</p>
+    `
+  },
+
+  'bottom-up-consolidation': {
+    term: 'Bottom-Up Consolidation',
+    body: `
+      <p>Consolidating an ownership tree from the lowest entities upward, node by node, until reaching the top <span class="term" data-term="parent">parent</span>. Each intermediate parent consolidates its own children first (a <span class="term" data-term="sub-consolidation">sub-consolidation</span>), and those results roll up to the next level.</p>
+      <p>This ordering matters when intermediate entities are themselves partly owned, so that <span class="term" data-term="nci">NCI</span> is calculated correctly at each level.</p>
+    `
+  },
+
+  'lowest-common-parent': {
+    term: 'Lowest Common Parent',
+    acronym: 'LCP',
+    body: `
+      <p>For an <span class="term" data-term="intercompany">intercompany</span> transaction between two entities, the lowest node in the ownership tree that sits above both of them. Elimination entries are posted at the LCP, because that's the first level where both sides of the transaction are inside the same consolidated group.</p>
+    `
+  },
+
+  'roll-up': {
+    term: 'Roll-Up',
+    body: `
+      <p>Aggregating lower-level balances upward into combined totals — across an ownership hierarchy, an account hierarchy, or a reporting dimension. "Rolling up" the subsidiaries means summing their mapped balances into group figures.</p>
+    `
+  },
+
+  'sub-consolidation': {
+    term: 'Sub-Consolidation',
+    body: `
+      <p>A consolidated result produced at an intermediate node of the ownership tree, not just at the very top. A regional holding company that consolidates the entities beneath it produces a sub-consolidation, which then rolls up into the global group.</p>
+    `
+  },
+
+  'dividend-elimination': {
+    term: 'Dividend Elimination',
+    body: `
+      <p>Removing dividends paid from one group company to another so they aren't double-counted. The paying sub recorded a reduction in <span class="term" data-term="retained-earnings">retained earnings</span> and the receiving parent recorded dividend income — but from the <span class="term" data-term="group">group</span>'s view no money left the group, so the income is eliminated.</p>
+    `
+  },
+
+  'one-sided-posting': {
+    term: 'One-Sided Posting',
+    body: `
+      <p>An <span class="term" data-term="intercompany">intercompany</span> entry recorded on only one entity's books, with no matching entry on the counterparty. Because elimination relies on both sides agreeing, a one-sided posting breaks the match and has to be investigated and fixed.</p>
+    `
+  },
+
+  'clearing-account': {
+    term: 'Clearing Account',
+    body: `
+      <p>A temporary holding account that transactions pass through on their way somewhere else, expected to net to zero once everything is processed. In consolidation, a clearing account can collect elimination differences so they're visible and resolvable rather than hidden.</p>
+    `
+  },
+
+  'plug': {
+    term: 'Plug',
+    body: `
+      <p>A balancing figure inserted to force two sides to agree when they otherwise don't. A "plug account" absorbs an unexplained difference so the books tie. Plugs are convenient but dangerous: they can mask real errors, so good practice is to flag unreconciled differences rather than silently plug them.</p>
+    `
+  },
+
+  'timing-difference': {
+    term: 'Timing Difference',
+    body: `
+      <p>A mismatch between two entities' books because they recorded the two sides of the same transaction in different periods — for example, one sub ships goods on the last day of the month and books the sale, while the receiving sub doesn't record the purchase until the goods arrive next month. The <span class="term" data-term="intercompany">intercompany</span> balances won't match until the timing difference resolves.</p>
+    `
+  },
+
+  'related-party': {
+    term: 'Related Party',
+    body: `
+      <p>A person or entity connected to the reporting entity — another group company, a major shareholder, or key management. Transactions with related parties get special disclosure because they may not be at <span class="term" data-term="arms-length">arm's length</span>.</p>
+    `
+  },
+
+  'arms-length': {
+    term: "Arm's Length",
+    body: `
+      <p>A transaction priced as if between two unrelated parties each acting in their own interest. <span class="term" data-term="intercompany">Intercompany</span> transactions are supposed to be priced at arm's length so that profits aren't artificially shifted between group entities — the basis for <span class="term" data-term="transfer-pricing">transfer pricing</span> rules.</p>
+    `
+  },
+
+  'transfer-pricing': {
+    term: 'Transfer Pricing',
+    acronym: 'TP',
+    body: `
+      <p>The prices charged on transactions between related entities in the same group. Tax authorities require these to approximate <span class="term" data-term="arms-length">arm's-length</span> prices so groups can't shift profit into low-tax jurisdictions. Intercompany prices are often set as cost plus a fixed markup.</p>
+    `
+  },
+
+  'equity-rollforward': {
+    term: 'Equity Roll-Forward',
+    body: `
+      <p>A schedule that reconciles each equity component from its opening balance to its closing balance over a period — opening, plus net income, plus or minus other movements (dividends, share issuance, <span class="term" data-term="oci">OCI</span>), equals closing. It is the same thing as the statement of changes in equity.</p>
+    `
+  },
+
+  'thirteenth-period': {
+    term: '13th Period',
+    body: `
+      <p>An extra adjustment "period" some companies add after the 12 regular months (sometimes labeled P13). It holds year-end audit and closing entries separately so they don't distort December's operating numbers.</p>
+    `
+  },
+
+  'stub-period': {
+    term: 'Stub Period',
+    body: `
+      <p>A reporting period shorter than a full year, created when a company changes its fiscal year-end. Also called a short year. If a December year-end moves to March, the company files a three-month stub period to bridge the gap.</p>
+    `
+  },
+
+  'prior-period-adjustment': {
+    term: 'Prior Period Adjustment',
+    body: `
+      <p>A correction to the figures of a period that has already been closed. Because the prior period is locked, the adjustment is recorded through opening <span class="term" data-term="retained-earnings">retained earnings</span> (or a <span class="term" data-term="restatement">restatement</span>) rather than by reopening that period's transactions.</p>
+    `
+  },
+
+  'restatement': {
+    term: 'Restatement',
+    body: `
+      <p>Reissuing previously published financial statements to correct a material error. Restatements are significant events — they signal the original numbers couldn't be relied on — and get their own disclosures and (in a consolidation system) their own frozen <span class="term" data-term="snapshot">snapshot</span>.</p>
+    `
+  },
+
+  'flux-analysis': {
+    term: 'Flux / Variance Analysis',
+    body: `
+      <p>Comparing each line of the statements against a prior period, budget, or forecast and explaining the notable changes ("flux"). It's how management and <span class="term" data-term="auditor">auditors</span> sanity-check results — "why is revenue up 15%?" — and a standard output of the close.</p>
+    `
+  },
+
+  'materiality': {
+    term: 'Materiality',
+    body: `
+      <p>The size threshold below which an item is considered too small to affect a reader's decisions, and so doesn't need separate correction or disclosure. Groups set materiality thresholds to decide which differences to investigate and which <span class="term" data-term="topside">topside</span> adjustments are worth posting.</p>
+    `
+  },
+
+  'cutoff': {
+    term: 'Cutoff',
+    body: `
+      <p>Making sure each transaction is recorded in the correct period at a period boundary. A sale shipped on the last day of the quarter belongs in that quarter; a cutoff error puts it in the wrong one. Cutoff is a common source of <span class="term" data-term="timing-difference">timing differences</span> between entities.</p>
+    `
+  },
+
+  'comprehensive-income': {
+    term: 'Comprehensive Income',
+    body: `
+      <p>A broader measure of income than net income: net income <em>plus</em> <span class="term" data-term="oci">other comprehensive income</span> (items like <span class="term" data-term="cta">CTA</span> that bypass the income statement). Total comprehensive income captures every change in <span class="term" data-term="equity">equity</span> during the period except transactions with owners.</p>
+    `
+  },
+
+  'sec-filings': {
+    term: '10-K / 10-Q',
+    body: `
+      <p>The standard financial reports US public companies file with the <span class="term" data-term="sec">SEC</span>. The <strong>10-K</strong> is the audited annual report; the <strong>10-Q</strong> is the lighter, unaudited quarterly report. Both contain the consolidated financial statements plus extensive disclosures.</p>
+    `
+  },
+
+  'management-reporting': {
+    term: 'Management Reporting',
+    body: `
+      <p>Internal reports prepared for managers, as opposed to the legally required external statements. Management reports can slice the group differently — by <span class="term" data-term="profit-center">profit center</span>, product, or region rather than by <span class="term" data-term="legal-entity">legal entity</span> — and don't have to follow external presentation rules.</p>
+    `
+  },
+
+  'consolidated-tax-return': {
+    term: 'Consolidated Tax Return',
+    body: `
+      <p>A single tax filing covering a group of related entities. The group defined for tax purposes can differ from the group defined for <span class="term" data-term="gaap">GAAP</span> consolidation — different ownership thresholds and rules apply — so the tax view of the group and the accounting view often don't match exactly.</p>
+    `
+  },
+
+  'ytd': {
+    term: 'Year-to-Date',
+    acronym: 'YTD',
+    body: `
+      <p>A running total of activity from the start of the fiscal year to the current point. Income statement accounts are often carried as YTD balances within a year (Q2's revenue figure includes Q1's), resetting to zero only at year-end. See <span class="term" data-term="carryforward">carryforward</span>.</p>
+    `
+  },
+
+  'natural-balance': {
+    term: 'Natural Balance',
+    body: `
+      <p>Whether an account normally carries a debit or a credit balance. <span class="term" data-term="assets">Assets</span> and expenses have a natural debit balance; <span class="term" data-term="liabilities">liabilities</span>, <span class="term" data-term="equity">equity</span>, and <span class="term" data-term="revenue">revenue</span> have a natural credit balance. A balance on the "wrong" side is a flag worth checking. See <span class="term" data-term="debit-credit">debit and credit</span>.</p>
+    `
+  },
+
+  'profit-center': {
+    term: 'Profit Center',
+    body: `
+      <p>An internal unit tracked for its own revenue and profit — a division, product line, or store — independent of the <span class="term" data-term="legal-entity">legal entity</span> structure. Groups often want to report results by profit center for management purposes as well as by legal entity for statutory purposes.</p>
+    `
+  },
+
+  'divestiture': {
+    term: 'Divestiture',
+    body: `
+      <p>Selling off or disposing of a business unit or <span class="term" data-term="subsidiary">subsidiary</span>. When a group divests an entity, that entity's balances have to be removed from the consolidation from the disposal date forward (deconsolidation).</p>
+    `
+  },
+
+  'spinoff': {
+    term: 'Spinoff',
+    body: `
+      <p>Separating part of a business into a new, independently owned entity — often by distributing shares of the new company to existing shareholders. Like a <span class="term" data-term="divestiture">divestiture</span>, it removes the spun-off operations from the group going forward.</p>
+    `
+  },
+
+  'accrual': {
+    term: 'Accrual',
+    body: `
+      <p>Recording revenue when it's earned and expenses when they're incurred, regardless of when cash actually changes hands. Accrual accounting is the basis for most financial statements, in contrast to <span class="term" data-term="cash-basis">cash-basis</span> accounting.</p>
+      <div class="example-box">
+        <strong>Example:</strong> Work performed in December but not invoiced until January is "accrued" into December — the revenue and a receivable are recorded in December.
+      </div>
+    `
+  },
+
+  'cash-basis': {
+    term: 'Cash Basis',
+    body: `
+      <p>Recording transactions only when cash moves — revenue when payment is received, expenses when bills are paid. Simpler than <span class="term" data-term="accrual">accrual</span> accounting but a poorer match of activity to period, so most groups of any size report on an accrual basis.</p>
+    `
+  },
+
+  'revenue-recognition': {
+    term: 'Revenue Recognition',
+    body: `
+      <p>The rules for <em>when</em> revenue can be recorded — generally as the goods or services are delivered, not necessarily when cash arrives. Subscription revenue, for instance, is recognized gradually over the subscription term rather than all at once. Money collected before it's earned sits in <span class="term" data-term="deferred-revenue">deferred revenue</span>.</p>
+    `
+  },
+
+  'deferred-revenue': {
+    term: 'Deferred Revenue',
+    body: `
+      <p>Money received before the related goods or services have been delivered. It's recorded as a <span class="term" data-term="liabilities">liability</span> (an obligation to deliver), and moves into <span class="term" data-term="revenue">revenue</span> as the work is performed. Also called unearned revenue.</p>
+    `
+  },
+
+  'prepaid-expense': {
+    term: 'Prepaid Expense',
+    body: `
+      <p>An expense paid in advance and recorded as an <span class="term" data-term="assets">asset</span>, then spread across the periods it actually covers. Prepaying a year of insurance creates a prepaid asset that is expensed one month at a time — often on a <span class="term" data-term="straight-line">straight-line</span> basis.</p>
+    `
+  },
+
+  'straight-line': {
+    term: 'Straight-Line',
+    body: `
+      <p>Spreading a cost evenly — in equal amounts — across each period of its life. Straight-line <span class="term" data-term="depreciation">depreciation</span> of a $1,200 asset over 12 months is $100 per month. The simplest and most common allocation method.</p>
+    `
+  },
+
+  'amortization': {
+    term: 'Amortization',
+    body: `
+      <p>Spreading a cost over time in steps — the same idea as <span class="term" data-term="depreciation">depreciation</span>, but applied to intangible assets (software, patents) or to the gradual paydown of a loan balance. "Amortize the cost over five years" means recognize one-fifth of it each year.</p>
+    `
+  },
+
+  'capitalize': {
+    term: 'Capitalize',
+    body: `
+      <p>Recording a cost as an <span class="term" data-term="assets">asset</span> on the balance sheet instead of expensing it immediately, then spreading it over time via <span class="term" data-term="depreciation">depreciation</span> or <span class="term" data-term="amortization">amortization</span>. Buying a delivery truck is capitalized; buying fuel for it is expensed.</p>
+    `
+  },
+
+  'allocation': {
+    term: 'Allocation',
+    body: `
+      <p>Splitting a single amount across multiple categories, departments, periods, or accounts on a defined basis. Shared overhead might be allocated to divisions by headcount; a prepaid cost is allocated across the months it covers.</p>
+    `
+  },
+
+  'reversing-entry': {
+    term: 'Reversing Entry',
+    body: `
+      <p>An entry that cancels a prior one. Estimates such as accruals are often booked in one period and automatically reversed at the start of the next, so the real figure can be recorded cleanly without double-counting.</p>
+    `
+  },
+
+  'multi-book': {
+    term: 'Multi-Book Accounting',
+    body: `
+      <p>Keeping more than one set of books for the same underlying transactions — for example, one on <span class="term" data-term="gaap">US GAAP</span>, one on <span class="term" data-term="ifrs">IFRS</span>, and one for tax. Each "book" can apply different rules (depreciation lives, revenue timing) to the same events. See <span class="term" data-term="parallel-ledger">parallel ledger</span>.</p>
+    `
+  },
+
+  'parallel-ledger': {
+    term: 'Parallel Ledger',
+    body: `
+      <p>A second, complete set of books maintained alongside the primary ledger on a different accounting basis (e.g., tax vs. <span class="term" data-term="gaap">GAAP</span>). Full and authoritative, but heavyweight — every transaction is recorded in both. Contrast with an <span class="term" data-term="extension-ledger">extension ledger</span>.</p>
+    `
+  },
+
+  'extension-ledger': {
+    term: 'Extension Ledger',
+    body: `
+      <p>A lightweight ledger that stores only the <em>differences</em> from a base ledger, rather than duplicating every entry. To produce the alternate-basis view, the system layers the extension's deltas on top of the base ledger. Cheaper than a full <span class="term" data-term="parallel-ledger">parallel ledger</span> when the two bases mostly agree.</p>
+    `
+  },
+
+  'subledger': {
+    term: 'Subledger',
+    body: `
+      <p>A detailed ledger for one area — accounts receivable, fixed assets, leases — whose totals roll up into a single control account in the main <span class="term" data-term="gl">general ledger</span>. The subledger holds the line-by-line detail; the GL holds the summary.</p>
+    `
+  },
+
+  'vendor-bill': {
+    term: 'Vendor Bill',
+    body: `
+      <p>A bill received from a supplier, recording an amount the company owes — i.e., an <span class="term" data-term="ap">account payable</span>. In a purchasing flow, the vendor bill typically follows a <span class="term" data-term="purchase-order">purchase order</span> and is paid later.</p>
+    `
+  },
+
+  'purchase-order': {
+    term: 'Purchase Order',
+    acronym: 'PO',
+    body: `
+      <p>A formal document a company sends a supplier to order goods or services at agreed terms, before the goods arrive or the <span class="term" data-term="vendor-bill">vendor bill</span> is received. It's the commitment step in the purchasing flow, not yet an accounting entry to the <span class="term" data-term="gl">general ledger</span>.</p>
+    `
+  },
+
+  'immutable-ledger': {
+    term: 'Immutable Ledger',
+    body: `
+      <p>A ledger whose committed entries can never be edited or deleted. Corrections are made only by posting new offsetting entries, so the full history is preserved. This is what makes a clean <span class="term" data-term="audit-trail">audit trail</span> possible.</p>
+    `
+  },
+
+  'present-value': {
+    term: 'Present Value',
+    body: `
+      <p>What a future amount of money is worth today, once you account for the fact that money has a time value. A loan or obligation is often recorded at present value, with the gap between that and the face amount (the "discount") recognized as interest over time.</p>
+      <div class="example-box">
+        <strong>Example:</strong> Recording $1,000 of cash received against $1,200 owed in the future means a $200 discount that is amortized to interest expense over the life of the obligation.
+      </div>
+    `
+  },
+
+  'principal': {
+    term: 'Principal',
+    body: `
+      <p>The original amount of a loan, separate from the interest charged for borrowing it. Loan repayments split into a principal portion (reducing the amount owed) and an interest portion (the cost of borrowing).</p>
+    `
+  },
+
+  'weighted-average': {
+    term: 'Weighted Average',
+    body: `
+      <p>An average that weights each value by its size or frequency rather than treating all values equally. A weighted-average <span class="term" data-term="fx">FX</span> rate, for instance, reflects when during the period the activity actually happened, not just the simple average of the rates.</p>
+    `
+  },
+
+  'allowance-doubtful-accounts': {
+    term: 'Allowance for Doubtful Accounts',
+    body: `
+      <p>A reserve set against <span class="term" data-term="ar">accounts receivable</span> for the portion not expected to be collected. It reduces receivables to the amount the company realistically expects to receive, without removing any specific customer's balance yet.</p>
+    `
+  },
+
+  'bank-reconciliation': {
+    term: 'Bank Reconciliation',
+    body: `
+      <p>Matching the cash transactions on a company's books against its bank statement, line by line, until the two agree. The same matching pattern is used for <span class="term" data-term="intercompany">intercompany</span> balances — pairing each side and investigating what doesn't match.</p>
+    `
+  },
+
+  'controller': {
+    term: 'Controller',
+    body: `
+      <p>The senior accountant responsible for a company's books, financial reporting, and accounting controls. The controller typically owns the close process and signs off on the numbers; in larger groups a corporate controller oversees consolidation across all entities.</p>
+    `
+  },
+
+  'fpa': {
+    term: 'Financial Planning & Analysis',
+    acronym: 'FP&A',
+    body: `
+      <p>The finance function focused on budgeting, forecasting, and analyzing performance — looking forward — as opposed to accounting, which records what already happened. FP&A often consumes consolidated actuals to compare against plan.</p>
+    `
+  },
+
+  'erp': {
+    term: 'Enterprise Resource Planning',
+    acronym: 'ERP',
+    body: `
+      <p>Integrated business software that runs accounting, operations, and other functions on one system — NetSuite, SAP, Oracle, Dynamics, and the like. A subsidiary's ERP is usually where its <span class="term" data-term="trial-balance">trial balance</span> originates before it's submitted for consolidation.</p>
+    `
   }
 
 };

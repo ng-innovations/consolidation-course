@@ -3,6 +3,12 @@
   const NAV = {
     layers: [
       {
+        label: 'Reference',
+        lessons: [
+          { num: '', title: 'Glossary', file: 'reference/glossary.html' }
+        ]
+      },
+      {
         label: 'Layer 1 — Purpose & Concepts',
         lessons: [
           { num: '1.0', title: 'Overview', file: 'lessons/layer1/1-0-overview.html' },
@@ -69,8 +75,9 @@
       html += `<ul class="nav-list">`;
       layer.lessons.forEach(lesson => {
         const isActive = activeFile && lesson.file.endsWith(activeFile);
+        const numSpan = lesson.num ? `<span class="nav-num">${lesson.num}</span>` : '';
         html += `<li><a href="${root}${lesson.file}" class="${isActive ? 'active' : ''}">
-          <span class="nav-check"></span><span class="nav-num">${lesson.num}</span>${lesson.title}
+          <span class="nav-check"></span>${numSpan}${lesson.title}
         </a></li>`;
       });
       html += '</ul></div>';
