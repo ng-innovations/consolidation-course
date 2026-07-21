@@ -18,8 +18,8 @@ The user's consolidation pipeline is documented in `Consolidation_Process.xlsx` 
 
 - **Primary:** software developers building the consolidation app
 - **Secondary:** financial analysts on the team
-- **Assumed knowledge:** basic bookkeeping familiarity (knows what a balance sheet is, knows debits/credits exist), no prior consolidation experience
-- **Not assumed:** no CPA-level vocabulary, no exposure to GAAP/IFRS-specific terminology
+- **Assumed knowledge:** debits, credits, accounts, balances, and the main financial reports (balance sheet, income statement) — and nothing more. Technical and mathematical fluency should be assumed instead; it's fine to lean on that when it makes an explanation shorter.
+- **Not assumed:** no CPA-level vocabulary, no exposure to GAAP/IFRS-specific terminology, no consolidation experience at all. If a lesson needs a concept beyond the assumed baseline, that concept must be taught (and glossaried) before it's used — see rule 15 on sequencing.
 
 ---
 
@@ -55,11 +55,11 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 
 1. **Concise, plain language.** No unnecessary big words. Short sentences when possible. Aim for the level of a well-written tech blog post, not an accounting textbook.
 
-2. **Every term gets a glossary entry.** Not just fancy accounting terms — anything a non-accountant developer might not know: debit/credit, journal entry, trial balance, GAAP, COGS, AR, AP, etc. If you're tempted to use a term in a lesson, check `js/glossary-data.js` first. If it's missing, add it before publishing.
+2. **Every term gets a glossary entry — apply this liberally.** Not just fancy accounting terms — anything a non-accountant developer might not know: debit/credit, journal entry, trial balance, GAAP, COGS, AR, AP, etc. The audience may know zero accounting beyond the assumed baseline (see "The audience" above), so when in doubt, glossary it. It costs nothing to link a term the reader already knows; it costs a lot to leave one unexplained. If you're tempted to use a term in a lesson, check `js/glossary-data.js` first. If it's missing, add it before publishing.
 
 3. **Every acronym goes in the glossary** with both the full expansion and an explanation. GAAP, IFRS, NCI, CTA, COA, AR, AP, COGS, P&L, JV, REIT, FX, VIE, GL, TB, OCI, APIC, IC, JE, XBRL.
 
-4. **No term used before it's introduced — wrap only the first occurrence per lesson.** Glossary entries can cross-reference each other freely. Wrapping is done with `<span class="term" data-term="key">term</span>`.
+4. **No term used before it's introduced — wrap only the first occurrence per lesson.** Glossary entries can cross-reference each other, but keep it minimal — see rule 13. Wrapping is done with `<span class="term" data-term="key">term</span>`.
     - In each lesson body, wrap **only the first appearance** of a given glossary term. Subsequent occurrences in that same lesson stay as plain text — wrapping all of them creates visual noise without adding value, since one clickable instance per lesson is enough to reach the definition.
     - Each lesson resets its own first-occurrence tracking. A term appearing in lesson 1.2 and lesson 1.3 gets wrapped once in each — they're independent.
     - In all lessons, do **not** wrap glossary terms inside: headings (`h1`–`h4`), SVG `<text>` elements, the page `<title>`, attribute values, the prev/next `lesson-nav` block, or company chips. Don't double-wrap text already inside a `.term` span.
@@ -81,12 +81,20 @@ Each Layer 2 lesson that performs a state transition should call it out explicit
 12. **Illustrative examples need concrete names, not placeholders.** When an example is meant to help the reader picture a scenario — "Parent owns 30% of X and has one board seat", "Sub Y borrows from Sub Z" — give the entities realistic-sounding fictional company names (Acme Industrials, BrightWave Energy, Northwind Logistics, Summit Foods, Cedar Manufacturing, Stellar Health, etc.) rather than abstract placeholders like "Sub A" or "Sub B". The point of an example is to make a concept tangible; a name like "Acme Industrials" lets the reader build a mental picture, while "Sub A" stays generic and forgettable. Abstract placeholders (P, S, Sub A, Sub B) are appropriate **only** in worked numerical/accounting walkthroughs and in structural diagrams (org charts, ownership trees) where a real name would distract from the relationships being illustrated. "Parent" can remain abstract — the reader is meant to identify with it — but the entities it holds or transacts with should be named.
 
 13. **No accountant jargon without a glossary link — even inside glossary entries.** A definition is the wrong place to quietly introduce another undefined accounting term. Watch in particular for accountant-specific verbs and noun phrases that read naturally to a finance person but are opaque to a developer: "write-down", "write it back up", "carrying amount", "obsolescence", "amortize", "accrete", "recognize through earnings", "topside adjustment", "haircut", etc. For each one, either (a) replace it with a plain-English equivalent — "reduce the recorded value", "raise the value again", "value on the books", "becoming outdated", "spread cost over time", "build up over time" — or (b) keep the precise term but wrap it as a glossary link to its own entry. The reader should be able to read any glossary entry without bouncing through three more before they understand the first.
+    - **Minimize cross-links inside glossary bodies, even to terms that do have entries.** A definition that sends the reader hopping through three other definitions to understand the first one has failed at its job. Default to explaining a related idea in plain language inline, and only add a `.term` link when the linked concept is genuinely a distinct topic the reader might want to read more about — not for every accounting-adjacent word that happens to have its own entry. Fewer links, simpler sentences.
 
 14. **Multi-entity diagrams: distinct colors, full names, matching chips in text.** When a lesson includes a diagram with multiple *specific named* entities (an org chart, ownership tree, transaction-flow diagram, etc.):
     - **Distinct hues, not shades of one color.** Each entity gets a clearly different color — navy, teal, amber, purple, rose, etc. Identifying an entity at a glance matters more than aesthetic uniformity. Don't paint a five-entity org chart in five shades of blue.
     - **Full mockup company names, not letters.** Boxes show plausible fictional names ("Apex Holdings", "Cedar Capital", "Pioneer Foods") rather than single-letter placeholders ("P", "H", "Sub A"). Names should be internally consistent across the diagram and shouldn't collide with company names used elsewhere in the same lesson.
     - **Mirror the diagram colors in body text using chips.** When body text refers to an entity that appears in the diagram, wrap the name in `<span class="company-chip" style="background:#hex;">Name</span>`. The background hex must match the entity's fill color in the diagram. This carries the visual identity from the diagram into the prose so the reader doesn't have to re-decode names each time they appear.
     - **Generic role labels are exempt.** Diagrams that only show abstract roles ("Parent", "Investee", "Subsidiary") without naming a specific entity don't need this treatment — they illustrate a relationship type, not a specific scenario, and abstract labels are appropriate there.
+
+15. **Don't over-frame the structure — "Layer" and "Lesson" are the only scaffolding words.** LLM-generated course content tends to invent extra structural vocabulary to sound organized — "pillars", "modules", "tracks", "ontologies", "specs", "substrates", "domains", "pathways", "frameworks" — and it compounds: one lesson introduces a "pillar," the next calls the same thing a "module," and the reader is left mentally maintaining a taxonomy that doesn't exist anywhere else. This course has exactly two structural nouns: **Layer** and **Lesson**. Refer to sections within a lesson with plain words — "section," "the next part," "above" — not named structural units. If you catch yourself naming a new organizational concept to describe how the material is arranged, cut it and describe the content directly instead. The course should read like one person's curated learning path, not a documentation system.
+
+16. **Concepts must be introduced strictly in sequence — never use a term or idea before its lesson explains it.** The course is written as multiple passes: each pass introduces basic concepts, and a later pass builds on them. This is what lets any single lesson stay simple — it never has to explain five other things just to make one point. Concretely:
+    - Beyond the assumed baseline (debits, credits, accounts, balances, the main financial reports — see "The audience"), a concept may only be used in a lesson if an **earlier** lesson (lower layer number, or earlier lesson number within the same layer) has already introduced it. "Introduced" means explained in the body, not just linked from the glossary — a glossary entry existing is not the same as a reader having encountered the idea yet.
+    - When drafting or revising a lesson, do a **backward-looking check**: for every non-trivial term or concept the lesson uses, confirm it either belongs to the assumed baseline or was taught in an earlier lesson. If it wasn't, either move the explanation earlier, add a brief inline explanation before using it here, or resequence the lessons — don't just add a glossary link and move on, since a glossary entry read out of order can itself violate this rule by leaning on concepts the reader hasn't reached yet.
+    - This check runs in both directions when revising existing material: adding or changing a concept in an early lesson can retroactively make a later lesson's forward reference fine, or changing a later lesson can introduce a new forward reference that needs to be caught. Re-check neighboring lessons whenever a change shifts what's been "taught so far."
 
 ---
 
@@ -195,6 +203,7 @@ Follow this order. Do not skip steps.
    - Internal links navigate correctly
    - SVG diagrams display
    - No raw `data-term` references with missing glossary entries
+   - **Backward sequencing check (rule 16):** every non-baseline term or concept used in the lesson was either already taught in an earlier lesson, or is taught here for the first time. If something jumps ahead, fix the sequencing before moving on — don't ship it with just a glossary link.
 
 6. **Commit with a clear message.** One logical change per commit when possible. Mention the lesson number(s) touched and the nature of the change ("Lesson 2.6: tighten intercompany matching example", "Add NCI acronym to glossary", etc.).
 
@@ -229,6 +238,9 @@ Follow this order. Do not skip steps.
 - **Forgetting to update three places.** Lesson list lives in: the lesson HTML itself, `js/nav.js`, and `index.html`. All three.
 - **Skipping the manual spot-check.** Always open the rendered page after a change.
 - **Conflating accounting with implementation.** Lessons teach the accounting; the app's four-phase pipeline is one opinionated way to organize it. Don't elevate the latter to the former.
+- **Forward reference smuggled in via a glossary link.** Using an advanced term "because it's in the glossary" doesn't satisfy sequencing (rule 16) — the reader hasn't been taught the idea yet just because a definition exists for it somewhere.
+- **Inventing new structural vocabulary.** Calling something a "pillar," "module," "framework," or similar mid-lesson creates scaffolding that doesn't exist anywhere else in the course. Only "Layer" and "Lesson" are real structural terms (rule 15).
+- **Glossary entries that chain through other definitions.** A definition that requires reading two or three more definitions to understand is a sign the first one leaned on cross-links instead of just explaining plainly (rule 13).
 
 ---
 
